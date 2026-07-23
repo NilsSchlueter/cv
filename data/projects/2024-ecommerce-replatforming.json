@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": {
+    "de": "Großer DACH-Online-Händler (unter NDA)",
+    "en": "Major DACH online retailer (under NDA)"
+  },
+  "role": { "de": "Lead Fullstack-Entwickler", "en": "Lead Full-Stack Developer" },
+  "location": "Remote",
+  "startDate": "2024-02",
+  "summary": {
+    "de": "Ablösung eines monolithischen Shop-Systems durch eine headless Next.js-Plattform mit Fokus auf Performance und Conversion.",
+    "en": "Replatformed a monolithic shop system to a headless Next.js platform with a focus on performance and conversion."
+  },
+  "highlights": [
+    {
+      "de": "Migration von 120.000 Produkten auf eine headless Architektur (Next.js App Router, TypeScript) ohne Ausfallzeit.",
+      "en": "Migrated 120,000 products to a headless architecture (Next.js App Router, TypeScript) with zero downtime."
+    },
+    {
+      "de": "Largest Contentful Paint durch React Server Components und Edge-Caching um 43 % reduziert.",
+      "en": "Reduced Largest Contentful Paint by 43% via React Server Components and edge caching."
+    },
+    {
+      "de": "Stripe-basierten Checkout mit 3-D-Secure sowie Apple und Google Pay implementiert.",
+      "en": "Built a Stripe-based checkout with 3-D Secure plus Apple and Google Pay."
+    },
+    {
+      "de": "CI/CD-Pipeline mit Playwright-End-to-End-Tests aufgesetzt und die Deployment-Zeit von 40 auf 8 Minuten gesenkt.",
+      "en": "Set up a CI/CD pipeline with Playwright end-to-end tests, cutting deployment time from 40 to 8 minutes."
+    }
+  ],
+  "stack": ["Next.js", "TypeScript", "React", "Stripe", "PostgreSQL", "Prisma", "Vercel", "Playwright"]
+}

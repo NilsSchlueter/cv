@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/education.schema.json",
+  "education": [
+    {
+      "institution": "Technische Universität Berlin",
+      "url": "https://www.tu.berlin",
+      "area": { "de": "Informatik", "en": "Computer Science" },
+      "studyType": { "de": "Bachelor of Science", "en": "Bachelor of Science" },
+      "startDate": "2012-10",
+      "endDate": "2016-09",
+      "score": "1,7",
+      "location": "Berlin"
+    }
+  ]
+}

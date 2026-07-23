@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Build artifacts (Distribution läuft über lokalen Build oder GitHub Releases)
+dist/
+
+# Generierte, schema-konforme JSON-Resume-Dateien (aus data/ abgeleitet)
+generated/
+
+# Sonstiges
+*.log
+.DS_Store

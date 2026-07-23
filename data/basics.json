@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema/basics.schema.json",
+  "name": "Nils Schlüter",
+  "label": {
+    "de": "Freelance Fullstack-Entwickler (TypeScript/Node)",
+    "en": "Freelance Full-Stack Developer (TypeScript/Node)"
+  },
+  "email": "mail@nilsschlueter.de",
+  "phone": "+49 151 23456789",
+  "url": "https://nilsschlueter.de",
+  "location": {
+    "city": "Berlin",
+    "region": "Berlin",
+    "countryCode": "DE"
+  },
+  "summary": {
+    "de": "Freelance Fullstack-Entwickler mit über 8 Jahren Erfahrung im Aufbau produktreifer Webanwendungen mit TypeScript, React/Next.js und Node.js. Schwerpunkt auf skalierbaren Architekturen, sauberer Developer Experience und messbarem Business-Impact. Verfügbar für Remote-Projekte im DACH-Raum.",
+    "en": "Freelance full-stack developer with 8+ years of experience building production-grade web applications with TypeScript, React/Next.js and Node.js. Focused on scalable architecture, clean developer experience and measurable business impact. Available for remote engagements across Europe."
+  },
+  "profiles": [
+    {
+      "network": "GitHub",
+      "username": "nilsschlueter",
+      "url": "https://github.com/nilsschlueter"
+    },
+    {
+      "network": "LinkedIn",
+      "username": "nilsschlueter",
+      "url": "https://www.linkedin.com/in/nilsschlueter"
+    }
+  ],
+  "languages": [
+    {
+      "language": { "de": "Deutsch", "en": "German" },
+      "fluency": { "de": "Muttersprache", "en": "Native speaker" }
+    },
+    {
+      "language": { "de": "Englisch", "en": "English" },
+      "fluency": { "de": "Verhandlungssicher (C1)", "en": "Full professional proficiency (C1)" }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+name: Build CV
+
+# - Bei jedem Push/PR: validieren, beide PDFs bauen, als Artifacts anhängen.
+# - Bei einem Version-Tag (z. B. v2026-07): zusätzlich ein GitHub Release mit
+#   den beiden PDFs erstellen (versionierte, teilbare Stände).
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write # nötig, um bei Tags ein Release anzulegen
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Typst einrichten
+        uses: typst-community/setup-typst@v5
+        with:
+          # Identisch zur lokalen Version für reproduzierbare Ausgabe (>= 0.14 wg. pdf.attach).
+          typst-version: 0.15.1
+
+      # prebuild (gen:schema -> merge -> validate) läuft automatisch vor build.
+      - name: Validieren & PDFs bauen
+        run: npm run build
+
+      - name: PDFs als Artifact hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: dist/*.pdf
+          if-no-files-found: error
+
+      - name: Release erstellen (nur bei Version-Tags)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.pdf
+          generate_release_notes: true

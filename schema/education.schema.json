@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "institution": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "area": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "de": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "en": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "de",
+                  "en"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "studyType": {
+            "$ref": "#/properties/education/items/properties/area"
+          },
+          "startDate": {
+            "type": "string",
+            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+          },
+          "endDate": {
+            "$ref": "#/properties/education/items/properties/startDate"
+          },
+          "score": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "institution",
+          "area",
+          "studyType",
+          "startDate"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "education"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CV-Quelldaten: Ausbildung (education.json)"
+}

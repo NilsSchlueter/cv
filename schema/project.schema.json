@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "client": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "properties": {
+            "de": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "de",
+            "en"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "role": {
+      "$ref": "#/properties/client"
+    },
+    "location": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "startDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+    },
+    "endDate": {
+      "$ref": "#/properties/startDate"
+    },
+    "summary": {
+      "$ref": "#/properties/client"
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/client"
+      },
+      "default": []
+    },
+    "stack": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    }
+  },
+  "required": [
+    "client",
+    "role",
+    "startDate",
+    "summary"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CV-Quelldaten: einzelnes Projekt (projects/*.json)"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "../schema/skills.schema.json",
+  "skills": [
+    {
+      "name": { "de": "Frontend", "en": "Frontend" },
+      "level": { "de": "Experte", "en": "Expert" },
+      "keywords": ["TypeScript", "React", "Next.js", "Remix", "Tailwind CSS", "React Query"]
+    },
+    {
+      "name": { "de": "Backend", "en": "Backend" },
+      "level": { "de": "Experte", "en": "Expert" },
+      "keywords": ["Node.js", "tRPC", "GraphQL", "REST", "Prisma", "PostgreSQL", "Redis"]
+    },
+    {
+      "name": { "de": "Cloud & DevOps", "en": "Cloud & DevOps" },
+      "level": { "de": "Fortgeschritten", "en": "Advanced" },
+      "keywords": ["AWS", "Vercel", "Docker", "GitHub Actions", "Terraform"]
+    },
+    {
+      "name": { "de": "Qualität & Methodik", "en": "Quality & Practices" },
+      "level": { "de": "Fortgeschritten", "en": "Advanced" },
+      "keywords": ["Playwright", "Vitest", "Test-Driven Development", "CI/CD", "Scrum"]
+    }
+  ]
+}
