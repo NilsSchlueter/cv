@@ -28,7 +28,10 @@
         "de": "Angewandte Informatik",
         "en": "Applied Computer Science"
       },
-      "studyType": { "de": "Bachelor of Science", "en": "Bachelor of Science" },
+      "studyType": {
+        "de": "Bachelor of Science, Ingenieur",
+        "en": "Bachelor of Science, Engineer"
+      },
       "startDate": "2014-10",
       "endDate": "2017-09",
       "score": { "de": "sehr gut (86 %)", "en": "very good (86%)" },
