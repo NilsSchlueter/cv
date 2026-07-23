@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "continuum.club",
+  "role": {
+    "de": "Fullstack Entwickler | Next.js Entwickler",
+    "en": "Fullstack Developer | Next.js Developer"
+  },
+  "location": "New York",
+  "startDate": "2024-11",
+  "responsibilities": [
+    {
+      "de": "Selbständige Umsetzung neuer Features in einem SaaS-Produkt (Next.js-Webapp mit Firebase-Backend)",
+      "en": "Independent implementation of new features in a SaaS product (Next.js webapp with Firebase backend)"
+    },
+    {
+      "de": "Unterstützung der Gründer bei der Planung neuer Features und der Entwicklung der Roadmap",
+      "en": "Supporting the founders in planning new features and developing the roadmap"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Bestehenden MVP innerhalb von 3 Monaten eigenverantwortlich produktionsreif und für erste Kunden verfügbar gemacht",
+      "en": "Made the existing MVP ready for production and available for the first customers within 3 months on my own responsibility"
+    },
+    {
+      "de": "Verbesserung der Ladezeiten um ca. 60 % durch Implementierung einer Frontend-Caching-Strategie und Optimierung der Algorithmen zur Trainingsplangenerierung",
+      "en": "Improved loading times by approx. 60% by implementing a frontend caching strategy and optimizing the algorithms for generating training plans"
+    },
+    {
+      "de": "Einführung von Unit-Tests mit einer Testabdeckung von über 80 % auf neuem Code",
+      "en": "Introduction of unit tests with test coverage of over 80% on new code"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "TanStack Query", "TailwindCSS", "HTML", "CSS", "ShadCN", "Firebase", "Firebase Auth", "Firebase Functions", "Firestore", "Node.js", "Express", "Prisma", "PostgreSQL", "Docker", "Vercel", "Git"]
+}

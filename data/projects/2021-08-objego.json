@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "Objego GmbH",
+  "role": {
+    "de": "Frontend Entwickler | Angular Entwickler",
+    "en": "Frontend Developer | Angular Developer"
+  },
+  "location": "Essen",
+  "startDate": "2021-08",
+  "endDate": "2022-02",
+  "responsibilities": [
+    {
+      "de": "Weiterentwicklung eines Webportals mit Fokus auf Performance und Benutzerverhalten",
+      "en": "Further development of a web portal with a focus on performance and user behaviour"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Planung und Implementierung umfassender Trackingmethoden zur Analyse des Nutzerverhaltens",
+      "en": "Planning and implementation of comprehensive tracking methods to analyse user behaviour"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Web Components", "Micro Frontends", "Material UI", "TailwindCSS", "HTML", "CSS", "Storybook", "Jest", "E2E-Testing", "Cypress", "Playwright", "Docker", "Kubernetes", "nginx", "Azure Cloud", "GitHub Actions", "CI/CD", "Git", "Keycloak", "Headless CMS", "Sentry"]
+}

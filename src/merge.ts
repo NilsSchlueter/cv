@@ -60,30 +60,39 @@ function buildResume(lang: Lang) {
         url: p.url,
       })),
     },
-    work: projects.map((p) => ({
-      name: pick(p.client, lang),
-      position: pick(p.role, lang),
-      location: p.location,
-      url: p.url,
-      startDate: p.startDate,
-      endDate: p.endDate, // undefined => laufend
-      summary: pick(p.summary, lang),
-      highlights: p.highlights.map((h) => pick(h, lang)),
-      keywords: p.stack, // Tech-Stack (Zusatzfeld, offiziell additionalProperties: true)
-    })),
+    work: projects.map((p) => {
+      const responsibilities = p.responsibilities.map((h) => pick(h, lang));
+      const achievements = p.achievements.map((h) => pick(h, lang));
+      return {
+        name: pick(p.client, lang),
+        position: pick(p.role, lang),
+        location: p.location ? pick(p.location, lang) : undefined,
+        url: p.url,
+        startDate: p.startDate,
+        endDate: p.endDate, // undefined => laufend
+        // JSON-Resume-Standard: alle Punkte in `highlights` (ATS/generische Tools).
+        highlights: [...responsibilities, ...achievements],
+        // Zusatzfelder (additionalProperties: true) für die strukturierte
+        // Aufgaben/Erfolge-Darstellung im Typst-Template:
+        responsibilities,
+        achievements,
+        keywords: p.stack, // Tech-Stack
+      };
+    }),
     skills: skillsFile.skills.map((s) => ({
       name: pick(s.name, lang),
       level: s.level ? pick(s.level, lang) : undefined,
       keywords: s.keywords,
     })),
     education: educationFile.education.map((e) => ({
-      institution: e.institution,
+      institution: pick(e.institution, lang),
       url: e.url,
       area: pick(e.area, lang),
       studyType: pick(e.studyType, lang),
       startDate: e.startDate,
       endDate: e.endDate,
-      score: e.score,
+      score: e.score ? pick(e.score, lang) : undefined,
+      courses: e.courses.map((c) => pick(c, lang)), // Schwerpunkte (JSON-Resume: courses)
     })),
     languages: basics.languages.map((l) => ({
       language: pick(l.language, lang),

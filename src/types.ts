@@ -109,14 +109,15 @@ export type SkillsFile = z.infer<typeof SkillsFile>;
 
 export const EducationItem = z
   .object({
-    institution: z.string().min(1),
+    institution: L, // z. B. "Ruhr-Universität Bochum" / "Ruhr-University Bochum"
     url: z.string().url().optional(),
-    area: L, // Fachrichtung, z. B. "Informatik"
+    area: L, // Fachrichtung, z. B. "Angewandte Informatik"
     studyType: L, // Abschluss, z. B. "Bachelor of Science"
     startDate: YearMonth,
     endDate: YearMonth.optional(),
-    score: z.string().optional(), // Note / GPA
-    location: z.string().optional(),
+    score: L.optional(), // Note, z. B. "sehr gut (1,4)"
+    courses: z.array(L).default([]), // Schwerpunkte / Focus
+    location: L.optional(),
   })
   .strict();
 
@@ -136,13 +137,13 @@ export const Project = z
   .object({
     ...withSchemaRef,
     client: L, // Kunde/Auftraggeber (ggf. "unter NDA")
-    role: L, // eigene Rolle, z. B. "Lead Fullstack-Entwickler"
-    location: z.string().optional(), // "Remote", "Berlin", ...
+    role: L, // eigene Rolle, z. B. "Lead Frontend Entwickler | Angular Entwickler"
+    location: L.optional(), // "Remote", "München"/"Munich", ...
     url: z.string().url().optional(),
     startDate: YearMonth,
     endDate: YearMonth.optional(), // weglassen => laufend ("heute"/"Present")
-    summary: L, // 1-2 Sätze Kontext
-    highlights: z.array(L).default([]), // Ergebnisse/Verantwortlichkeiten
+    responsibilities: z.array(L).default([]), // Aufgaben
+    achievements: z.array(L).default([]), // Erfolge
     stack: z.array(z.string().min(1)).default([]), // eingesetzte Technologien
   })
   .strict();

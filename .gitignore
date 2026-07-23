@@ -10,3 +10,6 @@ generated/
 # Sonstiges
 *.log
 .DS_Store
+
+# Original-CVs (Quelle fuer den Import - nicht committen)
+/*.pdf

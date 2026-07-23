@@ -2,33 +2,22 @@
   "$schema": "../schema/basics.schema.json",
   "name": "Nils Schlüter",
   "label": {
-    "de": "Freelance Fullstack-Entwickler (TypeScript/Node)",
-    "en": "Freelance Full-Stack Developer (TypeScript/Node)"
+    "de": "Fullstack Entwickler",
+    "en": "Fullstack Developer"
   },
   "email": "mail@nilsschlueter.de",
-  "phone": "+49 151 23456789",
-  "url": "https://nilsschlueter.de",
+  "phone": "+49 1578 9489705",
   "location": {
-    "city": "Berlin",
-    "region": "Berlin",
+    "address": "Am Steinknapp 14a",
+    "postalCode": "44795",
+    "city": "Bochum",
     "countryCode": "DE"
   },
   "summary": {
-    "de": "Freelance Fullstack-Entwickler mit über 8 Jahren Erfahrung im Aufbau produktreifer Webanwendungen mit TypeScript, React/Next.js und Node.js. Schwerpunkt auf skalierbaren Architekturen, sauberer Developer Experience und messbarem Business-Impact. Verfügbar für Remote-Projekte im DACH-Raum.",
-    "en": "Freelance full-stack developer with 8+ years of experience building production-grade web applications with TypeScript, React/Next.js and Node.js. Focused on scalable architecture, clean developer experience and measurable business impact. Available for remote engagements across Europe."
+    "de": "Nils Schlüter ist ein erfahrener Fullstack-Entwickler mit Schwerpunkt auf Next.js, React und der Entwicklung moderner, skalierbarer Webanwendungen. Er verfügt über umfangreiche Projekterfahrung im SaaS-Umfeld und hat sowohl in Startups als auch in größeren Unternehmen technische Verantwortung übernommen. Er kombiniert technisches Tiefenverständnis mit einem klaren Blick für Nutzerbedürfnisse und Produktziele. In seinen Projekten übernimmt er nicht nur die Umsetzung, sondern gestaltet aktiv mit – von der Konzeption bis zum stabilen Go-live. Seine Stärken liegen in der strukturierten Arbeitsweise, der schnellen Einarbeitung in komplexe Systeme sowie der selbständigen und eigenverantwortlichen Arbeit. Er legt großen Wert auf sauberen Code, durchdachte Architektur und eine enge Zusammenarbeit mit Design, Product und anderen Entwickler:innen. Technologisch versiert in TypeScript, Next.js, React.js, Node.js und weiteren Tools des modernen Web-Stacks ist er jederzeit in der Lage, sich auch in neue Technologien schnell einzuarbeiten.",
+    "en": "Nils Schlüter is an experienced full-stack developer with a focus on Next.js, React and the development of modern, scalable web applications. He has extensive project experience in the SaaS environment and has taken on technical responsibility in both start-ups and larger companies. He combines a deep technical understanding with a clear view of user needs and product goals. In his projects, he not only takes on the implementation but also plays an active role – from conception to stable go-live. His strengths lie in his structured way of working, his ability to quickly familiarize himself with complex systems and his ability to work independently and autonomously. He attaches great importance to clean code, well thought-out architecture and close cooperation with design, product and other developers. Technologically adept in TypeScript, Next.js, React.js, Node.js and other tools of the modern web stack, he is always able to quickly familiarize himself with new technologies."
   },
-  "profiles": [
-    {
-      "network": "GitHub",
-      "username": "nilsschlueter",
-      "url": "https://github.com/nilsschlueter"
-    },
-    {
-      "network": "LinkedIn",
-      "username": "nilsschlueter",
-      "url": "https://www.linkedin.com/in/nilsschlueter"
-    }
-  ],
+  "profiles": [],
   "languages": [
     {
       "language": { "de": "Deutsch", "en": "German" },
@@ -36,7 +25,7 @@
     },
     {
       "language": { "de": "Englisch", "en": "English" },
-      "fluency": { "de": "Verhandlungssicher (C1)", "en": "Full professional proficiency (C1)" }
+      "fluency": { "de": "Verhandlungssicher", "en": "Business fluent" }
     }
   ]
 }

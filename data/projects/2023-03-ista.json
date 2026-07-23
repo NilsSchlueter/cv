@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "Ista SE",
+  "role": {
+    "de": "Lead Frontend Entwickler | Angular Entwickler",
+    "en": "Lead Frontend Developer | Angular Developer"
+  },
+  "location": "Essen",
+  "startDate": "2023-03",
+  "endDate": "2024-12",
+  "responsibilities": [
+    {
+      "de": "Weiterentwicklung einer bestehenden Angular-Anwendung und Umsetzung neuer Features im Scrum-Team",
+      "en": "Further development of an existing Angular application and implementation of new features in the Scrum team"
+    },
+    {
+      "de": "Regelmäßige Schulung und Einarbeitung neuer Teammitglieder",
+      "en": "Regular training and onboarding of new team members"
+    },
+    {
+      "de": "Weiterentwicklung der Anwendungsarchitektur in Zusammenarbeit mit anderen Lead-Entwicklern",
+      "en": "Further development of the application architecture in collaboration with other lead developers"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Verringerung der Build- und Testzeiten um bis zu 80 % durch die Umwandlung einer monolithischen Angular-Anwendung in Monorepos und Micro Frontends",
+      "en": "Reduced build and test times by up to 80% by converting a monolithic Angular application into monorepos and micro frontends"
+    },
+    {
+      "de": "Erfolgreiche Updates von Angular Version 15 auf Version 18 inklusive Refactoring und Einführung neuer Angular-Features",
+      "en": "Successful updates from Angular version 15 to version 18, including refactoring and introduction of new Angular features"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Angular Material", "Web Components", "Micro Frontends", "TailwindCSS", "HTML", "CSS", "Storybook", "Jest", "E2E-Testing", "Cypress", "Playwright", "Microservices", "Docker", "Kubernetes", "nginx", "Azure Cloud", "GitHub Actions", "CI/CD", "Git", "Keycloak", "Headless CMS", "Sentry"]
+}

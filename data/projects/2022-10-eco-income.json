@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "eco.income engineering GmbH",
+  "role": {
+    "de": "Fullstack Entwickler | React.js Entwickler",
+    "en": "Fullstack Developer | React.js Developer"
+  },
+  "location": "Hamburg",
+  "startDate": "2022-10",
+  "responsibilities": [
+    {
+      "de": "Fullstack-Entwicklung einer neuen SaaS-Lösung inkl. Softwarearchitektur und Datenmodell",
+      "en": "Full-stack development of a new SaaS solution including software architecture and data model"
+    },
+    {
+      "de": "Enge Zusammenarbeit mit dem Gründer zur kontinuierlichen Produktvalidierung",
+      "en": "Close cooperation with the founder for continuous product validation"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Aufbau eines profitablen SaaS-Produktes von Grund auf bis zum Launch inkl. Onboarding der Kunden",
+      "en": "Building a profitable SaaS product from scratch to launch, including customer onboarding"
+    },
+    {
+      "de": "Langfristiger Betrieb der Plattform und Sicherstellung einer hohen Verfügbarkeit",
+      "en": "Long-term operation of the platform and ensuring high availability"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "AG Grid", "TailwindCSS", "HTML", "CSS", "Figma", "Express", "Node.js", "TypeORM", "PostgreSQL", "Docker", "GitLab", "Google Cloud", "Terraform", "Sentry"]
+}

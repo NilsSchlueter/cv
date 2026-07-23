@@ -34,7 +34,7 @@
       "$ref": "#/properties/client"
     },
     "location": {
-      "type": "string"
+      "$ref": "#/properties/client"
     },
     "url": {
       "type": "string",
@@ -47,10 +47,14 @@
     "endDate": {
       "$ref": "#/properties/startDate"
     },
-    "summary": {
-      "$ref": "#/properties/client"
+    "responsibilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/client"
+      },
+      "default": []
     },
-    "highlights": {
+    "achievements": {
       "type": "array",
       "items": {
         "$ref": "#/properties/client"
@@ -69,8 +73,7 @@
   "required": [
     "client",
     "role",
-    "startDate",
-    "summary"
+    "startDate"
   ],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/draft-07/schema#",

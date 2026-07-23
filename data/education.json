@@ -2,14 +2,40 @@
   "$schema": "../schema/education.schema.json",
   "education": [
     {
-      "institution": "Technische Universität Berlin",
-      "url": "https://www.tu.berlin",
-      "area": { "de": "Informatik", "en": "Computer Science" },
+      "institution": {
+        "de": "Universität Duisburg-Essen",
+        "en": "University of Duisburg-Essen"
+      },
+      "area": {
+        "de": "Software & Network Engineering",
+        "en": "Software & Network Engineering"
+      },
+      "studyType": { "de": "Master of Science", "en": "Master of Science" },
+      "startDate": "2017-10",
+      "endDate": "2019-09",
+      "score": { "de": "sehr gut (1,4)", "en": "very good (1.4)" },
+      "courses": [
+        { "de": "Requirements Engineering", "en": "Requirements Engineering" },
+        { "de": "Softwarearchitektur", "en": "Software Architecture" }
+      ]
+    },
+    {
+      "institution": {
+        "de": "Ruhr-Universität Bochum",
+        "en": "Ruhr University Bochum"
+      },
+      "area": {
+        "de": "Angewandte Informatik",
+        "en": "Applied Computer Science"
+      },
       "studyType": { "de": "Bachelor of Science", "en": "Bachelor of Science" },
-      "startDate": "2012-10",
-      "endDate": "2016-09",
-      "score": "1,7",
-      "location": "Berlin"
+      "startDate": "2014-10",
+      "endDate": "2017-09",
+      "score": { "de": "sehr gut (86 %)", "en": "very good (86%)" },
+      "courses": [
+        { "de": "Webentwicklung", "en": "Web Development" },
+        { "de": "Machine Learning", "en": "Machine Learning" }
+      ]
     }
   ]
 }

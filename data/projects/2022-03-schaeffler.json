@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "Schaeffler AG",
+  "role": {
+    "de": "Frontend Entwickler | Angular Entwickler",
+    "en": "Frontend Developer | Angular Developer"
+  },
+  "location": { "de": "Nürnberg", "en": "Nuremberg" },
+  "startDate": "2022-03",
+  "endDate": "2023-03",
+  "responsibilities": [
+    {
+      "de": "Implementierung neuer Features in einer global eingesetzten Bestellplattform auf Basis von Angular",
+      "en": "Implementation of new features in a globally deployed ordering platform based on Angular"
+    },
+    {
+      "de": "Mitarbeit an der Definition neuer konzernweiter Code-Standards und Best Practices für Webanwendungen",
+      "en": "Collaboration in the definition of new group-wide code standards and best practices for web applications"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Selbständige Planung und Implementierung umfassender Trackingmethoden zur Analyse des Nutzerverhaltens, die als Grundlage zur Verbesserung der UX/UI für alle Nutzer dienten",
+      "en": "Independently planned and implemented comprehensive tracking methods to analyse user behaviour, which were used as a basis for improving the UX/UI for all users"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Angular Material", "AG Grid", "TailwindCSS", "HTML", "CSS", "Figma", "Jest", "Docker", "Jenkins", "CI/CD", "Kubernetes", "nginx", "Azure Cloud", "Azure Insights", "Keycloak", "GitHub", "Git"]
+}

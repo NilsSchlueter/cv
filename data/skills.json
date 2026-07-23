@@ -3,23 +3,38 @@
   "skills": [
     {
       "name": { "de": "Frontend", "en": "Frontend" },
-      "level": { "de": "Experte", "en": "Expert" },
-      "keywords": ["TypeScript", "React", "Next.js", "Remix", "Tailwind CSS", "React Query"]
+      "keywords": [
+        "TypeScript", "JavaScript", "ES6", "React.js", "Next.js", "Angular",
+        "HTML", "CSS", "TailwindCSS", "RxJS", "NgRX", "TanStack Query",
+        "Angular Material", "ShadCN", "Web Components", "Micro Frontends",
+        "AG Grid", "Storybook", "Tiptap"
+      ]
     },
     {
       "name": { "de": "Backend", "en": "Backend" },
-      "level": { "de": "Experte", "en": "Expert" },
-      "keywords": ["Node.js", "tRPC", "GraphQL", "REST", "Prisma", "PostgreSQL", "Redis"]
+      "keywords": [
+        "Node.js", "Express", "Prisma", "TypeORM", "PostgreSQL", "Firebase",
+        "Java", "Spring Boot", "Microservices", "Keycloak", "Clerk"
+      ]
     },
     {
-      "name": { "de": "Cloud & DevOps", "en": "Cloud & DevOps" },
-      "level": { "de": "Fortgeschritten", "en": "Advanced" },
-      "keywords": ["AWS", "Vercel", "Docker", "GitHub Actions", "Terraform"]
+      "name": { "de": "DevOps & Cloud", "en": "DevOps & Cloud" },
+      "keywords": [
+        "Docker", "Kubernetes", "OpenShift", "nginx", "Terraform", "CI/CD",
+        "GitHub Actions", "GitLab", "Jenkins", "AWS", "Azure Cloud",
+        "Azure DevOps", "Google Cloud", "Vercel", "Sentry"
+      ]
     },
     {
-      "name": { "de": "Qualität & Methodik", "en": "Quality & Practices" },
-      "level": { "de": "Fortgeschritten", "en": "Advanced" },
-      "keywords": ["Playwright", "Vitest", "Test-Driven Development", "CI/CD", "Scrum"]
+      "name": { "de": "Testing & Qualität", "en": "Testing & QA" },
+      "keywords": ["Jest", "Cypress", "Playwright", "E2E-Testing", "JUnit", "Karma"]
+    },
+    {
+      "name": { "de": "CMS & Tools", "en": "CMS & Tools" },
+      "keywords": [
+        "Headless CMS", "Sanity", "Strapi", "Airtable", "Figma",
+        "NX Monorepo", "Maven", "Git"
+      ]
     }
   ]
 }

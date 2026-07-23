@@ -25,12 +25,14 @@
   de: (
     profile: "Profil", experience: "Berufserfahrung", skills: "Kompetenzen",
     education: "Ausbildung", languages: "Sprachen", present: "heute",
-    stack: "Tech-Stack", grade: "Note",
+    stack: "Tech-Stack", grade: "Note", responsibilities: "Aufgaben",
+    achievements: "Erfolge", focus: "Schwerpunkte",
   ),
   en: (
     profile: "Profile", experience: "Experience", skills: "Skills",
     education: "Education", languages: "Languages", present: "Present",
-    stack: "Tech Stack", grade: "Grade",
+    stack: "Tech Stack", grade: "Grade", responsibilities: "Responsibilities",
+    achievements: "Achievements", focus: "Focus",
   ),
 )
 #let t = i18n.at(lang, default: i18n.de)
@@ -71,13 +73,24 @@
 )
 
 // ---- Seiten- & Textlayout -------------------------------------------------
-#set page(paper: "a4", margin: (x: 1.7cm, top: 1.4cm, bottom: 1.3cm))
+#set page(
+  paper: "a4",
+  margin: (x: 1.7cm, top: 1.4cm, bottom: 1.5cm),
+  // Dezente Seitenzahl nur bei mehrseitigen Lebensläufen.
+  footer: context {
+    let total = counter(page).final().first()
+    if total > 1 {
+      set text(size: 8pt, fill: muted)
+      align(center)[#counter(page).display() / #total]
+    }
+  },
+)
 #set text(font: "Inter", lang: lang, size: 10pt, fill: ink, hyphenate: false)
 #set par(justify: false, leading: 0.62em, spacing: 0.82em)
 #show link: set text(fill: accent)
 
 // Standardisierte Abschnittsüberschriften (echte headings -> PDF-Outline)
-#show heading.where(level: 1): it => block(above: 11pt, below: 6pt, breakable: false)[
+#show heading.where(level: 1): it => block(above: 9pt, below: 5pt, breakable: false)[
   #text(size: 10.5pt, weight: 700, fill: accent, tracking: 0.8pt)[#upper(it.body)]
   #v(3pt)
   #line(length: 100%, stroke: 0.6pt + rule-color)
@@ -112,22 +125,31 @@
     v(6pt)
     // Kontaktzeilen als reiner, extrahierbarer Text
     set text(size: 9pt, fill: muted)
-    // Zeile 1: E-Mail · Telefon · Ort
+    // Zeile 1: E-Mail · Telefon · Adresse (alles als reiner Text)
     {
       link("mailto:" + b.email)[#b.email]
       if b.at("phone", default: none) != none { sep; b.phone }
+      let loc = b.location
+      let addr = ()
+      if loc.at("address", default: none) != none { addr.push(loc.address) }
+      let cityparts = ()
+      if loc.at("postalCode", default: none) != none { cityparts.push(loc.postalCode) }
+      cityparts.push(loc.city)
+      addr.push(cityparts.join(" "))
       sep
-      b.location.city + ", " + b.location.countryCode
+      addr.join(", ")
     }
-    linebreak()
-    // Zeile 2: Website · Profile (URLs ohne Schema, gut lesbar & parsebar)
+    // Zeile 2 (nur falls vorhanden): Website · Profile (URLs ohne Schema)
     {
       let links = ()
       if b.at("url", default: none) != none { links.push(link(b.url)[#strip-scheme(b.url)]) }
       for p in b.profiles { links.push(link(p.url)[#strip-scheme(p.url)]) }
-      for (i, l) in links.enumerate() {
-        if i > 0 { sep }
-        l
+      if links.len() > 0 {
+        linebreak()
+        for (i, l) in links.enumerate() {
+          if i > 0 { sep }
+          l
+        }
       }
     }
   })
@@ -146,7 +168,16 @@
 // ===========================================================================
 // Berufserfahrung (Freelance-Projekte, chronologisch absteigend)
 // ===========================================================================
-#let work-entry(w) = block(breakable: false, below: 8pt, {
+#let bullets(items) = list(
+  marker: text(fill: accent)[•],
+  spacing: 3pt,
+  ..items.map(it => [#it]),
+)
+#let sub-label(txt) = block(above: 3pt, below: 1.5pt)[
+  #text(size: 8.5pt, weight: 600, fill: muted, tracking: 0.4pt)[#txt]
+]
+
+#let work-entry(w) = block(breakable: true, below: 7.5pt, {
   // Kopfzeile: Rolle · Kunde .................... Zeitraum  (eine Textzeile)
   text(weight: 700, w.position)
   sep
@@ -159,16 +190,21 @@
     linebreak()
     text(size: 9pt, fill: muted, loc)
   }
-  parbreak()
-  // Kurzbeschreibung
-  w.summary
-  // Ergebnisse / Verantwortlichkeiten
-  if w.highlights.len() > 0 {
-    list(marker: text(fill: accent)[•], spacing: 4pt, ..w.highlights.map(h => [#h]))
+  // Aufgaben
+  let resp = w.at("responsibilities", default: ())
+  if resp.len() > 0 {
+    sub-label(t.responsibilities)
+    bullets(resp)
+  }
+  // Erfolge
+  let ach = w.at("achievements", default: ())
+  if ach.len() > 0 {
+    sub-label(t.achievements)
+    bullets(ach)
   }
   // Tech-Stack (wichtige Keywords für ATS)
   if w.at("keywords", default: ()).len() > 0 {
-    v(2pt)
+    v(3pt)
     block({
       set text(size: 9pt, fill: muted)
       text(weight: 600, t.stack + ": ")
@@ -204,7 +240,7 @@
 #if data.at("education", default: ()).len() > 0 {
   heading(t.education)
   for e in data.education {
-    block(breakable: false, below: 6pt, {
+    block(breakable: false, below: 7pt, {
       text(weight: 700, e.studyType)
       sep
       e.area
@@ -213,8 +249,13 @@
       linebreak()
       let parts = (e.institution,)
       if e.at("location", default: none) != none { parts.push(e.location) }
-      if e.at("score", default: none) != none { parts.push(t.grade + " " + e.score) }
+      if e.at("score", default: none) != none { parts.push(t.grade + ": " + e.score) }
       text(size: 9pt, fill: muted, parts.join(" · "))
+      let courses = e.at("courses", default: ())
+      if courses.len() > 0 {
+        linebreak()
+        text(size: 9pt, fill: muted)[#text(weight: 600)[#(t.focus + ": ")]#courses.join(" · ")]
+      }
     })
   }
 }

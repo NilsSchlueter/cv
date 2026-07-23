@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "Vidlab7 GmbH",
+  "role": {
+    "de": "Frontend Entwickler | Next.js Entwickler",
+    "en": "Frontend Developer | Next.js Developer"
+  },
+  "location": { "de": "München", "en": "Munich" },
+  "startDate": "2024-05",
+  "endDate": "2024-10",
+  "responsibilities": [
+    {
+      "de": "Frontend-Entwicklung der Webplattform auf Basis von Next.js und Integration interaktiver Medienkomponenten",
+      "en": "Frontend development of the web platform based on Next.js and integration of interactive media components"
+    },
+    {
+      "de": "Aufbau technischer Prozesse zur schnelleren Feature-Iteration im engen Austausch mit dem Gründerteam",
+      "en": "Development of technical processes for faster feature iteration in close cooperation with the founding team"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Erfolgreicher Launch der Web-Plattform inklusive Onboarding der ersten Kunden",
+      "en": "Successful launch of the web platform including onboarding of the first customers"
+    },
+    {
+      "de": "Einarbeitung der ersten festen Teammitglieder und Einführung der Code-Standards und Best Practices im Team",
+      "en": "Induction of the first permanent team members and introduction of code standards and best practices in the team"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "Web Media", "TanStack Query", "TailwindCSS", "HTML", "CSS", "ShadCN", "Tiptap", "Storybook", "Node.js", "Express", "Clerk", "Prisma", "PostgreSQL", "Docker", "Vercel", "Git"]
+}

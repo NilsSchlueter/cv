@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "Interhyp AG",
+  "role": {
+    "de": "Fullstack Entwickler | Next.js Entwickler",
+    "en": "Fullstack Developer | Next.js Developer"
+  },
+  "location": { "de": "München", "en": "Munich" },
+  "startDate": "2026-01",
+  "endDate": "2026-03",
+  "responsibilities": [
+    {
+      "de": "Migration bestehender Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf ein modernes Headless-CMS-System mit neuem Frontend",
+      "en": "Migration of existing websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to a modern headless CMS with a new frontend"
+    },
+    {
+      "de": "Entwicklung eines wiederverwendbaren Komponentensystems im Frontend",
+      "en": "Development of a reusable component system in the frontend"
+    },
+    {
+      "de": "Erstellung von individuellen und Use-Case-spezifischen Schemata im Headless CMS (Sanity)",
+      "en": "Creation of custom, use-case-specific schemas in the headless CMS (Sanity)"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Erfolgreiche und pünktliche Migration aller Daten in das neue System",
+      "en": "Successful and on-time migration of all data to the new system"
+    },
+    {
+      "de": "Entwicklung einer Caching-Strategie, um die Aufrufe ans Headless CMS um mehr als 50 % zu reduzieren",
+      "en": "Developed a caching strategy that reduced calls to the headless CMS by more than 50%"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "Sanity", "Headless CMS", "TailwindCSS", "HTML", "CSS", "Storybook", "Docker", "Git"]
+}

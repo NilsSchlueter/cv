@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": "Studio Lenzing",
+  "role": {
+    "de": "Frontend Entwickler | Next.js Entwickler",
+    "en": "Frontend Developer | Next.js Developer"
+  },
+  "location": "Hamburg",
+  "startDate": "2024-04",
+  "endDate": "2024-06",
+  "responsibilities": [
+    {
+      "de": "Entwicklung und Go-live einer vollständig neu gestalteten Website mit CMS-Anbindung auf Basis bestehender Figma-Designs",
+      "en": "Development and go-live of a completely redesigned website with CMS connection based on existing Figma designs"
+    },
+    {
+      "de": "Technische Umsetzung der SEO-Maßnahmen in enger Abstimmung mit dem Design-Team",
+      "en": "Technical implementation of SEO measures in close coordination with the design team"
+    }
+  ],
+  "achievements": [
+    {
+      "de": "Kompletter Re-Launch einer Kundenseite inkl. CMS-Anbindung und SEO-Optimierung innerhalb eines Monats",
+      "en": "Complete re-launch of a customer website including CMS connection and SEO optimization within one month"
+    }
+  ],
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "TailwindCSS", "HTML", "CSS", "Headless CMS", "Sanity", "Vercel", "Figma", "GitHub"]
+}

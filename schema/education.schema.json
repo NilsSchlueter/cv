@@ -10,14 +10,6 @@
         "type": "object",
         "properties": {
           "institution": {
-            "type": "string",
-            "minLength": 1
-          },
-          "url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "area": {
             "anyOf": [
               {
                 "type": "string",
@@ -43,8 +35,15 @@
               }
             ]
           },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "area": {
+            "$ref": "#/properties/education/items/properties/institution"
+          },
           "studyType": {
-            "$ref": "#/properties/education/items/properties/area"
+            "$ref": "#/properties/education/items/properties/institution"
           },
           "startDate": {
             "type": "string",
@@ -54,10 +53,17 @@
             "$ref": "#/properties/education/items/properties/startDate"
           },
           "score": {
-            "type": "string"
+            "$ref": "#/properties/education/items/properties/institution"
+          },
+          "courses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/properties/education/items/properties/institution"
+            },
+            "default": []
           },
           "location": {
-            "type": "string"
+            "$ref": "#/properties/education/items/properties/institution"
           }
         },
         "required": [
