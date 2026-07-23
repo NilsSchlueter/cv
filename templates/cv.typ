@@ -50,7 +50,8 @@
 #let size-name = 20pt // Name
 #let size-head = 11pt // Section-Überschriften + Jobtitel
 #let size-body = 10pt // Fließtext, Bullets, Eintrags-Titel
-#let size-small = 9pt // alle Sekundärangaben (Daten, Ort, Sub-Labels, Stack, Kontakt, Fußzeile)
+#let size-small = 9pt // Sekundärangaben (Daten, Ort, Sub-Labels, Kontakt)
+#let size-meta = 8pt // kleinste Stufe: Tech-Stack, Fußzeile
 #let w-bold = 700 // Name, Überschriften, Eintrags-Titel
 #let w-semi = 600 // Sub-Labels, Präfixe, Sprachnamen
 #let w-reg = 400 // Fließtext & Sekundärangaben
@@ -93,23 +94,27 @@
   footer: context {
     let total = counter(page).final().first()
     if total > 1 {
-      set text(size: size-small, fill: muted)
+      set text(size: size-meta, fill: muted)
       align(center)[#counter(page).display() / #total]
     }
   },
 )
 #set text(font: "Inter", lang: lang, size: size-body, fill: ink, hyphenate: false)
-#set par(justify: false, leading: 0.6em, spacing: 0.78em)
+// Kleines par.spacing -> ruhige, gleichmäßige Abstände innerhalb der Einträge;
+// Abschnittstrennung kommt gezielt über die Überschrift (above).
+#set par(justify: false, leading: 0.6em, spacing: 0.5em)
 #show link: set text(fill: accent)
 
 // Standardisierte Abschnittsüberschriften (echte headings -> PDF-Outline).
-// Viel Abstand nach OBEN (klare Trennung vom vorigen Abschnitt), wenig nach
-// UNTEN (Überschrift bleibt eng bei ihrem Inhalt).
-#show heading.where(level: 1): it => block(above: 14pt, below: 4pt, breakable: false)[
-  #text(size: size-head, weight: w-bold, fill: accent, tracking: 0.8pt)[#upper(it.body)]
-  #v(3pt)
-  #line(length: 100%, stroke: 0.6pt + rule-color)
-]
+// Viel Abstand nach OBEN (klare Trennung vom vorigen Abschnitt), sehr wenig
+// nach UNTEN (Überschrift sitzt direkt an ihrem Inhalt).
+#show heading.where(level: 1): it => block(above: 14pt, below: 3pt, breakable: false, {
+  // par(spacing: 0) verhindert Phantom-Absatzabstände zwischen Titel und Linie.
+  set par(spacing: 0pt, leading: 0pt)
+  text(size: size-head, weight: w-bold, fill: accent, tracking: 0.8pt, upper(it.body))
+  v(2pt)
+  line(length: 100%, stroke: 0.6pt + rule-color)
+})
 
 // ---- Rohdaten als maschinenlesbaren Anhang einbetten ----------------------
 // (Typst 0.13: pdf.embed; ab 0.14 umbenannt in pdf.attach — hier 0.15+.)
@@ -177,53 +182,45 @@
 // ===========================================================================
 #if b.at("summary", default: "") != "" {
   heading(t.profile)
-  b.summary
+  block(above: 3pt, below: 0pt, b.summary)
 }
 
 // ===========================================================================
 // Berufserfahrung (Freelance-Projekte, chronologisch absteigend)
 // ===========================================================================
-#let bullets(items) = list(
-  marker: text(fill: accent)[•],
-  spacing: 2.5pt,
-  ..items.map(it => [#it]),
-)
-#let sub-label(txt) = block(above: 3pt, below: 1pt)[
-  #text(size: size-small, weight: w-semi, fill: muted)[#txt]
-]
+// Label ("Aufgaben"/"Erfolge") + Bulletliste mit fest kontrolliertem Abstand.
+// Die Liste wird in einen Block mit above: 0pt gehüllt, damit NUR das
+// below des Labels den Abstand bestimmt (kein Überlappen, kein Nachrücken).
+#let labeled-list(label, items) = {
+  block(above: 3.5pt, below: 2.5pt, text(size: size-small, weight: w-semi, fill: muted, label))
+  block(
+    above: 0pt,
+    below: 0pt,
+    list(marker: text(fill: accent)[•], spacing: 2.5pt, body-indent: 5pt, ..items.map(it => [#it])),
+  )
+}
 
 // breakable: false -> ein Projekt wird nie über einen Seitenumbruch getrennt;
 // passt es unten nicht mehr hin, wandert es komplett auf die nächste Seite.
-#let work-entry(w) = block(breakable: false, below: 6.5pt, {
-  // Kopfzeile: Rolle · Kunde .................... Zeitraum  (eine Textzeile)
+#let work-entry(w) = block(breakable: false, above: 3pt, below: 7pt, {
+  // Kopfzeile: Rolle · Kunde · Ort .................... Zeitraum  (eine Zeile)
   text(weight: w-bold, w.position)
   sep
   w.name
+  let loc = w.at("location", default: none)
+  if loc != none { sep; text(fill: muted, loc) }
   h(1fr)
   small(fmt-range(w.startDate, w.at("endDate", default: none)))
-  // Ort
-  let loc = w.at("location", default: none)
-  if loc != none {
-    linebreak()
-    small(loc)
-  }
-  // Aufgaben
+  // Aufgaben / Erfolge
   let resp = w.at("responsibilities", default: ())
-  if resp.len() > 0 {
-    sub-label(t.responsibilities)
-    bullets(resp)
-  }
-  // Erfolge
+  if resp.len() > 0 { labeled-list(t.responsibilities, resp) }
   let ach = w.at("achievements", default: ())
-  if ach.len() > 0 {
-    sub-label(t.achievements)
-    bullets(ach)
-  }
-  // Tech-Stack (wichtige Keywords für ATS)
+  if ach.len() > 0 { labeled-list(t.achievements, ach) }
+  // Tech-Stack: kleinste Stufe + enge Zeilen -> möglichst wenig Platz
   if w.at("keywords", default: ()).len() > 0 {
-    v(3pt)
-    block({
-      set text(size: size-small, fill: muted, weight: w-reg)
+    block(above: 4pt, below: 0pt, {
+      set text(size: size-meta, fill: muted, weight: w-reg)
+      set par(leading: 0.5em)
       text(weight: w-semi, t.stack + ": ")
       w.keywords.join(" · ")
     })
@@ -241,7 +238,7 @@
 #if data.at("skills", default: ()).len() > 0 {
   heading(t.skills)
   for s in data.skills {
-    block(below: 4pt, {
+    block(above: 3pt, below: 4pt, {
       text(weight: w-bold, s.name)
       let lvl = s.at("level", default: none)
       if lvl != none { text(fill: muted, size: size-small)[ (#lvl)] }
@@ -257,7 +254,7 @@
 #if data.at("education", default: ()).len() > 0 {
   heading(t.education)
   for e in data.education {
-    block(breakable: false, below: 6pt, {
+    block(breakable: false, above: 3pt, below: 6pt, {
       text(weight: w-bold, e.studyType)
       sep
       e.area
@@ -282,7 +279,7 @@
 // ===========================================================================
 #if data.at("languages", default: ()).len() > 0 {
   heading(t.languages)
-  block({
+  block(above: 3pt, {
     for (i, l) in data.languages.enumerate() {
       if i > 0 { sep }
       text(weight: w-semi, l.language)
