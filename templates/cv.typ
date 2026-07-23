@@ -44,6 +44,19 @@
 #let rule-color = rgb("#d4d8dd")
 #let photo-h = 3.2cm
 
+// ---- Typografie: feste Skala (NUR diese Größen & Gewichte verwenden) -------
+// Vier Größen, drei Gewichte – bewusst knapp gehalten, damit das Dokument ruhig
+// wirkt und nicht "mischt".
+#let size-name = 20pt // Name
+#let size-head = 11pt // Section-Überschriften + Jobtitel
+#let size-body = 10pt // Fließtext, Bullets, Eintrags-Titel
+#let size-small = 9pt // alle Sekundärangaben (Daten, Ort, Sub-Labels, Stack, Kontakt, Fußzeile)
+#let w-bold = 700 // Name, Überschriften, Eintrags-Titel
+#let w-semi = 600 // Sub-Labels, Präfixe, Sprachnamen
+#let w-reg = 400 // Fließtext & Sekundärangaben
+// Einheitlicher Stil für Sekundärtext (grau, klein):
+#let small(body) = text(size: size-small, fill: muted, weight: w-reg, body)
+
 // ---- Datumsformatierung ---------------------------------------------------
 #let months-en = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 #let fmt-month(s) = {
@@ -80,18 +93,20 @@
   footer: context {
     let total = counter(page).final().first()
     if total > 1 {
-      set text(size: 8pt, fill: muted)
+      set text(size: size-small, fill: muted)
       align(center)[#counter(page).display() / #total]
     }
   },
 )
-#set text(font: "Inter", lang: lang, size: 10pt, fill: ink, hyphenate: false)
-#set par(justify: false, leading: 0.62em, spacing: 0.82em)
+#set text(font: "Inter", lang: lang, size: size-body, fill: ink, hyphenate: false)
+#set par(justify: false, leading: 0.6em, spacing: 0.78em)
 #show link: set text(fill: accent)
 
-// Standardisierte Abschnittsüberschriften (echte headings -> PDF-Outline)
-#show heading.where(level: 1): it => block(above: 9pt, below: 5pt, breakable: false)[
-  #text(size: 10.5pt, weight: 700, fill: accent, tracking: 0.8pt)[#upper(it.body)]
+// Standardisierte Abschnittsüberschriften (echte headings -> PDF-Outline).
+// Viel Abstand nach OBEN (klare Trennung vom vorigen Abschnitt), wenig nach
+// UNTEN (Überschrift bleibt eng bei ihrem Inhalt).
+#show heading.where(level: 1): it => block(above: 14pt, below: 4pt, breakable: false)[
+  #text(size: size-head, weight: w-bold, fill: accent, tracking: 0.8pt)[#upper(it.body)]
   #v(3pt)
   #line(length: 100%, stroke: 0.6pt + rule-color)
 ]
@@ -119,12 +134,12 @@
     )
   }
   block(inset: (right: if show-photo { photo-h + 0.5cm } else { 0cm }), {
-    text(size: 22pt, weight: 700, fill: ink, b.name)
+    text(size: size-name, weight: w-bold, fill: ink, b.name)
     v(3pt)
-    text(size: 11pt, weight: 500, fill: accent, b.label)
+    text(size: size-head, weight: w-reg, fill: accent, b.label)
     v(6pt)
     // Kontaktzeilen als reiner, extrahierbarer Text
-    set text(size: 9pt, fill: muted)
+    set text(size: size-small, fill: muted)
     // Zeile 1: E-Mail · Telefon · Adresse (alles als reiner Text)
     {
       link("mailto:" + b.email)[#b.email]
@@ -170,25 +185,27 @@
 // ===========================================================================
 #let bullets(items) = list(
   marker: text(fill: accent)[•],
-  spacing: 3pt,
+  spacing: 2.5pt,
   ..items.map(it => [#it]),
 )
-#let sub-label(txt) = block(above: 3pt, below: 1.5pt)[
-  #text(size: 8.5pt, weight: 600, fill: muted, tracking: 0.4pt)[#txt]
+#let sub-label(txt) = block(above: 3pt, below: 1pt)[
+  #text(size: size-small, weight: w-semi, fill: muted)[#txt]
 ]
 
-#let work-entry(w) = block(breakable: true, below: 7.5pt, {
+// breakable: false -> ein Projekt wird nie über einen Seitenumbruch getrennt;
+// passt es unten nicht mehr hin, wandert es komplett auf die nächste Seite.
+#let work-entry(w) = block(breakable: false, below: 6.5pt, {
   // Kopfzeile: Rolle · Kunde .................... Zeitraum  (eine Textzeile)
-  text(weight: 700, w.position)
+  text(weight: w-bold, w.position)
   sep
   w.name
   h(1fr)
-  text(size: 9pt, fill: muted, fmt-range(w.startDate, w.at("endDate", default: none)))
+  small(fmt-range(w.startDate, w.at("endDate", default: none)))
   // Ort
   let loc = w.at("location", default: none)
   if loc != none {
     linebreak()
-    text(size: 9pt, fill: muted, loc)
+    small(loc)
   }
   // Aufgaben
   let resp = w.at("responsibilities", default: ())
@@ -206,8 +223,8 @@
   if w.at("keywords", default: ()).len() > 0 {
     v(3pt)
     block({
-      set text(size: 9pt, fill: muted)
-      text(weight: 600, t.stack + ": ")
+      set text(size: size-small, fill: muted, weight: w-reg)
+      text(weight: w-semi, t.stack + ": ")
       w.keywords.join(" · ")
     })
   }
@@ -224,10 +241,10 @@
 #if data.at("skills", default: ()).len() > 0 {
   heading(t.skills)
   for s in data.skills {
-    block(below: 5pt, {
-      text(weight: 700, s.name)
+    block(below: 4pt, {
+      text(weight: w-bold, s.name)
       let lvl = s.at("level", default: none)
-      if lvl != none { text(fill: muted, size: 9pt)[ (#lvl)] }
+      if lvl != none { text(fill: muted, size: size-small)[ (#lvl)] }
       text(fill: muted)[ — ]
       s.keywords.join(" · ")
     })
@@ -240,21 +257,21 @@
 #if data.at("education", default: ()).len() > 0 {
   heading(t.education)
   for e in data.education {
-    block(breakable: false, below: 7pt, {
-      text(weight: 700, e.studyType)
+    block(breakable: false, below: 6pt, {
+      text(weight: w-bold, e.studyType)
       sep
       e.area
       h(1fr)
-      text(size: 9pt, fill: muted, fmt-range(e.startDate, e.at("endDate", default: none)))
+      small(fmt-range(e.startDate, e.at("endDate", default: none)))
       linebreak()
       let parts = (e.institution,)
       if e.at("location", default: none) != none { parts.push(e.location) }
       if e.at("score", default: none) != none { parts.push(t.grade + ": " + e.score) }
-      text(size: 9pt, fill: muted, parts.join(" · "))
+      small(parts.join(" · "))
       let courses = e.at("courses", default: ())
       if courses.len() > 0 {
         linebreak()
-        text(size: 9pt, fill: muted)[#text(weight: 600)[#(t.focus + ": ")]#courses.join(" · ")]
+        text(size: size-small, fill: muted)[#text(weight: w-semi)[#(t.focus + ": ")]#courses.join(" · ")]
       }
     })
   }
@@ -268,7 +285,7 @@
   block({
     for (i, l) in data.languages.enumerate() {
       if i > 0 { sep }
-      text(weight: 600, l.language)
+      text(weight: w-semi, l.language)
       text(fill: muted)[ — #l.fluency]
     }
   })
