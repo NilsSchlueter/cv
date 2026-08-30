@@ -11,10 +11,11 @@ data/*.json  ──merge──▶  generated/resume.<de|en>.json  ──typst─
 
 Kernmerkmale:
 
-- **Maschinenlesbar:** Single-Column-Layout, echte Textebene, keine Tabellen für
-  Struktur, Standard-Überschriften, lineare Lesereihenfolge. Zusätzlich ist die
-  passende `resume.<lang>.json` als **Attachment im PDF eingebettet** (`pdf.attach`),
-  sodass ATS-Systeme und KI-Tools die strukturierten Rohdaten direkt auslesen können.
+- **Maschinenlesbar:** einspaltiger, linearer Fließtext (der Briefkopf trägt
+  Name/Kontakt neben einem optionalen Foto), echte Textebene, keine Tabellen für
+  Struktur, Standard-Überschriften. Zusätzlich ist die passende `resume.<lang>.json`
+  als **Attachment im PDF eingebettet** (`pdf.attach`), sodass ATS-Systeme und
+  KI-Tools die strukturierten Rohdaten direkt auslesen können.
 - **Mehrsprachig ohne Duplikate:** Gemeinsame Daten werden einmal gepflegt;
   sprachspezifische Texte liegen als `{ "de": "…", "en": "…" }` in derselben Datei.
 - **Einfach pflegbar:** Neues Projekt = eine neue JSON-Datei, dann `npm run build`.
@@ -31,6 +32,22 @@ Kernmerkmale:
 Funktion noch `pdf.embed`; sie wurde in 0.14 in `pdf.attach` umbenannt. Getestet mit 0.15.
 
 [tr]: https://github.com/typst/typst/releases
+
+Die Design-Sprache ist von der eigenen Landing Page ([nils.fyi](https://www.nils.fyi))
+übernommen – "warm editorial" statt Corporate-Look:
+
+- **Farbwelt:** warmes Papier (`#f6f3ed`), warme Tinte (`#241e1a`),
+  Terrakotta-Akzent (`#a33e25`), Ton/Clay für Konturen und Hairlines.
+- **Schriften:** Space Grotesk (Name/Titel), Instrument Sans (Fließtext),
+  Geist Mono (Daten, Labels, Tech-Stack) – alle SIL OFL, gebündelt unter `fonts/`.
+- **Elemente:** Mono-Uppercase-Sektionslabels mit Punkt-Mark und Hairline,
+  eine Timeline-Schiene mit Terrakotta-Knoten für Projekthistorie und
+  Ausbildung; Tech-Keywords als stille Mono-Zeilen (die Kompetenz-Gruppen
+  als Mono-Label mit kompakter Keyword-Zeile).
+
+Es wird **kein externes Typst-Paket** geladen, Builds laufen also ohne
+Netzzugang. Schiene und Punkte sind reine Dekoration ohne Textinhalt –
+die ATS-Prinzipien oben bleiben unberührt.
 
 ## Schnellstart
 
@@ -84,7 +101,8 @@ und Inline-Validierung.
    }
    ```
 
-   - `endDate` **weglassen** = laufendes Projekt (zeigt „heute" / „Present").
+   - `endDate` **weglassen** = laufendes Projekt. Statt „heute"/„Present" wird
+     der **Monat des PDF-Builds** angezeigt (z. B. „09/2025 – 08/2026").
    - `client` darf auch ein einfacher String sein, wenn sprachneutral (`"LogTech GmbH"`).
 3. `npm run build`.
 
@@ -127,10 +145,9 @@ CV_PHOTO_DE=false npm run build    # alternativ via Umgebungsvariable
 
 Die TypeScript-Typen in `src/types.ts` (mit [zod](https://zod.dev)) sind die
 **einzige Wahrheitsquelle**: Daraus werden sowohl die Editor-Schemata als auch die
-Laufzeit-Validierung abgeleitet. Der Font (`fonts/Inter.ttf`, [SIL OFL][ofl]) ist im
-Repo gebündelt, damit lokale und CI-Builds identisch aussehen.
-
-[ofl]: fonts/OFL.txt
+Laufzeit-Validierung abgeleitet. Die Schriften (Instrument Sans, Space Grotesk,
+Geist Mono – alle SIL OFL, Lizenztexte unter `fonts/`) sind im Repo gebündelt,
+damit lokale und CI-Builds identisch aussehen.
 
 ## Continuous Integration & Releases
 
@@ -152,7 +169,7 @@ data/               Quelldaten (zweisprachig, DRY)
   basics.json, skills.json, education.json
   projects/*.json   eine Datei pro Projekt
 assets/photo.jpg    Profilbild (Platzhalter – austauschen)
-fonts/              gebündelter Font (Inter, OFL) für reproduzierbare Builds
+fonts/              gebündelte Schriften (Instrument Sans, Space Grotesk, Geist Mono; OFL)
 schema/             generierte JSON-Schemata (Editor-Vertrag)
 src/
   types.ts          zod-Typen = Wahrheitsquelle (LocalizedString etc.)
@@ -162,7 +179,7 @@ src/
   build.ts          Typst-Compile beider Sprachen -> dist/
   watch.ts          optionaler Watch-Modus
   lib.ts            gemeinsame Helfer
-templates/cv.typ    Typst-Template (i18n, Foto-Flag, PDF-Metadaten, Attachment)
+templates/cv.typ    eigenständiges Typst-Template (nils.fyi-Design-Sprache, Timeline-Einträge, i18n, Foto-Flag, Metadaten, Attachment)
 generated/          (git-ignored) schema-konforme JSON-Resume-Dateien
 dist/               (git-ignored) fertige PDFs – Distribution via lokalen Build / Releases
 ```

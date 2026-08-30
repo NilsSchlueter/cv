@@ -2,31 +2,31 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Vidlab7 GmbH",
   "role": {
-    "de": "Frontend Entwickler | Next.js Entwickler",
-    "en": "Frontend Developer | Next.js Developer"
+    "de": "Frontend-Entwickler — AI-Sales-Avatar-Plattform: Produktaufbau nach Seed-Funding (Next.js)",
+    "en": "Frontend Developer — AI Sales Avatar Platform: Product Build-Up After Seed Funding (Next.js)"
   },
   "location": { "de": "München", "en": "Munich" },
   "startDate": "2024-05",
   "endDate": "2024-10",
   "responsibilities": [
     {
-      "de": "Frontend-Entwicklung der Webplattform auf Basis von Next.js und Integration interaktiver Medienkomponenten",
-      "en": "Frontend development of the web platform based on Next.js and integration of interactive media components"
+      "de": "Aufbau der Webplattform für AI-Sales-Avatare — animierte Avatare, die Website-Besuchern in Live-Gesprächen Fragen beantworten — als einer von drei Entwicklern direkt nach der ersten Finanzierungsrunde (ca. 3 Mio. €)",
+      "en": "Built the web platform for AI sales avatars — animated avatars that answer website visitors' questions in live conversations — as one of three developers, joining right after the first funding round (approx. EUR 3M)"
     },
     {
-      "de": "Aufbau technischer Prozesse zur schnelleren Feature-Iteration im engen Austausch mit dem Gründerteam",
-      "en": "Development of technical processes for faster feature iteration in close cooperation with the founding team"
+      "de": "Entwicklung der zentralen Produkt-Workflows, mit denen Endkunden eigene Avatare trainieren und veröffentlichen — inklusive Video- und Tonaufnahme direkt im Browser",
+      "en": "Developed the core product workflows enabling customers to train and publish their own avatars — including video and audio recording directly in the browser"
+    },
+    {
+      "de": "Einarbeitung der ersten festen Teammitglieder sowie Etablierung von Code-Standards und technischen Prozessen für schnelle Feature-Iteration — mitten in der Team-Skalierung nach dem Funding",
+      "en": "Onboarded the first permanent team members and established code standards and technical processes for fast feature iteration — during the post-funding team scale-up"
     }
   ],
   "achievements": [
     {
-      "de": "Erfolgreicher Launch der Web-Plattform inklusive Onboarding der ersten Kunden",
-      "en": "Successful launch of the web platform including onboarding of the first customers"
-    },
-    {
-      "de": "Einarbeitung der ersten festen Teammitglieder und Einführung der Code-Standards und Best Practices im Team",
-      "en": "Induction of the first permanent team members and introduction of code standards and best practices in the team"
+      "de": "Termingerechter Launch der Plattform inklusive Onboarding der ersten Kunden",
+      "en": "On-schedule platform launch including onboarding of the first customers"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "Web Media", "TanStack Query", "TailwindCSS", "HTML", "CSS", "ShadCN", "Tiptap", "Storybook", "Node.js", "Express", "Clerk", "Prisma", "PostgreSQL", "Docker", "Vercel", "Git"]
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "Web Media", "TanStack Query", "TailwindCSS", "ShadCN", "Tiptap", "Clerk", "Prisma", "PostgreSQL", "Vercel"]
 }

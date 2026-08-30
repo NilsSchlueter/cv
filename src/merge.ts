@@ -46,6 +46,9 @@ function buildResume(lang: Lang) {
       email: basics.email,
       phone: basics.phone,
       url: basics.url,
+      // Kein offizielles JSON-Resume-Feld, aber schema-konform (das offizielle
+      // Schema erlaubt Zusatzfelder) und so auch im PDF-Anhang maschinenlesbar.
+      availability: basics.availability,
       summary: pick(basics.summary, lang),
       location: {
         address: basics.location.address,

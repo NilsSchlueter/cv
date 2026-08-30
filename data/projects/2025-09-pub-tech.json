@@ -1,35 +1,24 @@
 {
   "$schema": "../../schema/project.schema.json",
-  "client": "pub.tech",
+  "client": "pub.tech (ARD)",
   "role": {
-    "de": "Fullstack Entwickler | Next.js Entwickler",
-    "en": "Fullstack Developer | Next.js Developer"
+    "de": "Frontend-Entwickler — tagesschau.de, sportschau.de & ard.de (Next.js)",
+    "en": "Frontend Developer — tagesschau.de, sportschau.de & ard.de (Next.js)"
   },
   "location": { "de": "München", "en": "Munich" },
   "startDate": "2025-09",
+  "endDate": "2026-09",
   "responsibilities": [
     {
-      "de": "Entwicklung von wiederverwendbaren Frontend-Komponenten für Webseiten der ARD (tagesschau.de, sportschau.de, brisant.de, ard.de)",
-      "en": "Development of reusable front-end components for ARD websites (tagesschau.de, sportschau.de, brisant.de, ard.de)"
-    },
-    {
-      "de": "Implementierung eines CMS-Systems und Weiterentwicklung des Frontends für hilfe.ard.de und games.ard.de",
-      "en": "Implementation of a CMS system and further development of the front-end for hilfe.ard.de and games.ard.de"
-    },
-    {
-      "de": "Migration von ard.de und brisant.de auf ein neues CMS",
-      "en": "Migration of ard.de and brisant.de to a new CMS"
+      "de": "Entwicklung wiederverwendbarer Frontend-Komponenten für die reichweitenstärksten Nachrichtenangebote Deutschlands (tagesschau.de, sportschau.de, brisant.de, ard.de) im mehrköpfigen Frontend-Team",
+      "en": "Developed reusable frontend components for Germany's highest-reach news platforms (tagesschau.de, sportschau.de, brisant.de, ard.de) in a multi-developer frontend team"
     }
   ],
   "achievements": [
     {
-      "de": "Abschluss einer großen CMS-Migration ohne Beeinträchtigung des Live-Betriebs",
-      "en": "Completion of a large CMS migration without affecting live operations"
-    },
-    {
-      "de": "Enge Zusammenarbeit mit dem Redaktionsteam und erfolgreiche Planung und Implementierung neuer CMS-Features",
-      "en": "Close collaboration with the editorial team and successful planning and implementation of new CMS features"
+      "de": "Migration von ard.de und brisant.de auf ein neues CMS — ohne Beeinträchtigung des Live-Betriebs",
+      "en": "Migrated ard.de and brisant.de to a new CMS — with zero disruption to live operation"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "Strapi", "Headless CMS", "React.js", "TailwindCSS", "HTML", "CSS", "Node.js", "Express", "Prisma", "PostgreSQL", "Docker", "Git"]
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "TailwindCSS", "Node.js", "Docker"]
 }

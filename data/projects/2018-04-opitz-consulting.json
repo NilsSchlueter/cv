@@ -2,7 +2,7 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Opitz Consulting Deutschland GmbH",
   "role": {
-    "de": "Frontend Entwickler (in Festanstellung)",
+    "de": "Frontend-Entwickler (Festanstellung)",
     "en": "Frontend Developer (permanent position)"
   },
   "location": "Essen",
@@ -10,23 +10,14 @@
   "endDate": "2021-08",
   "responsibilities": [
     {
-      "de": "Mitarbeit in verschiedenen Kundenprojekten, unter anderem aus der Industrie- und Mobilitätsbranche",
-      "en": "Collaboration in various customer projects, including in the industrial and mobility sectors"
-    },
-    {
-      "de": "Weiterentwicklung verschiedener Softwareprojekte in Scrum-Teams",
-      "en": "Further development of various software projects in Scrum teams"
-    }
-  ],
-  "achievements": [
-    {
-      "de": "Erfolgreicher Re-Launch einer Webanwendung mit mehr als 100.000 monatlichen Besuchern",
-      "en": "Successful re-launch of a web application with more than 100,000 monthly visitors"
+      "de": "Entwicklung in Kundenprojekten der Industrie- und Mobilitätsbranche in Scrum-Teams — u. a. erfolgreicher Re-Launch einer Webanwendung mit über 100.000 monatlichen Besuchern",
+      "en": "Development in client projects across the industrial and mobility sectors in Scrum teams — including a successful relaunch of a web application with over 100,000 monthly visitors"
     },
     {
       "de": "Leitung einer internen Schulungsreihe zu Angular & TypeScript mit über 20 Teilnehmenden",
-      "en": "Led an internal training series on Angular & TypeScript with more than 20 participants"
+      "en": "Led an internal training series on Angular & TypeScript with over 20 participants"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "ES6", "HTML", "CSS", "Angular (v8)", "NgRX", "RxJS", "Angular Material", "Karma", "Microservices", "Java", "Spring Boot", "Docker", "Jenkins", "Kubernetes", "nginx", "Azure Cloud", "Keycloak", "AWS"]
+  "achievements": [],
+  "stack": ["JavaScript", "TypeScript", "Angular", "NgRX", "RxJS", "Angular Material", "Java", "Spring Boot", "Microservices", "Docker", "Kubernetes", "Jenkins", "Azure", "AWS", "Keycloak"]
 }

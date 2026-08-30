@@ -2,34 +2,49 @@
   "$schema": "../../schema/project.schema.json",
   "client": "continuum.club",
   "role": {
-    "de": "Fullstack Entwickler | Next.js Entwickler",
-    "en": "Fullstack Developer | Next.js Developer"
+    "de": "Fullstack-Entwickler — AI-gestützte Trainingsplan-Software (Next.js/Firebase)",
+    "en": "Fullstack Developer — AI-Powered Training Plan Software (Next.js/Firebase)"
   },
-  "location": "New York",
+  "location": {
+    "de": "New York (remote)",
+    "en": "New York (remote)"
+  },
   "startDate": "2024-11",
+  "endDate": "2025-12",
   "responsibilities": [
     {
-      "de": "Selbständige Umsetzung neuer Features in einem SaaS-Produkt (Next.js-Webapp mit Firebase-Backend)",
-      "en": "Independent implementation of new features in a SaaS product (Next.js webapp with Firebase backend)"
+      "de": "Entwicklung einer Software zur personalisierten Trainingsplan-Erstellung für ein exklusives New Yorker Fitnessstudio als einziger Frontend-Entwickler — bestehenden MVP innerhalb von 3 Monaten produktionsreif gemacht und in den täglichen Einsatz des Trainer-Teams gebracht",
+      "en": "Built software for personalized training plan creation for an exclusive New York fitness studio as the sole frontend developer — took the existing MVP to production readiness within 3 months and into the trainer team's daily use"
     },
     {
-      "de": "Unterstützung der Gründer bei der Planung neuer Features und der Entwicklung der Roadmap",
-      "en": "Supporting the founders in planning new features and developing the roadmap"
+      "de": "Frontend-Entwicklung der AI-Integration: Chat-Interface und KI-assistierte Erstellung der Trainingspläne",
+      "en": "Frontend development of the AI integration: chat interface and AI-assisted creation of the training plans"
     }
   ],
   "achievements": [
     {
-      "de": "Bestehenden MVP innerhalb von 3 Monaten eigenverantwortlich produktionsreif und für erste Kunden verfügbar gemacht",
-      "en": "Made the existing MVP ready for production and available for the first customers within 3 months on my own responsibility"
+      "de": "Verbesserung der Ladezeiten um ca. 60 % durch eine Frontend-Caching-Strategie und Optimierung der Algorithmen zur Trainingsplangenerierung",
+      "en": "Improved load times by around 60% through a frontend caching strategy and optimized training plan generation algorithms"
     },
     {
-      "de": "Verbesserung der Ladezeiten um ca. 60 % durch Implementierung einer Frontend-Caching-Strategie und Optimierung der Algorithmen zur Trainingsplangenerierung",
-      "en": "Improved loading times by approx. 60% by implementing a frontend caching strategy and optimizing the algorithms for generating training plans"
-    },
-    {
-      "de": "Einführung von Unit-Tests mit einer Testabdeckung von über 80 % auf neuem Code",
-      "en": "Introduction of unit tests with test coverage of over 80% on new code"
+      "de": "Einführung von Unit-Tests mit über 80 % Testabdeckung auf neuem Code",
+      "en": "Introduced unit testing with over 80% coverage on new code"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "TanStack Query", "TailwindCSS", "HTML", "CSS", "ShadCN", "Firebase", "Firebase Auth", "Firebase Functions", "Firestore", "Node.js", "Express", "Prisma", "PostgreSQL", "Docker", "Vercel", "Git"]
+  "stack": [
+    "JavaScript",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "TanStack Query",
+    "TailwindCSS",
+    "ShadCN",
+    "Firebase",
+    "Firebase Auth",
+    "Firebase Functions",
+    "Firestore",
+    "Node.js",
+    "Docker",
+    "Vercel"
+  ]
 }

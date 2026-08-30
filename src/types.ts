@@ -75,6 +75,8 @@ export const Basics = z
     email: z.string().email(),
     phone: z.string().optional(),
     url: z.string().url().optional(),
+    /** Arbeitsmodus für die Kontaktzeile, z. B. "remote & hybrid" (sprachneutral). */
+    availability: z.string().optional(),
     location: Location,
     summary: L, // Profiltext / Kurzprofil
     profiles: z.array(Profile).default([]),

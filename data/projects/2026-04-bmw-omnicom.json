@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/project.schema.json",
+  "client": { "de": "Omnicom (für BMW)", "en": "Omnicom (for BMW)" },
+  "role": {
+    "de": "Frontend-Entwickler — AI-Chatbot für BMW: Agent-gesteuerte UI-Komponenten (Angular)",
+    "en": "Frontend Developer — AI Chatbot for BMW: Agent-Driven UI Components (Angular)"
+  },
+  "startDate": "2026-04",
+  "endDate": "2026-12",
+  "responsibilities": [
+    {
+      "de": "Frontend-Entwicklung des KI-Chatbots für die internationale BMW-Website — in einem global verteilten Entwicklungsteam mit rund 20 Entwicklern",
+      "en": "Frontend development of the AI chatbot for BMW's international website — in a globally distributed team of around 20 developers"
+    },
+    {
+      "de": "Entwicklung der Komponenten, die der AI-Agent im Chat dynamisch steuert und mit Inhalten befüllt (Generative UI) — interaktive Karten, Vergleichstabellen, Chat- und Voice-Inputs",
+      "en": "Building the components the AI agent dynamically controls and populates inside the chat (generative UI) — interactive cards, comparison tables, chat and voice inputs"
+    },
+    {
+      "de": "Entwicklung eines internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS",
+      "en": "Development of an internal CMS for managing the chat content, based on Next.js and Payload CMS"
+    },
+    {
+      "de": "Vorbereitung des fixen internationalen Rollouts — geplanter Launch: Europa 11/2026, USA 12/2026",
+      "en": "Working toward the fixed international rollout — planned launch: Europe 11/2026, USA 12/2026"
+    }
+  ],
+  "achievements": [],
+  "stack": ["TypeScript", "JavaScript", "Angular", "Storybook", "Next.js", "Payload CMS"]
+}

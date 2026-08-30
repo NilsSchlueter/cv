@@ -2,30 +2,22 @@
   "$schema": "../../schema/project.schema.json",
   "client": "eco.income engineering GmbH",
   "role": {
-    "de": "Fullstack Entwickler | React.js Entwickler",
-    "en": "Fullstack Developer | React.js Developer"
+    "de": "Fullstack-Entwickler — CO₂-Bilanzierungs-Software (Next.js)",
+    "en": "Fullstack Developer — Carbon Accounting Software (Next.js)"
   },
   "location": "Hamburg",
   "startDate": "2022-10",
+  "endDate": "2023-03",
   "responsibilities": [
     {
-      "de": "Fullstack-Entwicklung einer neuen SaaS-Lösung inkl. Softwarearchitektur und Datenmodell",
-      "en": "Full-stack development of a new SaaS solution including software architecture and data model"
+      "de": "Entwicklung einer SaaS-Lösung zur CO₂-Bilanzierung als einziger Entwickler: Unternehmen laden Bank-Transaktionsdaten hoch und erhalten daraus berechnete Scope-1-, Scope-2- und Scope-3-Emissionen",
+      "en": "Sole developer of a SaaS solution for corporate carbon accounting: companies upload bank transaction data and receive calculated Scope 1, Scope 2 and Scope 3 emissions"
     },
     {
-      "de": "Enge Zusammenarbeit mit dem Gründer zur kontinuierlichen Produktvalidierung",
-      "en": "Close cooperation with the founder for continuous product validation"
+      "de": "Aufbau von Grund auf in direkter Zusammenarbeit mit dem Gründer — Softwarearchitektur, Datenmodell und Umsetzung bis zum Launch",
+      "en": "Built from the ground up in direct collaboration with the founder — software architecture, data model and implementation through launch"
     }
   ],
-  "achievements": [
-    {
-      "de": "Aufbau eines profitablen SaaS-Produktes von Grund auf bis zum Launch inkl. Onboarding der Kunden",
-      "en": "Building a profitable SaaS product from scratch to launch, including customer onboarding"
-    },
-    {
-      "de": "Langfristiger Betrieb der Plattform und Sicherstellung einer hohen Verfügbarkeit",
-      "en": "Long-term operation of the platform and ensuring high availability"
-    }
-  ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "AG Grid", "TailwindCSS", "HTML", "CSS", "Figma", "Express", "Node.js", "TypeORM", "PostgreSQL", "Docker", "GitLab", "Google Cloud", "Terraform", "Sentry"]
+  "achievements": [],
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "AG Grid", "TailwindCSS", "Express", "Node.js", "TypeORM", "PostgreSQL", "Docker", "GitLab", "Google Cloud", "Terraform", "Sentry"]
 }

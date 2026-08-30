@@ -2,11 +2,13 @@
   "$schema": "../schema/basics.schema.json",
   "name": "Nils Schlüter",
   "label": {
-    "de": "Fullstack Entwickler",
-    "en": "Fullstack Developer"
+    "de": "Freelance Fullstack-Entwickler · Next.js · TypeScript · AI-Integration",
+    "en": "Freelance Fullstack Developer · Next.js · TypeScript · AI Integration"
   },
   "email": "mail@nilsschlueter.de",
   "phone": "+49 1578 9489705",
+  "url": "https://www.nils.fyi",
+  "availability": "remote & hybrid",
   "location": {
     "address": "Am Steinknapp 14a",
     "postalCode": "44795",
@@ -14,18 +16,36 @@
     "countryCode": "DE"
   },
   "summary": {
-    "de": "Nils Schlüter ist ein erfahrener Fullstack-Entwickler mit Schwerpunkt auf Next.js, React und der Entwicklung moderner, skalierbarer Webanwendungen. Er verfügt über umfangreiche Projekterfahrung im SaaS-Umfeld und hat sowohl in Startups als auch in größeren Unternehmen technische Verantwortung übernommen. Er kombiniert technisches Tiefenverständnis mit einem klaren Blick für Nutzerbedürfnisse und Produktziele. In seinen Projekten übernimmt er nicht nur die Umsetzung, sondern gestaltet aktiv mit – von der Konzeption bis zum stabilen Go-live. Seine Stärken liegen in der strukturierten Arbeitsweise, der schnellen Einarbeitung in komplexe Systeme sowie der selbständigen und eigenverantwortlichen Arbeit. Er legt großen Wert auf sauberen Code, durchdachte Architektur und eine enge Zusammenarbeit mit Design, Product und anderen Entwickler:innen. Technologisch versiert in TypeScript, Next.js, React.js, Node.js und weiteren Tools des modernen Web-Stacks ist er jederzeit in der Lage, sich auch in neue Technologien schnell einzuarbeiten.",
-    "en": "Nils Schlüter is an experienced full-stack developer with a focus on Next.js, React and the development of modern, scalable web applications. He has extensive project experience in the SaaS environment and has taken on technical responsibility in both start-ups and larger companies. He combines a deep technical understanding with a clear view of user needs and product goals. In his projects, he not only takes on the implementation but also plays an active role – from conception to stable go-live. His strengths lie in his structured way of working, his ability to quickly familiarize himself with complex systems and his ability to work independently and autonomously. He attaches great importance to clean code, well thought-out architecture and close cooperation with design, product and other developers. Technologically adept in TypeScript, Next.js, React.js, Node.js and other tools of the modern web stack, he is always able to quickly familiarize himself with new technologies."
+    "de": "Fullstack-Entwickler (Freelance) mit über 8 Jahren Erfahrung — Schwerpunkt Next.js, React und TypeScript, von der Architektur bis zum Go-live. Aktueller Fokus: AI-Produkte auf die letzte Meile zum Nutzer bringen — zuletzt als Frontend-Entwickler für den KI-Chatbot von BMW, die KI-Personalisierung von ARD Sounds und eine AI-Sales-Avatar-Plattform. Weitere Projekte u. a. für die ARD (tagesschau.de, sportschau.de), Interhyp, Schaeffler und Dash0. In vier Projekten einziger Entwickler mit voller Produktverantwortung; messbare Ergebnisse wie 60 % schnellere Ladezeiten, 80 % kürzere Build-Zeiten und CMS-Migrationen ohne Downtime.",
+    "en": "Freelance full-stack developer with over 8 years of experience — focused on Next.js, React and TypeScript, from architecture to go-live. Current focus: taking AI products the last mile to the user — most recently as frontend developer for BMW’s AI chatbot, the AI personalization of ARD Sounds and an AI sales avatar platform. Further projects include Germany’s public broadcaster ARD (tagesschau.de, sportschau.de), Interhyp, Schaeffler and Dash0. Sole developer with full product ownership on four projects; measurable results include 60% faster load times, 80% shorter build times and CMS migrations with zero downtime."
   },
-  "profiles": [],
+  "profiles": [
+    {
+      "network": "LinkedIn",
+      "username": "nils-schlueter",
+      "url": "https://www.linkedin.com/in/nils-schlueter/"
+    }
+  ],
   "languages": [
     {
-      "language": { "de": "Deutsch", "en": "German" },
-      "fluency": { "de": "Muttersprache", "en": "Native speaker" }
+      "language": {
+        "de": "Deutsch",
+        "en": "German"
+      },
+      "fluency": {
+        "de": "Muttersprache",
+        "en": "Native speaker"
+      }
     },
     {
-      "language": { "de": "Englisch", "en": "English" },
-      "fluency": { "de": "Verhandlungssicher", "en": "Business fluent" }
+      "language": {
+        "de": "Englisch",
+        "en": "English"
+      },
+      "fluency": {
+        "de": "Verhandlungssicher",
+        "en": "Business fluent"
+      }
     }
   ]
 }

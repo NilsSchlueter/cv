@@ -2,27 +2,26 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Schaeffler AG",
   "role": {
-    "de": "Frontend Entwickler | Angular Entwickler",
-    "en": "Frontend Developer | Angular Developer"
+    "de": "Frontend-Entwickler — Interne Beschaffungsplattform (Angular)",
+    "en": "Frontend Developer — Internal Procurement Platform (Angular)"
   },
   "location": { "de": "Nürnberg", "en": "Nuremberg" },
   "startDate": "2022-03",
   "endDate": "2023-03",
   "responsibilities": [
     {
-      "de": "Implementierung neuer Features in einer global eingesetzten Bestellplattform auf Basis von Angular",
-      "en": "Implementation of new features in a globally deployed ordering platform based on Angular"
+      "de": "Entwicklung neuer Features für eine global eingesetzte interne Plattform, über die Einkäufer Bestell- und Angebotsprozesse abwickeln — im großen, verteilten Entwicklungsteam",
+      "en": "Developed new features for a globally used internal platform through which purchasers handle ordering and quotation processes — in a large, distributed development team"
     },
     {
-      "de": "Mitarbeit an der Definition neuer konzernweiter Code-Standards und Best Practices für Webanwendungen",
-      "en": "Collaboration in the definition of new group-wide code standards and best practices for web applications"
-    }
-  ],
-  "achievements": [
+      "de": "Eigenständige Konzeption und Implementierung des Nutzer-Trackings (Azure Application Insights) als Datengrundlage für Produktentscheidungen — Absprungstellen, Feature-Nutzung, UX-Priorisierung",
+      "en": "Independently designed and implemented user tracking (Azure Application Insights) as the data basis for product decisions — drop-off points, feature usage, UX prioritization"
+    },
     {
-      "de": "Selbständige Planung und Implementierung umfassender Trackingmethoden zur Analyse des Nutzerverhaltens, die als Grundlage zur Verbesserung der UX/UI für alle Nutzer dienten",
-      "en": "Independently planned and implemented comprehensive tracking methods to analyse user behaviour, which were used as a basis for improving the UX/UI for all users"
+      "de": "Mitarbeit an der Definition konzernweiter Code-Standards und Best Practices für Webanwendungen",
+      "en": "Contributed to defining group-wide code standards and best practices for web applications"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Angular Material", "AG Grid", "TailwindCSS", "HTML", "CSS", "Figma", "Jest", "Docker", "Jenkins", "CI/CD", "Kubernetes", "nginx", "Azure Cloud", "Azure Insights", "Keycloak", "GitHub", "Git"]
+  "achievements": [],
+  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Angular Material", "AG Grid", "TailwindCSS", "Jest", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Azure", "Azure Application Insights", "Keycloak"]
 }

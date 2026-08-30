@@ -2,35 +2,35 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Interhyp AG",
   "role": {
-    "de": "Fullstack Entwickler | Next.js Entwickler",
-    "en": "Fullstack Developer | Next.js Developer"
+    "de": "Fullstack-Entwickler — Headless-CMS-Migration (Next.js/Sanity)",
+    "en": "Fullstack Developer — Headless CMS Migration (Next.js/Sanity)"
   },
   "location": { "de": "München", "en": "Munich" },
   "startDate": "2026-01",
   "endDate": "2026-03",
   "responsibilities": [
     {
-      "de": "Migration bestehender Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf ein modernes Headless-CMS-System mit neuem Frontend",
-      "en": "Migration of existing websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to a modern headless CMS with a new frontend"
+      "de": "Termingerechte Migration von drei Unternehmens-Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf Sanity (Headless CMS) mit neuem Next.js-Frontend — im vierköpfigen Entwicklungsteam über Frontend und CMS-Backend hinweg",
+      "en": "On-schedule migration of three corporate websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to Sanity (headless CMS) with a new Next.js frontend — in a four-person development team working across frontend and CMS backend"
     },
     {
-      "de": "Entwicklung eines wiederverwendbaren Komponentensystems im Frontend",
-      "en": "Development of a reusable component system in the frontend"
+      "de": "Aufbau eines wiederverwendbaren React-Komponentensystems als gemeinsame Basis aller drei Markenauftritte",
+      "en": "Built a reusable React component system as the shared foundation for all three brand sites"
     },
     {
-      "de": "Erstellung von individuellen und Use-Case-spezifischen Schemata im Headless CMS (Sanity)",
-      "en": "Creation of custom, use-case-specific schemas in the headless CMS (Sanity)"
+      "de": "Konzeption Use-Case-spezifischer Content-Schemata in Sanity — spürbar einfachere Content-Pflege für die Redaktionen im Vergleich zum abgelösten Alt-CMS",
+      "en": "Designed use-case-specific content schemas in Sanity — noticeably simpler content management for the editorial teams compared to the replaced legacy CMS"
     }
   ],
   "achievements": [
     {
-      "de": "Erfolgreiche und pünktliche Migration aller Daten in das neue System",
-      "en": "Successful and on-time migration of all data to the new system"
+      "de": "Vollständiger Erhalt aller SEO-Assets (Titel, URL-Strukturen, Verlinkungen) bei der Datenmigration — Absicherung der organischen Sichtbarkeit über den Systemwechsel hinweg",
+      "en": "Fully preserved all SEO assets (titles, URL structures, links) during the data migration — protecting organic visibility across the system change"
     },
     {
-      "de": "Entwicklung einer Caching-Strategie, um die Aufrufe ans Headless CMS um mehr als 50 % zu reduzieren",
-      "en": "Developed a caching strategy that reduced calls to the headless CMS by more than 50%"
+      "de": "Entwicklung einer Caching-Strategie, die die Aufrufe ans Headless CMS um über 50 % reduziert — messbar niedrigere Sanity-Kosten und deutlich schnellere Ladezeiten",
+      "en": "Developed a caching strategy that cut headless CMS requests by more than 50% — measurably lower Sanity costs and significantly faster load times"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React.js", "Sanity", "Headless CMS", "TailwindCSS", "HTML", "CSS", "Storybook", "Docker", "Git"]
+  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "Sanity", "Headless CMS", "TailwindCSS", "Storybook", "Docker"]
 }

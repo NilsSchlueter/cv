@@ -2,38 +2,78 @@
   "$schema": "../schema/skills.schema.json",
   "skills": [
     {
-      "name": { "de": "Frontend", "en": "Frontend" },
+      "name": {
+        "de": "Fullstack-Entwicklung",
+        "en": "Fullstack Development"
+      },
       "keywords": [
-        "TypeScript", "JavaScript", "ES6", "React.js", "Next.js", "Angular",
-        "HTML", "CSS", "TailwindCSS", "RxJS", "NgRX", "TanStack Query",
-        "Angular Material", "ShadCN", "Web Components", "Micro Frontends",
-        "AG Grid", "Storybook", "Tiptap"
+        "TypeScript",
+        "JavaScript",
+        "Next.js",
+        "React",
+        "Node.js",
+        "Express",
+        "TailwindCSS",
+        "PostgreSQL",
+        "Prisma",
+        "REST APIs"
       ]
     },
     {
-      "name": { "de": "Backend", "en": "Backend" },
+      "name": {
+        "de": "AI-Integration",
+        "en": "AI Integration"
+      },
       "keywords": [
-        "Node.js", "Express", "Prisma", "TypeORM", "PostgreSQL", "Firebase",
-        "Java", "Spring Boot", "Microservices", "Keycloak", "Clerk"
+        "LLM-Integration (OpenAI, Anthropic)",
+        "Vercel AI SDK",
+        "RAG",
+        "pgvector"
       ]
     },
     {
-      "name": { "de": "DevOps & Cloud", "en": "DevOps & Cloud" },
+      "name": "CMS",
       "keywords": [
-        "Docker", "Kubernetes", "OpenShift", "nginx", "Terraform", "CI/CD",
-        "GitHub Actions", "GitLab", "Jenkins", "AWS", "Azure Cloud",
-        "Azure DevOps", "Google Cloud", "Vercel", "Sentry"
+        "Headless-CMS-Architektur",
+        "Sanity",
+        "Strapi",
+        "Payload CMS"
       ]
     },
     {
-      "name": { "de": "Testing & Qualität", "en": "Testing & QA" },
-      "keywords": ["Jest", "Cypress", "Playwright", "E2E-Testing", "JUnit", "Karma"]
+      "name": "DevOps & Cloud",
+      "keywords": [
+        "Docker",
+        "Kubernetes",
+        "CI/CD (GitHub Actions)",
+        "Terraform",
+        "Vercel",
+        "Azure",
+        "Google Cloud"
+      ]
     },
     {
-      "name": { "de": "CMS & Tools", "en": "CMS & Tools" },
+      "name": {
+        "de": "Testing & Qualität",
+        "en": "Testing & Quality"
+      },
       "keywords": [
-        "Headless CMS", "Sanity", "Strapi", "Airtable", "Figma",
-        "NX Monorepo", "Maven", "Git"
+        "Jest",
+        "Playwright",
+        "Storybook"
+      ]
+    },
+    {
+      "name": {
+        "de": "Enterprise-Frontend (Angular)",
+        "en": "Enterprise Frontend (Angular)"
+      },
+      "keywords": [
+        "Angular",
+        "NgRX",
+        "RxJS",
+        "NX Monorepo",
+        "Micro Frontends"
       ]
     }
   ]

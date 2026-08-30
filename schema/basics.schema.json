@@ -45,6 +45,9 @@
       "type": "string",
       "format": "uri"
     },
+    "availability": {
+      "type": "string"
+    },
     "location": {
       "type": "object",
       "properties": {

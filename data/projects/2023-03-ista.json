@@ -2,35 +2,52 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Ista SE",
   "role": {
-    "de": "Lead Frontend Entwickler | Angular Entwickler",
-    "en": "Lead Frontend Developer | Angular Developer"
+    "de": "Lead Frontend-Entwickler — Vermieter-Software Objego (Angular)",
+    "en": "Lead Frontend Developer — Objego Landlord Software (Angular)"
   },
   "location": "Essen",
   "startDate": "2023-03",
   "endDate": "2024-12",
   "responsibilities": [
     {
-      "de": "Weiterentwicklung einer bestehenden Angular-Anwendung und Umsetzung neuer Features im Scrum-Team",
-      "en": "Further development of an existing Angular application and implementation of new features in the Scrum team"
+      "de": "Weiterentwicklung der Web-Anwendung, mit der private Vermieter ihren Immobilienbestand verwalten und Daten für die Steuererklärung generieren — als Lead eines der beiden Entwicklungsteams mit fachlicher Führung von zwei Frontend-Entwicklern",
+      "en": "Advanced the web application private landlords use to manage their property portfolio and generate tax return data — as lead of one of the two development teams, technically leading two frontend developers"
     },
     {
-      "de": "Regelmäßige Schulung und Einarbeitung neuer Teammitglieder",
-      "en": "Regular training and onboarding of new team members"
-    },
-    {
-      "de": "Weiterentwicklung der Anwendungsarchitektur in Zusammenarbeit mit anderen Lead-Entwicklern",
-      "en": "Further development of the application architecture in collaboration with other lead developers"
+      "de": "Weiterentwicklung der Anwendungsarchitektur gemeinsam mit den anderen Lead-Entwicklern — Mitumsetzung der Migration von der monolithischen Angular-Anwendung zu NX-Monorepo und Micro Frontends",
+      "en": "Evolved the application architecture together with the other lead developers — co-implemented the migration from a monolithic Angular application to an NX monorepo with micro frontends"
     }
   ],
   "achievements": [
     {
-      "de": "Verringerung der Build- und Testzeiten um bis zu 80 % durch die Umwandlung einer monolithischen Angular-Anwendung in Monorepos und Micro Frontends",
-      "en": "Reduced build and test times by up to 80% by converting a monolithic Angular application into monorepos and micro frontends"
+      "de": "Build- und Testzeiten um bis zu 80 % reduziert durch die Migration zu Monorepo und Micro Frontends",
+      "en": "Reduced build and test times by up to 80% through the monorepo and micro frontend migration"
     },
     {
-      "de": "Erfolgreiche Updates von Angular Version 15 auf Version 18 inklusive Refactoring und Einführung neuer Angular-Features",
-      "en": "Successful updates from Angular version 15 to version 18, including refactoring and introduction of new Angular features"
+      "de": "Erneute Beauftragung nach früherem Engagement am selben Produkt (Objego, 2021/22)",
+      "en": "Re-engaged after a previous assignment on the same product (Objego, 2021/22)"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Angular Material", "Web Components", "Micro Frontends", "TailwindCSS", "HTML", "CSS", "Storybook", "Jest", "E2E-Testing", "Cypress", "Playwright", "Microservices", "Docker", "Kubernetes", "nginx", "Azure Cloud", "GitHub Actions", "CI/CD", "Git", "Keycloak", "Headless CMS", "Sentry"]
+  "stack": [
+    "JavaScript",
+    "TypeScript",
+    "Angular",
+    "NX Monorepo",
+    "NgRX",
+    "RxJS",
+    "Angular Material",
+    "Micro Frontends",
+    "TailwindCSS",
+    "Storybook",
+    "Jest",
+    "Cypress",
+    "Playwright",
+    "Docker",
+    "Kubernetes",
+    "Azure",
+    "GitHub Actions",
+    "CI/CD",
+    "Keycloak",
+    "Sentry"
+  ]
 }
