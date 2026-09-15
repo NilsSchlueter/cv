@@ -110,11 +110,15 @@
 )
 
 // Bulletliste im Eintrag — Ton-Marker, ruhige, gleichmäßige Zeilen.
+// Wichtig für die Gruppierung: Der Zeilenabstand INNERHALB eines Bullets
+// (leading ~4.9pt) muss kleiner sein als der Abstand ZWISCHEN zwei Bullets
+// (spacing 6.5pt), sonst kleben umbrechende Bullets optisch am Nachbarn.
 #let entry-list(items) = {
   set text(size: 9.5pt)
+  set par(leading: 0.52em)
   list(
     marker: text(fill: clay, size: 9pt)[•],
-    spacing: 4.5pt,
+    spacing: 6.5pt,
     body-indent: 7pt,
     ..items.map(it => [#it]),
   )

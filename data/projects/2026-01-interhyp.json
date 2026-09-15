@@ -10,26 +10,18 @@
   "endDate": "2026-03",
   "responsibilities": [
     {
-      "de": "Termingerechte Migration von drei Unternehmens-Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf Sanity (Headless CMS) mit neuem Next.js-Frontend — im vierköpfigen Entwicklungsteam über Frontend und CMS-Backend hinweg",
-      "en": "On-schedule migration of three corporate websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to Sanity (headless CMS) with a new Next.js frontend — in a four-person development team working across frontend and CMS backend"
+      "de": "Termingerechte Migration von drei Unternehmens-Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf Sanity mit neuem Next.js-Frontend — im vierköpfigen Entwicklungsteam, ohne Verlust von SEO-Assets",
+      "en": "On-schedule migration of three corporate websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to Sanity with a new Next.js frontend — in a four-person team, with no loss of SEO assets"
     },
     {
-      "de": "Aufbau eines wiederverwendbaren React-Komponentensystems als gemeinsame Basis aller drei Markenauftritte",
-      "en": "Built a reusable React component system as the shared foundation for all three brand sites"
-    },
-    {
-      "de": "Konzeption Use-Case-spezifischer Content-Schemata in Sanity — spürbar einfachere Content-Pflege für die Redaktionen im Vergleich zum abgelösten Alt-CMS",
-      "en": "Designed use-case-specific content schemas in Sanity — noticeably simpler content management for the editorial teams compared to the replaced legacy CMS"
+      "de": "Aufbau eines wiederverwendbaren React-Komponentensystems und Use-Case-spezifischer Content-Schemata als gemeinsame Basis aller drei Markenauftritte",
+      "en": "Built a reusable React component system and use-case-specific content schemas as the shared foundation for all three brand sites"
     }
   ],
   "achievements": [
     {
-      "de": "Vollständiger Erhalt aller SEO-Assets (Titel, URL-Strukturen, Verlinkungen) bei der Datenmigration — Absicherung der organischen Sichtbarkeit über den Systemwechsel hinweg",
-      "en": "Fully preserved all SEO assets (titles, URL structures, links) during the data migration — protecting organic visibility across the system change"
-    },
-    {
-      "de": "Entwicklung einer Caching-Strategie, die die Aufrufe ans Headless CMS um über 50 % reduziert — messbar niedrigere Sanity-Kosten und deutlich schnellere Ladezeiten",
-      "en": "Developed a caching strategy that cut headless CMS requests by more than 50% — measurably lower Sanity costs and significantly faster load times"
+      "de": "Caching-Strategie, die die Aufrufe ans Headless CMS um über 50 % reduziert — niedrigere Sanity-Kosten, schnellere Ladezeiten",
+      "en": "Caching strategy that cut headless CMS requests by more than 50% — lower Sanity costs, faster load times"
     }
   ],
   "stack": ["JavaScript", "TypeScript", "Next.js", "React", "Sanity", "Headless CMS", "TailwindCSS", "Storybook", "Docker"]

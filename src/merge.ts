@@ -33,8 +33,14 @@ const skillsFile = SkillsFile.parse(readJson(join(DATA, "skills.json")));
 const educationFile = EducationFile.parse(readJson(join(DATA, "education.json")));
 const projects = listProjectFiles().map((f) => Project.parse(readJson(f)));
 
-// Chronologisch absteigend (neuestes Projekt zuerst). "YYYY-MM" sortiert lexikografisch korrekt.
-projects.sort((a, b) => b.startDate.localeCompare(a.startDate));
+// Chronologisch absteigend (neuestes Projekt zuerst). "YYYY-MM" sortiert
+// lexikografisch korrekt. Bei gleichem Startmonat entscheidet das Enddatum
+// (laufende Projekte zuerst, dann spätere Enden) — statt zufällig der Dateiname.
+const endKey = (p: Project) => p.endDate ?? "9999-99";
+projects.sort(
+  (a, b) =>
+    b.startDate.localeCompare(a.startDate) || endKey(b).localeCompare(endKey(a)),
+);
 
 function buildResume(lang: Lang) {
   return {

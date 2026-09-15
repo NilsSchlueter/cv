@@ -9,12 +9,12 @@
     "de": "München",
     "en": "Munich"
   },
-  "startDate": "2026-01",
+  "startDate": "2025-09",
   "endDate": "2026-08",
   "responsibilities": [
     {
-      "de": "Entwicklung des kompletten Frontends für das AI-personalisierte „Regional Update“ als einziger Softwareentwickler — das Feature spielt Nutzer:innen per KI ausgewählte Radiobeiträge mit Bezug zu ihrem Wunschort aus",
-      "en": "Built the complete frontend for the AI-personalized \"Regional Update\" as the sole software developer — the feature plays users AI-selected radio segments related to their chosen location"
+      "de": "Entwicklung des Frontends für das AI-personalisierte „Regional Update“ als einziger Softwareentwickler — das Feature spielt Nutzer:innen per KI ausgewählte Radiobeiträge mit Bezug zu ihrem Wunschort aus",
+      "en": "Developed the frontend for the AI-personalized \"Regional Update\" as the sole software developer — the feature plays users AI-selected radio segments related to their chosen location"
     },
     {
       "de": "Umsetzung neuer Produkt-Features: Optimierung für mobile Endgeräte, Ausbau der Playlist-Funktionalität, Sharing-Funktion",

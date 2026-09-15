@@ -10,16 +10,12 @@
   "endDate": "2026-09",
   "responsibilities": [
     {
-      "de": "Alleinverantwortliche Entwicklung von hilfe.ard.de als einziger Softwareentwickler des Projekts — Aufbau des CMS (Strapi) und kontinuierliche Weiterentwicklung des Next.js-Frontends",
-      "en": "Sole software developer for hilfe.ard.de with full ownership — built the CMS (Strapi) and continuously developed the Next.js frontend"
+      "de": "Alleinverantwortliche Entwicklung von hilfe.ard.de — Aufbau des CMS (Strapi) und kontinuierliche Weiterentwicklung des Next.js-Frontends",
+      "en": "Sole developer for hilfe.ard.de with full ownership — built the CMS (Strapi) and continuously developed the Next.js frontend"
     },
     {
-      "de": "Weiterentwicklung des Frontends von games.ard.de",
-      "en": "Ongoing frontend development for games.ard.de"
-    },
-    {
-      "de": "Enge Zusammenarbeit mit den Redaktionsteams bei Planung und Umsetzung neuer CMS-Features",
-      "en": "Close collaboration with the editorial teams on planning and implementing new CMS features"
+      "de": "Weiterentwicklung des Frontends von games.ard.de sowie enge Zusammenarbeit mit den Redaktionsteams bei neuen CMS-Features",
+      "en": "Frontend development for games.ard.de and close collaboration with the editorial teams on new CMS features"
     }
   ],
   "achievements": [],
