@@ -102,8 +102,10 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 - „AI“ in Titeln und Tags; „KI“ darf im deutschen Fließtext stehen (beides
   wird gesucht).
 - Bachelor: „Bachelor of Science (Ingenieur)“ — der Titel steht so im
-  Zeugnis. Note vorerst „sehr gut (86 %)“; das Zeugnis hat auch eine
-  Dezimalnote, die noch nachgetragen wird.
+  Zeugnis.
+- Noten genau wie im Zeugnis: Master „sehr gut (1,4)“, Bachelor „sehr gut
+  (86 %)“. Die unterschiedlichen Skalen stammen von den Hochschulen und
+  werden nicht umgerechnet oder angeglichen.
 - Sektionsname „Projekthistorie“ / „Project Experience“ (ohne „(Auszug)“,
   alle Projekte sind gelistet).
 
@@ -126,4 +128,5 @@ Skill-Jahre · kein Foto in DE · GitHub-Link · U+2011 · Synonymblöcke im
 Profil · „jeder Tag aus ≥ 2 Projekten muss unter Kompetenzen“ · Ista auf 12
 Tags kürzen · „Angular 2+“ · HTML/CSS/Git in jeder Tech-Zeile ·
 „AI-Augmented Engineering Workflows“ statt Claude Code · Headline „Frontend
-für AI“ · Daten verschieben · Auslastung als „2–3 Tage/Woche“.
+für AI“ · Daten verschieben · Auslastung als „2–3 Tage/Woche“ ·
+Bachelor-Note in eine Dezimalnote umrechnen.
