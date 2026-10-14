@@ -10,10 +10,10 @@
   "endDate": "2022-02",
   "responsibilities": [
     {
-      "de": "Weiterentwicklung des Webportals für private Vermieter mit Fokus auf Performance — Konzeption und Implementierung des Nutzer-Trackings zur Analyse des Nutzerverhaltens",
-      "en": "Advanced the web portal for private landlords with a focus on performance — designed and implemented user tracking for behavior analysis"
+      "de": "Weiterentwicklung des Vermieter-Webportals (Fokus Performance) inkl. Konzeption und Umsetzung des Nutzer-Trackings",
+      "en": "Advanced the landlord web portal (performance focus), incl. design and implementation of user tracking"
     }
   ],
   "achievements": [],
-  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "TailwindCSS", "Jest", "Cypress", "Docker", "Kubernetes", "Azure", "CI/CD", "Sentry"]
+  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Tailwind CSS", "Jest", "Cypress", "Azure", "Sentry"]
 }

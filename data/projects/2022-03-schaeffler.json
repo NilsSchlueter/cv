@@ -23,5 +23,5 @@
     }
   ],
   "achievements": [],
-  "stack": ["JavaScript", "TypeScript", "Angular", "NX Monorepo", "NgRX", "RxJS", "Angular Material", "AG Grid", "TailwindCSS", "Jest", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Azure", "Azure Application Insights", "Keycloak"]
+  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Nx (Monorepo)", "Angular Material", "AG Grid", "Jest", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Azure", "Keycloak"]
 }

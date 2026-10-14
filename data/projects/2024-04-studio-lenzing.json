@@ -2,22 +2,19 @@
   "$schema": "../../schema/project.schema.json",
   "client": { "de": "Studio Lenzing (Designagentur)", "en": "Studio Lenzing (design agency)" },
   "role": {
-    "de": "Frontend-Entwickler — Website-Relaunch für Dash0 (Next.js/Sanity)",
-    "en": "Frontend Developer — Website Relaunch for Dash0 (Next.js/Sanity)"
+    "de": "Frontend-Entwickler — Website-Redesign für Dash0 (Next.js/Sanity)",
+    "en": "Frontend Developer — Website Redesign for Dash0 (Next.js/Sanity)"
   },
   "location": "Hamburg",
+  "workload": { "de": "Teilzeit", "en": "part-time" },
   "startDate": "2024-04",
   "endDate": "2024-06",
   "responsibilities": [
     {
-      "de": "Technische Umsetzung des kompletten Website-Relaunchs für Dash0 (AI-native Observability-Plattform) als einziger Entwickler — von den Figma-Designs der Agentur bis zum Go-live inkl. CMS-Anbindung (Sanity)",
-      "en": "Sole developer for the complete website relaunch of Dash0 (AI-native observability platform) — from the agency's Figma designs to go-live, including CMS integration (Sanity)"
-    },
-    {
-      "de": "Umsetzung der SEO-Maßnahmen in enger Abstimmung mit dem Design-Team",
-      "en": "Implemented SEO measures in close coordination with the design team"
+      "de": "Umsetzung des Website-Redesigns für Dash0 (AI-native Observability-Plattform) als einziger Entwickler — bestehende Seiten nach den neuen Figma-Designs der Agentur umgesetzt (Next.js, Sanity), inkl. SEO-Maßnahmen in Abstimmung mit dem Design-Team",
+      "en": "Sole developer for the Dash0 website redesign (AI-native observability platform) — implemented the agency's new Figma designs for the existing pages (Next.js, Sanity), including SEO measures coordinated with the design team"
     }
   ],
   "achievements": [],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "TailwindCSS", "Sanity", "Vercel", "Figma"]
+  "stack": ["Next.js", "React", "Sanity", "TypeScript", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "Tailwind CSS", "Vercel"]
 }

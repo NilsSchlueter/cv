@@ -2,15 +2,19 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Opitz Consulting Deutschland GmbH",
   "role": {
-    "de": "Frontend-Entwickler (Festanstellung)",
-    "en": "Frontend Developer (permanent position)"
+    "de": "Frontend-Entwickler",
+    "en": "Frontend Developer"
   },
   "location": "Essen",
+  "workload": {
+    "de": "Werkstudent bis 09/2019, danach Festanstellung",
+    "en": "working student until Sep 2019, then permanent position"
+  },
   "startDate": "2018-04",
   "endDate": "2021-08",
   "responsibilities": [
     {
-      "de": "Entwicklung in Kundenprojekten der Industrie- und Mobilitätsbranche in Scrum-Teams — u. a. erfolgreicher Re-Launch einer Webanwendung mit über 100.000 monatlichen Besuchern",
+      "de": "Entwicklung in Kundenprojekten der Industrie- und Mobilitätsbranche in Scrum-Teams — u. a. erfolgreicher Relaunch einer Webanwendung mit über 100.000 monatlichen Besuchern",
       "en": "Development in client projects across the industrial and mobility sectors in Scrum teams — including a successful relaunch of a web application with over 100,000 monthly visitors"
     },
     {
@@ -19,5 +23,5 @@
     }
   ],
   "achievements": [],
-  "stack": ["JavaScript", "TypeScript", "Angular", "NgRX", "RxJS", "Angular Material", "Java", "Spring Boot", "Microservices", "Docker", "Kubernetes", "Jenkins", "Azure", "AWS", "Keycloak"]
+  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Angular Material", "Java", "Spring Boot", "Microservices", "Docker", "Kubernetes", "Jenkins", "Azure", "AWS", "Keycloak"]
 }

@@ -8,7 +8,7 @@
  *
  * Freelance-Engagements (data/projects/*) werden auf JSON-Resume `work`
  * gemappt – das ist die von ATS-Systemen erwartete Standardsektion
- * "Work Experience" / "Berufserfahrung". Der Tech-Stack landet als
+ * (im PDF als "Projekthistorie" / "Project Experience"). Der Tech-Stack landet als
  * `keywords` am Work-Eintrag (vom offiziellen Schema als Zusatzfeld erlaubt).
  */
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -21,6 +21,7 @@ import {
   type Lang,
   listProjectFiles,
   pick,
+  projectTags,
   readJson,
 } from "./lib";
 
@@ -54,7 +55,7 @@ function buildResume(lang: Lang) {
       url: basics.url,
       // Kein offizielles JSON-Resume-Feld, aber schema-konform (das offizielle
       // Schema erlaubt Zusatzfelder) und so auch im PDF-Anhang maschinenlesbar.
-      availability: basics.availability,
+      availability: basics.availability ? pick(basics.availability, lang) : undefined,
       summary: pick(basics.summary, lang),
       location: {
         address: basics.location.address,
@@ -72,6 +73,12 @@ function buildResume(lang: Lang) {
     work: projects.map((p) => {
       const responsibilities = p.responsibilities.map((h) => pick(h, lang));
       const achievements = p.achievements.map((h) => pick(h, lang));
+      const subprojects = p.subprojects.map((s) => ({
+        title: pick(s.title, lang),
+        responsibilities: s.responsibilities.map((h) => pick(h, lang)),
+        achievements: s.achievements.map((h) => pick(h, lang)),
+        keywords: s.stack,
+      }));
       return {
         name: pick(p.client, lang),
         position: pick(p.role, lang),
@@ -80,12 +87,22 @@ function buildResume(lang: Lang) {
         startDate: p.startDate,
         endDate: p.endDate, // undefined => laufend
         // JSON-Resume-Standard: alle Punkte in `highlights` (ATS/generische Tools).
-        highlights: [...responsibilities, ...achievements],
+        // Teilprojekt-Punkte tragen ihren Titel als Präfix, damit sie flach
+        // gelesen noch zuordenbar sind.
+        highlights: [
+          ...responsibilities,
+          ...achievements,
+          ...subprojects.flatMap((s) =>
+            [...s.responsibilities, ...s.achievements].map((h) => `${s.title}: ${h}`),
+          ),
+        ],
         // Zusatzfelder (additionalProperties: true) für die strukturierte
-        // Aufgaben/Erfolge-Darstellung im Typst-Template:
+        // Darstellung im Typst-Template und im Markdown-Export:
+        workload: p.workload ? pick(p.workload, lang) : undefined,
         responsibilities,
         achievements,
-        keywords: p.stack, // Tech-Stack
+        subprojects,
+        keywords: projectTags(p), // Tech-Stack inkl. Teilprojekte
       };
     }),
     skills: skillsFile.skills.map((s) => ({

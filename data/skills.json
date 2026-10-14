@@ -3,20 +3,54 @@
   "skills": [
     {
       "name": {
-        "de": "Fullstack-Entwicklung",
-        "en": "Fullstack Development"
+        "de": "Webentwicklung",
+        "en": "Web Development"
       },
       "keywords": [
-        "TypeScript",
-        "JavaScript",
         "Next.js",
         "React",
+        "Angular",
+        "TypeScript",
         "Node.js",
         "Express",
-        "TailwindCSS",
+        "REST APIs",
         "PostgreSQL",
         "Prisma",
-        "REST APIs"
+        "TypeORM",
+        "Firebase",
+        "Tailwind CSS",
+        "NgRx",
+        "NgRx Signal Store",
+        "RxJS",
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "Azure",
+        "Google Cloud",
+        "Vercel",
+        "Micro Frontends",
+        "Nx (Monorepo)",
+        "Playwright",
+        "Vitest",
+        "Jest",
+        "Cypress",
+        "Storybook",
+        "Accessibility (WCAG)",
+        "Internationalization (i18n)",
+        "TanStack Query",
+        "shadcn/ui",
+        "Angular Material",
+        "AG Grid",
+        "Keycloak",
+        "GitHub Actions",
+        "GitLab",
+        "Jenkins",
+        "Terraform",
+        "Sentry",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Git"
       ]
     },
     {
@@ -25,55 +59,35 @@
         "en": "AI Integration"
       },
       "keywords": [
-        "LLM-Integration (OpenAI, Anthropic)",
+        "Generative AI",
+        "LLM-Integration",
+        "AI Agents",
+        "Generative UI",
+        "Chatbot / Conversational UI",
+        "OpenAI API",
         "Vercel AI SDK",
-        "RAG",
-        "pgvector"
+        "Tool/Function Calling",
+        "Structured Outputs",
+        "Prompt Engineering",
+        "Guardrails",
+        "EU AI Act",
+        "Streaming (SSE/WebSocket)",
+        "Voice UI (Web Speech API)",
+        "AI-Assisted Development (Claude Code)"
       ]
     },
     {
-      "name": "CMS",
+      "name": "Headless CMS & SEO",
       "keywords": [
-        "Headless-CMS-Architektur",
         "Sanity",
         "Strapi",
-        "Payload CMS"
-      ]
-    },
-    {
-      "name": "DevOps & Cloud",
-      "keywords": [
-        "Docker",
-        "Kubernetes",
-        "CI/CD (GitHub Actions)",
-        "Terraform",
-        "Vercel",
-        "Azure",
-        "Google Cloud"
-      ]
-    },
-    {
-      "name": {
-        "de": "Testing & Qualität",
-        "en": "Testing & Quality"
-      },
-      "keywords": [
-        "Jest",
-        "Playwright",
-        "Storybook"
-      ]
-    },
-    {
-      "name": {
-        "de": "Enterprise-Frontend (Angular)",
-        "en": "Enterprise Frontend (Angular)"
-      },
-      "keywords": [
-        "Angular",
-        "NgRX",
-        "RxJS",
-        "NX Monorepo",
-        "Micro Frontends"
+        "Payload CMS",
+        "SEO",
+        "CMS-Migration",
+        "Content Modeling",
+        "Live Preview",
+        "GROQ",
+        "ISR / On-Demand Revalidation"
       ]
     }
   ]

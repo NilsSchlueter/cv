@@ -46,7 +46,7 @@
       "format": "uri"
     },
     "availability": {
-      "type": "string"
+      "$ref": "#/properties/label"
     },
     "location": {
       "type": "object",

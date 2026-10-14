@@ -7,15 +7,15 @@
   },
   "location": "Essen",
   "startDate": "2023-03",
-  "endDate": "2024-12",
+  "endDate": "2024-10",
   "responsibilities": [
     {
       "de": "Weiterentwicklung der Web-Anwendung, mit der private Vermieter ihren Immobilienbestand verwalten und Daten für die Steuererklärung generieren — als Lead eines der beiden Entwicklungsteams mit fachlicher Führung von zwei Frontend-Entwicklern",
       "en": "Advanced the web application private landlords use to manage their property portfolio and generate tax return data — as lead of one of the two development teams, technically leading two frontend developers"
     },
     {
-      "de": "Weiterentwicklung der Anwendungsarchitektur gemeinsam mit den anderen Lead-Entwicklern — Mitumsetzung der Migration von der monolithischen Angular-Anwendung zu NX-Monorepo und Micro Frontends",
-      "en": "Evolved the application architecture together with the other lead developers — co-implemented the migration from a monolithic Angular application to an NX monorepo with micro frontends"
+      "de": "Weiterentwicklung der Anwendungsarchitektur gemeinsam mit den anderen Lead-Entwicklern — Mitumsetzung der Migration von der monolithischen Angular-Anwendung zu Nx-Monorepo und Micro Frontends",
+      "en": "Evolved the application architecture together with the other lead developers — co-implemented the migration from a monolithic Angular application to an Nx monorepo with micro frontends"
     }
   ],
   "achievements": [
@@ -28,26 +28,5 @@
       "en": "Re-engaged after a previous assignment on the same product (Objego, 2021/22)"
     }
   ],
-  "stack": [
-    "JavaScript",
-    "TypeScript",
-    "Angular",
-    "NX Monorepo",
-    "NgRX",
-    "RxJS",
-    "Angular Material",
-    "Micro Frontends",
-    "TailwindCSS",
-    "Storybook",
-    "Jest",
-    "Cypress",
-    "Playwright",
-    "Docker",
-    "Kubernetes",
-    "Azure",
-    "GitHub Actions",
-    "CI/CD",
-    "Keycloak",
-    "Sentry"
-  ]
+  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Micro Frontends", "Nx (Monorepo)", "Playwright", "Cypress", "Jest", "Storybook", "Docker", "Kubernetes", "Azure", "GitHub Actions", "Keycloak"]
 }

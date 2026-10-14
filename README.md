@@ -5,9 +5,12 @@ werden zu schema-konformen [JSON-Resume](https://jsonresume.org)-Dateien gemerge
 und mit [Typst](https://typst.app) zu versandfertigen PDFs gerendert.
 
 ```
-data/*.json  ──merge──▶  generated/resume.<de|en>.json  ──typst──▶  dist/CV-<Name>-<DE|EN>.pdf
- (zweisprachig)            (JSON Resume, je Sprache)                  (+ eingebettete resume.json)
+data/*.json  ──merge──▶  generated/resume.<de|en>.json  ──typst──▶  dist/Schlueter_Nils_…_<DE|EN>_<YYYY-MM>.pdf
+ (zweisprachig)            (JSON Resume, je Sprache)                  (+ .md, eingebettete resume.json)
 ```
+
+Inhaltliche Grundsatzentscheidungen (Positionierung, Kompetenzen, Tech-Zeilen,
+Auslastung, Layout) und abgelehnte Vorschläge stehen in [`CLAUDE.md`](CLAUDE.md).
 
 Kernmerkmale:
 
@@ -36,14 +39,23 @@ Funktion noch `pdf.embed`; sie wurde in 0.14 in `pdf.attach` umbenannt. Getestet
 Die Design-Sprache ist von der eigenen Landing Page ([nils.fyi](https://www.nils.fyi))
 übernommen – "warm editorial" statt Corporate-Look:
 
-- **Farbwelt:** warmes Papier (`#f6f3ed`), warme Tinte (`#241e1a`),
-  Terrakotta-Akzent (`#a33e25`), Ton/Clay für Konturen und Hairlines.
-- **Schriften:** Space Grotesk (Name/Titel), Instrument Sans (Fließtext),
-  Geist Mono (Daten, Labels, Tech-Stack) – alle SIL OFL, gebündelt unter `fonts/`.
-- **Elemente:** Mono-Uppercase-Sektionslabels mit Punkt-Mark und Hairline,
+- **Farbwelt:** weißes Papier (druckt ohne Farbrand, invertiert sauber in
+  Dark-Mode-Viewern), warme Tinte (`#241e1a`), **ein** Akzent Terrakotta
+  (`#a33e25`: Titelzeile, Firmennamen, Links, Punkte), Ton/Clay nur für
+  Trenner, Marker und Hairlines.
+- **Schriften:** Instrument Sans für allen Text (400/600); Geist Mono nur für
+  Daten in festen Positionen – Zeitraum, Tech-Zeilen, Sektionslabels, Footer –
+  und nie mitten in einer Textzeile; Space Grotesk nur für den Namen. Alle SIL
+  OFL, gebündelt unter `fonts/`.
+- **Typo-Skala:** 26 / 11.5 / 10 / 8.5 / 7.5pt, ein Zeilenabstand für
+  Fließtext, Versalien nur für kurze Labels, Seitenrand 1.8cm (Zeilen ~95
+  statt ~100 Zeichen; breiter geht nicht, ohne dass Titel umbrechen).
+- **Elemente:** Mono-Versalien-Sektionslabels mit Punkt-Mark und Hairline,
   eine Timeline-Schiene mit Terrakotta-Knoten für Projekthistorie und
-  Ausbildung; Tech-Keywords als stille Mono-Zeilen (die Kompetenz-Gruppen
-  als Mono-Label mit kompakter Keyword-Zeile).
+  Ausbildung; Tech-Keywords als stille Mono-Zeilen, Kompetenz-Gruppen als
+  „**Gruppe:** Keywords“ in der Textschrift.
+- **Reihenfolge:** Profil → Kompetenzen → Projekthistorie → Ausbildung → Sprachen
+  (Vermittler lesen zuerst die Top-Skills).
 
 Es wird **kein externes Typst-Paket** geladen, Builds laufen also ohne
 Netzzugang. Schiene und Punkte sind reine Dekoration ohne Textinhalt –
@@ -53,16 +65,33 @@ die ATS-Prinzipien oben bleiben unberührt.
 
 ```bash
 npm install        # einmalig
-npm run build      # baut beide PDFs nach dist/
+npm run build      # baut beide PDFs (+ Markdown) nach dist/
 ```
 
-Ergebnis:
+Ergebnis (Datum = Build-Monat):
 
-- `dist/CV-Nils-Schlueter-DE.pdf` — Deutsch, **mit** Foto
-- `dist/CV-Nils-Schlueter-EN.pdf` — Englisch, **ohne** Foto
+- `dist/Schlueter_Nils_Senior-Fullstack_Profil_DE_2026-10.pdf` — Deutsch, **mit** Foto
+- `dist/Schlueter_Nils_Senior-Fullstack_Profile_EN_2026-10.pdf` — Englisch, **ohne** Foto
+- daneben je eine `.md` mit demselben Inhalt ohne Layout (Basis für Word, s. u.)
 
-Der Dateiname-Slug wird automatisch aus `data/basics.json` (`name`) abgeleitet
-(Umlaute werden ausgeschrieben, z. B. „Schlüter" → `Schlueter`).
+Nachname/Vorname kommen aus `data/basics.json` (`name`, Umlaute ausgeschrieben:
+„Schlüter" → `Schlueter`). Ältere Builds in `dist/` werden dabei entfernt.
+
+### Word-Version für Vermittler
+
+Manche Agenturen wollen DOCX. Aus dem Markdown-Export (benötigt
+[pandoc](https://pandoc.org), macOS: `brew install pandoc`):
+
+```bash
+npm run docx       # dist/*.md -> dist/*.docx
+```
+
+### Offene Platzhalter `[[TODO: …]]`
+
+Fehlende Fakten stehen als `[[TODO: Frage]]` direkt in den Quelldaten und sind
+im PDF sichtbar. `npm run build` listet alle mit Datei:Zeile auf (Validierung,
+Schritt d). Release-Builds (Version-Tags) brechen ab, solange welche offen sind
+(`CV_STRICT=1`).
 
 ## Daten pflegen
 
@@ -71,7 +100,7 @@ sprachneutrale Werte (z. B. Firmennamen, Technologien) sind einfache Strings.
 
 | Datei                | Inhalt                                        |
 | -------------------- | --------------------------------------------- |
-| `data/basics.json`   | Name, Kontakt, Kurzprofil, Profile, Sprachen  |
+| `data/basics.json`   | Name, Kontakt, Eckdaten (Verfügbarkeit), Kurzprofil, Profile, Sprachen |
 | `data/skills.json`   | Skill-Gruppen mit Keywords                    |
 | `data/education.json`| Ausbildung                                    |
 | `data/projects/*.json` | **eine Datei pro Projekt/Engagement**       |
@@ -101,9 +130,26 @@ und Inline-Validierung.
    }
    ```
 
-   - `endDate` **weglassen** = laufendes Projekt. Statt „heute"/„Present" wird
-     der **Monat des PDF-Builds** angezeigt (z. B. „09/2025 – 08/2026").
+   - `endDate` **weglassen** = laufendes Projekt, angezeigt als
+     „06/2021 – heute" bzw. „Jun 2021 – present".
    - `client` darf auch ein einfacher String sein, wenn sprachneutral (`"LogTech GmbH"`).
+   - `workload` (optional): Auslastung, z. B. `"60 %"` oder `{ "de": "nebenberuflich", … }` —
+     wichtig bei parallel laufenden Projekten, sonst wirkt der Zeitstrahl überbucht.
+   - `subprojects` (optional): mehrere parallele Projekte beim selben Kunden als
+     **ein** Engagement mit Unterblöcken (`title`, `responsibilities`,
+     `achievements`, `stack`) — siehe `2025-09-pub-tech.json`.
+   - Tech-Begriffe in `stack` exakt so schreiben wie in `data/skills.json`
+     (z. B. `Tailwind CSS`, `NgRx`): Die Validierung prüft, dass jede Kompetenz
+     in mindestens einem Projekt belegt ist.
+   - `stack` = die wichtigsten Technologien des Projekts, **höchstens 2 Zeilen**
+     im PDF (Ausnahme: max. 3 beim Aushängeschild-Projekt). Reihenfolge nach
+     Wichtigkeit: zuerst die prägenden Technologien (AI-Tags bei AI-Projekten,
+     das CMS bei CMS-Projekten, Angular · TypeScript · NgRx · RxJS bei
+     Angular-Projekten), danach wie unter Kompetenzen.
+   - Nicht in `stack`: Grundlagen (JavaScript, REST APIs, HTML, CSS, Git — nur
+     unter Kompetenzen) und Begriffe, die Titel oder Bullets des Projekts schon
+     nennen — ATS-Parser lesen den Fließtext mit. Die Validierung zählt Tags
+     und Fließtext als Beleg einer Kompetenz.
 3. `npm run build`.
 
 ### Profilbild tauschen
@@ -137,8 +183,9 @@ CV_PHOTO_DE=false npm run build    # alternativ via Umgebungsvariable
 | ----------------- | ----------------------------------------------------------------------------- |
 | `gen:schema`      | JSON-Schemata (`schema/`) aus den TypeScript-Typen (`src/types.ts`) generieren |
 | `merge`           | `data/` → `generated/resume.de.json` + `resume.en.json` (JSON Resume)          |
-| `validate`        | (a) Quelldaten gegen eigenes Schema, (b) generierte Dateien gegen offizielles JSON-Resume-Schema |
-| `build`           | `templates/cv.typ` → beide PDFs nach `dist/`                                    |
+| `validate`        | (a) Quelldaten gegen eigenes Schema, (b) generierte Dateien gegen offizielles JSON-Resume-Schema, (c) Kompetenzen gegen Projekt-Tags, (d) offene `[[TODO]]`-Platzhalter |
+| `build`           | `templates/cv.typ` → beide PDFs nach `dist/`, plus Markdown-Export              |
+| `docx`            | `dist/*.md` → `dist/*.docx` via pandoc                                          |
 | `watch`           | baut bei jeder Änderung automatisch neu                                         |
 | `typecheck`       | `tsc --noEmit` über die Scripts                                                 |
 | `clean`           | löscht `dist/` und `generated/`                                                 |
@@ -153,9 +200,10 @@ damit lokale und CI-Builds identisch aussehen.
 
 `.github/workflows/build.yml`:
 
-- **Push / Pull Request:** validieren, beide PDFs bauen, als **Artifacts** anhängen.
+- **Push / Pull Request:** validieren, beide PDFs (+ Markdown) bauen, als **Artifacts** anhängen.
 - **Version-Tag** (`v*`, z. B. `v2026-07`): zusätzlich ein **GitHub Release** mit den
-  beiden PDFs – für versionierte, teilbare Stände.
+  Dateien – für versionierte, teilbare Stände. Bricht ab, solange `[[TODO]]`-Platzhalter
+  offen sind.
 
 ```bash
 git tag v2026-07
@@ -176,7 +224,8 @@ src/
   gen-schema.ts     Typen  -> schema/
   merge.ts          data/  -> generated/resume.*.json
   validate.ts       zweistufige Validierung
-  build.ts          Typst-Compile beider Sprachen -> dist/
+  build.ts          Typst-Compile beider Sprachen -> dist/ (+ Markdown-Export)
+  markdown.ts       resume.<lang>.json -> Markdown (Basis für DOCX)
   watch.ts          optionaler Watch-Modus
   lib.ts            gemeinsame Helfer
 templates/cv.typ    eigenständiges Typst-Template (nils.fyi-Design-Sprache, Timeline-Einträge, i18n, Foto-Flag, Metadaten, Attachment)
@@ -189,7 +238,13 @@ dist/               (git-ignored) fertige PDFs – Distribution via lokalen Buil
 Nützliche Checks (benötigt `poppler`, macOS: `brew install poppler`):
 
 ```bash
-pdftotext dist/CV-Nils-Schlueter-DE.pdf -   # Textebene + Lesereihenfolge prüfen
-pdfdetach -list dist/CV-Nils-Schlueter-DE.pdf   # eingebettete resume.json anzeigen
-pdffonts  dist/CV-Nils-Schlueter-DE.pdf     # Font-Einbettung prüfen
+pdftotext dist/Schlueter_Nils_*_DE_*.pdf -        # Textebene + Lesereihenfolge prüfen
+pdfdetach -list dist/Schlueter_Nils_*_DE_*.pdf    # eingebettete resume.json anzeigen
+pdffonts  dist/Schlueter_Nils_*_DE_*.pdf          # Font-Einbettung prüfen
 ```
+
+Typische Fallen, die das Template bereits abfängt: Zeilenumbruch an
+Kompositum-Bindestrichen (Extraktoren machen aus „Bank-|Transaktionsdaten"
+„BankTransaktionsdaten"), Letterspacing und große Lücken in einer Textzeile
+(werden als Einzelbuchstaben bzw. Spaltengrenzen gelesen) sowie Zeichen, die
+in den gebündelten Fonts fehlen (z. B. „₂" → Fallback-Schrift).

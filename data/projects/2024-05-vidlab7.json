@@ -2,10 +2,11 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Vidlab7 GmbH",
   "role": {
-    "de": "Frontend-Entwickler — AI-Sales-Avatar-Plattform: Produktaufbau nach Seed-Funding (Next.js)",
-    "en": "Frontend Developer — AI Sales Avatar Platform: Product Build-Up After Seed Funding (Next.js)"
+    "de": "Frontend-Entwickler — AI-Sales-Avatar-Plattform (Next.js)",
+    "en": "Frontend Developer — AI Sales Avatar Platform (Next.js)"
   },
   "location": { "de": "München", "en": "Munich" },
+  "workload": { "de": "Teilzeit", "en": "part-time" },
   "startDate": "2024-05",
   "endDate": "2024-10",
   "responsibilities": [
@@ -24,9 +25,9 @@
   ],
   "achievements": [
     {
-      "de": "Termingerechter Launch der Plattform inklusive Onboarding der ersten Kunden",
-      "en": "On-schedule platform launch including onboarding of the first customers"
+      "de": "Termingerechter Launch der Plattform und Begleitung der kritischen Onboarding-Phase der ersten B2B-Kunden",
+      "en": "On-schedule platform launch and support through the critical onboarding phase of the first B2B customers"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "Web Media", "TanStack Query", "TailwindCSS", "ShadCN", "Tiptap", "Clerk", "Prisma", "PostgreSQL", "Vercel"]
+  "stack": ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "TanStack Query", "Tailwind CSS", "shadcn/ui", "getUserMedia", "Web Audio API", "Vercel"]
 }
