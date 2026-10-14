@@ -75,8 +75,8 @@ export const Basics = z
     email: z.string().email(),
     phone: z.string().optional(),
     url: z.string().url().optional(),
-    /** Arbeitsmodus für die Kontaktzeile, z. B. "remote & hybrid" (sprachneutral). */
-    availability: z.string().optional(),
+    /** Eckdaten-Zeile unter dem Kontakt: Verfügbarkeit · Auslastung · Einsatzort. */
+    availability: L.optional(),
     location: Location,
     summary: L, // Profiltext / Kurzprofil
     profiles: z.array(Profile).default([]),
@@ -135,18 +135,34 @@ export type EducationFile = z.infer<typeof EducationFile>;
 /* projects/*.json  (eine Datei pro Projekt/Engagement)                       */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * Teilprojekt innerhalb eines Engagements (mehrere parallele Projekte beim
+ * selben Kunden). Erscheint als Unterblock mit eigener Tech-Zeile, damit der
+ * Lebenslauf keine scheinbar überlappenden Einzel-Engagements zeigt.
+ */
+const Subproject = z
+  .object({
+    title: L, // z. B. "hilfe.ard.de & games.ard.de (Fullstack, Strapi)"
+    responsibilities: z.array(L).default([]),
+    achievements: z.array(L).default([]),
+    stack: z.array(z.string().min(1)).default([]),
+  })
+  .strict();
+
 export const Project = z
   .object({
     ...withSchemaRef,
     client: L, // Kunde/Auftraggeber (ggf. "unter NDA")
     role: L, // eigene Rolle, z. B. "Lead Frontend Entwickler | Angular Entwickler"
     location: L.optional(), // "Remote", "München"/"Munich", ...
+    workload: L.optional(), // Auslastung, z. B. "60 %", "3 Tage/Woche", "nebenberuflich"
     url: z.string().url().optional(),
     startDate: YearMonth,
     endDate: YearMonth.optional(), // weglassen => laufend ("heute"/"Present")
     responsibilities: z.array(L).default([]), // Aufgaben
     achievements: z.array(L).default([]), // Erfolge
     stack: z.array(z.string().min(1)).default([]), // eingesetzte Technologien
+    subprojects: z.array(Subproject).default([]),
   })
   .strict();
 export type Project = z.infer<typeof Project>;

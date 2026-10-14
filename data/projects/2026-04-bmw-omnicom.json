@@ -2,29 +2,39 @@
   "$schema": "../../schema/project.schema.json",
   "client": { "de": "Omnicom (für BMW)", "en": "Omnicom (for BMW)" },
   "role": {
-    "de": "Frontend-Entwickler — AI-Chatbot für BMW: Agent-gesteuerte UI-Komponenten (Angular)",
-    "en": "Frontend Developer — AI Chatbot for BMW: Agent-Driven UI Components (Angular)"
+    "de": "Frontend-Entwickler — AI Assistant für BMW (Generative UI)",
+    "en": "Frontend Developer — AI Assistant for BMW (Generative UI)"
   },
+  "location": { "de": "München (remote)", "en": "Munich (remote)" },
   "startDate": "2026-04",
-  "endDate": "2026-12",
+  "endDate": "2026-09",
   "responsibilities": [
-    {
-      "de": "Frontend-Entwicklung des KI-Chatbots für die BMW-Websites — in einem global verteilten Entwicklungsteam mit rund 20 Entwicklern",
-      "en": "Frontend development of the AI chatbot for the BMW websites — in a globally distributed team of around 20 developers"
-    },
     {
       "de": "Entwicklung der Komponenten, die der AI-Agent im Chat dynamisch steuert und mit Inhalten befüllt (Generative UI) — interaktive Karten, Vergleichstabellen, Chat- und Voice-Inputs",
       "en": "Building the components the AI agent dynamically controls and populates inside the chat (generative UI) — interactive cards, comparison tables, chat and voice inputs"
     },
     {
-      "de": "Entwicklung eines internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS",
-      "en": "Development of an internal CMS for managing the chat content, based on Next.js and Payload CMS"
+      "de": "Frontend-Entwicklung des AI Assistant für die BMW-Websites (Angular) — in einem global verteilten Entwicklungsteam mit rund 20 Entwicklern",
+      "en": "Frontend development of the AI Assistant for the BMW websites (Angular) — in a globally distributed team of around 20 developers"
     },
     {
-      "de": "Vorbereitung des fixen internationalen Rollouts — geplanter Launch: Europa 11/2026, USA 12/2026",
-      "en": "Working toward the fixed international rollout — planned launch: Europe 11/2026, USA 12/2026"
+      "de": "Umsetzung der Compliance-Anforderungen je Markt: AI-Transparenzhinweise und Disclaimer (EU AI Act), Guardrails für angezeigte Inhalte sowie länderspezifische Pflichtangaben wie Preise, Verbrauchs- und Emissionswerte",
+      "en": "Implemented compliance requirements per market: AI transparency notices and disclaimers (EU AI Act), guardrails for displayed content and country-specific mandatory information such as prices, fuel consumption and emission figures"
+    },
+    {
+      "de": "Internationalisierung (i18n) und Barrierefreiheit (WCAG) der Chat-Komponenten",
+      "en": "Internationalization (i18n) and accessibility (WCAG) of the chat components"
+    },
+    {
+      "de": "Entwicklung eines internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS",
+      "en": "Development of an internal CMS for managing the chat content, based on Next.js and Payload CMS"
     }
   ],
-  "achievements": [],
-  "stack": ["TypeScript", "JavaScript", "Angular", "Storybook", "Next.js", "Payload CMS"]
+  "achievements": [
+    {
+      "de": "Erfolgreicher Go-live Ende September 2026 in 5 Märkten (Deutschland, Großbritannien, Frankreich, Spanien, Niederlande) sowie Vorbereitung des US-Rollouts (geplant für Ende Oktober 2026)",
+      "en": "Successful go-live at the end of September 2026 in 5 markets (Germany, UK, France, Spain, Netherlands), plus preparation of the US rollout (planned for the end of October 2026)"
+    }
+  ],
+  "stack": ["Generative AI", "Generative UI", "Chatbot / Conversational UI", "Tool/Function Calling", "Structured Outputs", "Streaming (SSE/WebSocket)", "Voice UI (Web Speech API)", "Angular", "TypeScript", "NgRx Signal Store", "Vitest", "Next.js", "Payload CMS"]
 }

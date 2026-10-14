@@ -20,9 +20,9 @@
   ],
   "achievements": [
     {
-      "de": "Caching-Strategie, die die Aufrufe ans Headless CMS um über 50 % reduziert — niedrigere Sanity-Kosten, schnellere Ladezeiten",
-      "en": "Caching strategy that cut headless CMS requests by more than 50% — lower Sanity costs, faster load times"
+      "de": "Caching-Strategie, die die Aufrufe ans Headless CMS um über 50 % reduziert",
+      "en": "Caching strategy that cut headless CMS requests by more than 50%"
     }
   ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "Sanity", "Headless CMS", "TailwindCSS", "Storybook", "Docker"]
+  "stack": ["Next.js", "React", "Sanity", "TypeScript", "Content Modeling", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "Storybook", "AI-Assisted Development (Claude Code)"]
 }

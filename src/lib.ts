@@ -2,7 +2,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
-import type { L } from "./types";
+import type { L, Project } from "./types";
 
 /** Projekt-Wurzelverzeichnis (ein Level über src/). */
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -27,6 +27,11 @@ export function listProjectFiles(): string[] {
     .filter((f) => f.endsWith(".json"))
     .sort()
     .map((f) => join(PROJECTS_DIR, f));
+}
+
+/** Alle Tech-Tags eines Projekts inkl. Teilprojekte, ohne Duplikate (Reihenfolge bleibt). */
+export function projectTags(p: Project): string[] {
+  return [...new Set([...p.stack, ...p.subprojects.flatMap((s) => s.stack)])];
 }
 
 /** Löst ein `L`-Feld (String oder `{ de, en }`) für eine Zielsprache auf. */

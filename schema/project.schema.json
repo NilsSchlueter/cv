@@ -36,6 +36,9 @@
     "location": {
       "$ref": "#/properties/client"
     },
+    "workload": {
+      "$ref": "#/properties/client"
+    },
     "url": {
       "type": "string",
       "format": "uri"
@@ -66,6 +69,44 @@
       "items": {
         "type": "string",
         "minLength": 1
+      },
+      "default": []
+    },
+    "subprojects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "$ref": "#/properties/client"
+          },
+          "responsibilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/properties/client"
+            },
+            "default": []
+          },
+          "achievements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/properties/client"
+            },
+            "default": []
+          },
+          "stack": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
       },
       "default": []
     }

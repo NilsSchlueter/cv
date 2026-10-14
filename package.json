@@ -12,6 +12,7 @@
     "prebuild": "npm run gen:schema && npm run merge && npm run validate",
     "build": "tsx src/build.ts",
     "watch": "tsx src/watch.ts",
+    "docx": "for f in dist/*.md; do pandoc \"$f\" -o \"${f%.md}.docx\"; done",
     "clean": "rm -rf dist generated"
   },
   "dependencies": {

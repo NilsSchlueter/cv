@@ -2,8 +2,8 @@
   "$schema": "../../schema/project.schema.json",
   "client": "continuum.club",
   "role": {
-    "de": "Fullstack-Entwickler — AI-gestützte Trainingsplan-Software (Next.js/Firebase)",
-    "en": "Fullstack Developer — AI-Powered Training Plan Software (Next.js/Firebase)"
+    "de": "Fullstack-Entwickler — AI-Trainingsplan-Software (Next.js/Firebase)",
+    "en": "Fullstack Developer — AI Training Plan Software (Next.js/Firebase)"
   },
   "location": {
     "de": "New York (remote)",
@@ -13,12 +13,16 @@
   "endDate": "2025-12",
   "responsibilities": [
     {
-      "de": "Entwicklung einer Software zur personalisierten Trainingsplan-Erstellung für ein exklusives New Yorker Fitnessstudio als einziger Frontend-Entwickler — bestehenden MVP innerhalb von 3 Monaten produktionsreif gemacht und in den täglichen Einsatz des Trainer-Teams gebracht",
-      "en": "Built software for personalized training plan creation for an exclusive New York fitness studio as the sole frontend developer — took the existing MVP to production readiness within 3 months and into the trainer team's daily use"
+      "de": "Entwicklung einer Software zur personalisierten Trainingsplan-Erstellung für ein exklusives New Yorker Fitnessstudio — bestehenden MVP innerhalb von 3 Monaten produktionsreif gemacht und in den täglichen Einsatz des Trainer-Teams gebracht",
+      "en": "Built software for personalized training plan creation for an exclusive New York fitness studio — took the existing MVP to production readiness within 3 months and into the trainer team's daily use"
     },
     {
-      "de": "Frontend-Entwicklung der AI-Integration: Chat-Interface und KI-assistierte Erstellung der Trainingspläne",
-      "en": "Frontend development of the AI integration: chat interface and AI-assisted creation of the training plans"
+      "de": "Entwicklung der AI-Integration mit Vercel AI SDK und OpenAI API: Chat-Interface und KI-assistierte Erstellung der Trainingspläne",
+      "en": "Developed the AI integration with the Vercel AI SDK and OpenAI API: chat interface and AI-assisted creation of the training plans"
+    },
+    {
+      "de": "Backend-Entwicklung mit Node.js auf Firebase Functions, Firestore als Datenbank und Firebase Auth",
+      "en": "Backend development with Node.js on Firebase Functions, with Firestore as the database and Firebase Auth"
     }
   ],
   "achievements": [
@@ -31,20 +35,5 @@
       "en": "Introduced unit testing with over 80% coverage on new code"
     }
   ],
-  "stack": [
-    "JavaScript",
-    "TypeScript",
-    "Next.js",
-    "React",
-    "TanStack Query",
-    "TailwindCSS",
-    "ShadCN",
-    "Firebase",
-    "Firebase Auth",
-    "Firebase Functions",
-    "Firestore",
-    "Node.js",
-    "Docker",
-    "Vercel"
-  ]
+  "stack": ["Generative AI", "LLM-Integration", "AI Agents", "Tool/Function Calling", "Structured Outputs", "Prompt Engineering", "Next.js", "React", "TypeScript", "Firebase", "Node.js", "Tailwind CSS"]
 }

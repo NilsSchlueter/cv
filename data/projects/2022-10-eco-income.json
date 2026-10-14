@@ -6,6 +6,7 @@
     "en": "Fullstack Developer — Carbon Accounting Software (Next.js)"
   },
   "location": "Hamburg",
+  "workload": { "de": "Teilzeit", "en": "part-time" },
   "startDate": "2022-10",
   "endDate": "2023-03",
   "responsibilities": [
@@ -14,10 +15,10 @@
       "en": "Sole developer of a SaaS solution for corporate carbon accounting: companies upload bank transaction data and receive calculated Scope 1, Scope 2 and Scope 3 emissions"
     },
     {
-      "de": "Aufbau von Grund auf in direkter Zusammenarbeit mit dem Gründer — Softwarearchitektur, Datenmodell und Umsetzung bis zum Launch",
-      "en": "Built from the ground up in direct collaboration with the founder — software architecture, data model and implementation through launch"
+      "de": "Aufbau von Grund auf in direkter Zusammenarbeit mit dem Gründer (Early-Stage-Startup) — Softwarearchitektur, Datenmodell, eigenes Node.js-Backend (Express, TypeORM) und Frontend bis zum Launch und Onboarding der ersten zahlenden B2B-Kunden",
+      "en": "Built from the ground up in direct collaboration with the founder (early-stage startup) — software architecture, data model, custom Node.js backend (Express, TypeORM) and frontend through launch and onboarding of the first paying B2B customers"
     }
   ],
   "achievements": [],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "AG Grid", "TailwindCSS", "Express", "Node.js", "TypeORM", "PostgreSQL", "Docker", "GitLab", "Google Cloud", "Terraform", "Sentry"]
+  "stack": ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "AG Grid", "Docker", "Google Cloud", "Terraform", "GitLab"]
 }

@@ -2,23 +2,77 @@
   "$schema": "../../schema/project.schema.json",
   "client": "pub.tech (ARD)",
   "role": {
-    "de": "Frontend-Entwickler — tagesschau.de, sportschau.de & ard.de (Next.js)",
-    "en": "Frontend Developer — tagesschau.de, sportschau.de & ard.de (Next.js)"
+    "de": "Fullstack-Entwickler — ARD-Digitalangebote",
+    "en": "Fullstack Developer — ARD Digital Products"
   },
   "location": { "de": "München", "en": "Munich" },
+  "workload": { "de": "Teilzeit", "en": "part-time" },
   "startDate": "2025-09",
   "endDate": "2026-09",
-  "responsibilities": [
+  "subprojects": [
     {
-      "de": "Entwicklung wiederverwendbarer Frontend-Komponenten für die reichweitenstärksten Nachrichtenangebote Deutschlands (tagesschau.de, sportschau.de, brisant.de, ard.de) im mehrköpfigen Frontend-Team",
-      "en": "Developed reusable frontend components for Germany's highest-reach news platforms (tagesschau.de, sportschau.de, brisant.de, ard.de) in a multi-developer frontend team"
-    }
-  ],
-  "achievements": [
+      "title": {
+        "de": "ARD Sounds „Regional Update“: AI-Produkt & Multi-Sender-Rollout",
+        "en": "ARD Sounds \"Regional Update\": AI Product & Multi-Station Rollout"
+      },
+      "responsibilities": [
+        {
+          "de": "Weiterentwicklung des Frontends für das AI-personalisierte „Regional Update“ als einziger Softwareentwickler — das Feature spielt Nutzern per KI ausgewählte Radiobeiträge mit Bezug zu ihrem Wunschort aus",
+          "en": "Further developed the frontend for the AI-personalized \"Regional Update\" as the sole software developer — the feature plays users AI-selected radio segments related to their chosen location"
+        },
+        {
+          "de": "Umsetzung neuer Produkt-Features: Optimierung für mobile Endgeräte, Ausbau der Playlist-Funktionalität, Sharing-Funktion",
+          "en": "Delivered new product features: mobile optimization, expanded playlist functionality, sharing feature"
+        }
+      ],
+      "achievements": [
+        {
+          "de": "Ausweitung des zunächst auf den Bayerischen Rundfunk beschränkten Angebots auf SWR und MDR (6 statt 1 Bundesland) — heute live und über eine eigene ARD-Sounds-Subdomain erreichbar",
+          "en": "Expanded the offering from initially Bayerischer Rundfunk only to SWR and MDR (6 German states instead of 1) — now live and reachable under its own ARD Sounds subdomain"
+        }
+      ],
+      "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "ISR / On-Demand Revalidation"]
+    },
     {
-      "de": "Migration von ard.de und brisant.de auf ein neues CMS — ohne Beeinträchtigung des Live-Betriebs",
-      "en": "Migrated ard.de and brisant.de to a new CMS — with zero disruption to live operation"
+      "title": {
+        "de": "tagesschau.de, sportschau.de & ard.de (Frontend)",
+        "en": "tagesschau.de, sportschau.de & ard.de (Frontend)"
+      },
+      "responsibilities": [
+        {
+          "de": "Entwicklung wiederverwendbarer Frontend-Komponenten für die reichweitenstärksten Nachrichtenangebote Deutschlands (tagesschau.de, sportschau.de, brisant.de, ard.de) im mehrköpfigen Frontend-Team",
+          "en": "Developed reusable frontend components for Germany's highest-reach news platforms (tagesschau.de, sportschau.de, brisant.de, ard.de) in a multi-developer frontend team"
+        }
+      ],
+      "achievements": [
+        {
+          "de": "Migration von ard.de und brisant.de auf ein neues CMS — ohne Beeinträchtigung des Live-Betriebs",
+          "en": "Migrated ard.de and brisant.de to a new CMS — with zero disruption to live operation"
+        }
+      ],
+      "stack": ["React", "Handlebars.js", "TypeScript", "Node.js", "CMS-Migration", "Tailwind CSS", "Docker"]
+    },
+    {
+      "title": {
+        "de": "hilfe.ard.de & games.ard.de (Fullstack, Strapi)",
+        "en": "hilfe.ard.de & games.ard.de (Full-Stack, Strapi)"
+      },
+      "responsibilities": [
+        {
+          "de": "Weiterentwicklung von hilfe.ard.de, dem zentralen Hilfe-Portal der ARD, als einziger Entwickler — CMS (Strapi) und Next.js-Frontend; heute über 250 Hilfeseiten zu Fernsehen, Mediathek, ARD Sounds, Radio und Barrierefreiheit",
+          "en": "Sole developer advancing hilfe.ard.de, ARD's central help portal — CMS (Strapi) and Next.js frontend; now 250+ help pages covering TV, Mediathek, ARD Sounds, radio and accessibility"
+        },
+        {
+          "de": "Verantwortung für das zentrale Helpdesk-Formular inklusive E-Mail-Routing: Alle Nutzeranfragen zu den Angeboten der ARD (TV, Radio, Apps) werden an die zuständigen Stellen weitergeleitet",
+          "en": "Owned the central helpdesk form including email routing: all user requests about ARD's offerings (TV, radio, apps) are forwarded to the responsible teams"
+        },
+        {
+          "de": "Weiterentwicklung des Frontends von games.ard.de sowie enge Zusammenarbeit mit den Redaktionsteams bei neuen CMS-Features",
+          "en": "Frontend development for games.ard.de and close collaboration with the editorial teams on new CMS features"
+        }
+      ],
+      "achievements": [],
+      "stack": ["Next.js", "React", "Strapi", "Headless CMS", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "ISR / On-Demand Revalidation", "Docker"]
     }
-  ],
-  "stack": ["JavaScript", "TypeScript", "Next.js", "React", "TailwindCSS", "Node.js", "Docker"]
+  ]
 }

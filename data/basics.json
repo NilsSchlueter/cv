@@ -2,22 +2,23 @@
   "$schema": "../schema/basics.schema.json",
   "name": "Nils Schlüter",
   "label": {
-    "de": "Freelance Fullstack-Entwickler · Next.js · TypeScript · AI-Integration",
-    "en": "Freelance Fullstack Developer · Next.js · TypeScript · AI Integration"
+    "de": "Senior Fullstack-Entwickler · Webanwendungen · AI-Integration · Headless CMS",
+    "en": "Senior Fullstack Developer · Web Applications · AI Integration · Headless CMS"
   },
   "email": "mail@nilsschlueter.de",
   "phone": "+49 1578 9489705",
-  "url": "https://www.nils.fyi",
-  "availability": "remote & hybrid",
+  "url": "https://www.nilsschlueter.de",
+  "availability": {
+    "de": "Verfügbar ab sofort · 100 % · remote, vor Ort in NRW, bundesweit reisebereit",
+    "en": "Available immediately · 100% · remote, on-site in NRW, willing to travel across Germany"
+  },
   "location": {
-    "address": "Am Steinknapp 14a",
-    "postalCode": "44795",
     "city": "Bochum",
     "countryCode": "DE"
   },
   "summary": {
-    "de": "Fullstack-Entwickler (Freelance) mit über 8 Jahren Erfahrung — Schwerpunkt Next.js, React und TypeScript, von der Architektur bis zum Go-live. Aktueller Fokus: AI-Produkte auf die letzte Meile zum Nutzer bringen — zuletzt als Frontend-Entwickler für den KI-Chatbot von BMW, die KI-Personalisierung von ARD Sounds und eine AI-Sales-Avatar-Plattform. Weitere Projekte u. a. für die ARD (tagesschau.de, sportschau.de), Interhyp, Schaeffler und Dash0. In vier Projekten einziger Entwickler mit voller Produktverantwortung; messbare Ergebnisse wie 60 % schnellere Ladezeiten, 80 % kürzere Build-Zeiten und CMS-Migrationen ohne Downtime.",
-    "en": "Freelance full-stack developer with over 8 years of experience — focused on Next.js, React and TypeScript, from architecture to go-live. Current focus: taking AI products the last mile to the user — most recently as frontend developer for BMW’s AI chatbot, the AI personalization of ARD Sounds and an AI sales avatar platform. Further projects include Germany’s public broadcaster ARD (tagesschau.de, sportschau.de), Interhyp, Schaeffler and Dash0. Sole developer with full product ownership on four projects; measurable results include 60% faster load times, 80% shorter build times and CMS migrations with zero downtime."
+    "de": "Senior Fullstack-Entwickler mit über 8 Jahren Erfahrung in TypeScript/JavaScript, React/Next.js und Angular — von der Architektur bis zum Go-live. Schwerpunkt: AI-Funktionen nutzerfreundlich in Webanwendungen integrieren, zuletzt beim AI Assistant von BMW (Generative UI, LLM-Streaming) und der KI-Personalisierung von ARD Sounds. Bewährt als alleinverantwortlicher Entwickler wie in großen, verteilten Teams — vom Early-Stage-Startup bis zum Konzern, u. a. ARD (tagesschau.de), Interhyp und Schaeffler.",
+    "en": "Senior full-stack developer with over 8 years of experience in TypeScript/JavaScript, React/Next.js and Angular — from architecture to go-live. Focus: building user-friendly AI features into web applications, most recently BMW’s AI Assistant (generative UI, LLM streaming) and the AI personalization of ARD Sounds. Proven both as a sole developer and in large, distributed teams — from early-stage startups to large enterprises, including Germany’s public broadcaster ARD (tagesschau.de), Interhyp and Schaeffler."
   },
   "profiles": [
     {
@@ -43,8 +44,8 @@
         "en": "English"
       },
       "fluency": {
-        "de": "Verhandlungssicher",
-        "en": "Business fluent"
+        "de": "Verhandlungssicher (C1)",
+        "en": "Business fluent (C1)"
       }
     }
   ]

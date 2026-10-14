@@ -3,11 +3,14 @@
 //
 // Design-Sprache: übernommen von der eigenen Landing Page (nils.fyi) —
 // "warm editorial" statt Corporate-Navy:
-//   - Farbwelt:   warmes Papier (#f6f3ed), warme Tinte (#241e1a),
+//   - Farbwelt:   weißes Papier (Druck, Dark-Mode-Viewer), warme Tinte (#241e1a),
 //                 Terrakotta-Akzent (#a33e25), Ton/Clay-Konturen (#c69889)
-//   - Schriften:  Space Grotesk (Display/Name/Titel), Instrument Sans (Text),
-//                 Geist Mono (Daten, Labels, Tech-Stack) — alle SIL OFL,
-//                 gebündelt unter fonts/
+//   - Schriften:  Instrument Sans für allen Text; Geist Mono NUR für Daten in
+//                 festen Positionen (Zeitraum, Tech-Zeilen, Sektionslabels,
+//                 Footer) und nie innerhalb einer Textzeile gemischt; Space
+//                 Grotesk nur für den Namen (Marke) — alle SIL OFL, unter fonts/
+//   - Typo-Skala: 5 Größen (26 / 11.5 / 10 / 8.5 / 7.5pt), ein Akzent,
+//                 Versalien nur für kurze Labels — siehe "Typografie" unten
 //   - Elemente:   Punkt-Marks an Sektionslabels und im Footer,
 //                 Timeline-Schiene mit Terrakotta-Knoten für Projekte und
 //                 Ausbildung, Tech-Keywords als stille Mono-Zeilen
@@ -36,34 +39,52 @@
   de: (
     profile: "Profil", experience: "Projekthistorie", skills: "Kompetenzen",
     education: "Ausbildung", languages: "Sprachen",
-    grade: "Note", focus: "Fokus", doc: "Lebenslauf",
+    grade: "Note", focus: "Fokus", doc: "Profil",
   ),
   en: (
-    profile: "Profile", experience: "Project History", skills: "Skills",
+    profile: "Profile", experience: "Project Experience", skills: "Skills",
     education: "Education", languages: "Languages",
-    grade: "Grade", focus: "Focus", doc: "CV",
+    grade: "Grade", focus: "Focus", doc: "Profile",
   ),
 )
 #let t = i18n.at(lang, default: i18n.de)
 
 // ---- Farben (Design-Tokens von nils.fyi) ----------------------------------
-#let paper = rgb("#f6f3ed") // --background
+// Seitenhintergrund bewusst weiß statt des Landing-Page-Papiertons (#f6f3ed):
+// druckt ohne Farbrand und invertiert sauber in Dark-Mode-Viewern.
+#let paper = white
 #let card = rgb("#fbfaf7") // --card
 #let ink = rgb("#241e1a") // --foreground
 #let muted = rgb("#5f5650") // --muted-foreground
 #let rail = rgb("#cdc5ba") // --border, eine Nuance kräftiger für den Druck
-#let clay = rgb("#c69889") // --ton (Konturlinien)
+#let clay = rgb("#c69889") // --ton (Konturlinien) — nur Trenner & Marker
+// Einziger Akzent (Kontrast 6.4:1 auf Weiß). Rollen: Titelzeile im Kopf,
+// Firmennamen, Links, Punkte/Knoten — sonst trägt Gewicht die Hierarchie.
 #let terra = rgb("#a33e25") // --primary
-#let terra-deep = rgb("#852917") // --primary-deep
 
 // ---- Schriften ------------------------------------------------------------
 #let sans = "Instrument Sans"
 #let display = "Space Grotesk"
 #let mono = "Geist Mono"
 
+// ---- Typografie -----------------------------------------------------------
+// Fünf klar getrennte Größen statt acht dicht beieinander liegender.
+#let size-name = 26pt
+#let size-title = 11.5pt // Eintragstitel; 11.5pt ist das Maximum, bei dem der
+// längste Titel bei 1.8cm Rand einzeilig bleibt (gemessen: 371 von 378pt).
+#let size-body = 10pt // Fließtext, Firmenzeile, Kompetenzen, Kontakt
+#let size-meta = 8.5pt // Mono: Zeitraum, Tech-Zeilen, Sektionslabels
+#let size-fine = 7.5pt // Footer
+// Ein Zeilenabstand für allen Fließtext (~1.3 Zeilenhöhe) und ein Tracking
+// für alle Versalien-Labels.
+#let lead-body = 0.6em
+#let lead-meta = 0.6em
+#let track-caps = 0.08em
+
 // ---- Layout-Konstanten ----------------------------------------------------
 #let photo-size = 80pt
 #let rail-indent = 16pt // Einzug der Einträge rechts der Timeline-Schiene
+#let section-above = 22pt // Abstand über jeder Sektionsüberschrift
 
 // ---- Datumsformatierung ---------------------------------------------------
 #let months-en = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
@@ -78,13 +99,12 @@
   let p = s.split("-")
   fmt-ym(int(p.at(0)), int(p.at(1)))
 }
-// Laufende Projekte (ohne endDate) zeigen bewusst NICHT "heute"/"Present",
-// sondern den Monat, in dem das PDF generiert wurde — so trägt jedes Datum
-// eine konkrete, maschinenlesbare Angabe.
+// Laufende Projekte (ohne endDate) enden mit "heute"/"present": Der Build-
+// Monat an dieser Stelle las sich wie ein Projektende. Parser erkennen
+// "heute"/"present" als laufend.
 #let fmt-range(start, end) = {
-  let today = datetime.today()
   fmt-month(start) + " – " + (
-    if end == none { fmt-ym(today.year(), today.month()) } else { fmt-month(end) }
+    if end == none { if lang == "de" { "heute" } else { "present" } } else { fmt-month(end) }
   )
 }
 
@@ -94,61 +114,73 @@
   baseline: baseline,
   circle(radius: r, fill: fill),
 )
-#let sep = text(fill: clay)[ · ]
+// Trenner mit genau EINEM Leerzeichen je Seite: Doppelte Leerzeichen erzeugt
+// eine Lücke, die pdftotext & Co. als Spaltengrenze deuten (die Telefonnummer
+// landete dadurch als eigener Block hinter den Links). In der Proportional-
+// schrift wirkt ein normales Leerzeichen um den Punkt gequetscht, daher dort
+// breitere Wortabstände (echte Leerzeichen bleiben erhalten); Mono hat von
+// Haus aus breite Leerzeichen.
+#let sep-style(body, mono: false) = text(fill: clay, spacing: if mono { 100% } else { 170% }, body)
+#let sep = sep-style[ · ]
+#let sep-mono = sep-style(mono: true)[ · ]
+// Datenfelder mit " · " (Label, Eckdaten) mit denselben Trennern setzen.
+#let with-seps(s) = s.split(" · ").join(sep)
 
-// Mono-Metadaten (Daten, Kontakt, Stack) — die "Maschinen-Schicht" des Designs.
-#let meta-text(body, size: 7.5pt, fill: muted) = text(
+// Mono-Metadaten (Zeitraum, Tech-Zeilen) — die "Maschinen-Schicht" des
+// Designs, immer in eigener Zeile/Spalte, nie mitten in einer Sans-Zeile.
+// 8.5pt ist die Untergrenze für Lesbarkeit auf dem Handy und im Druck.
+#let meta-text(body, size: size-meta, fill: muted) = text(
   font: mono, size: size, weight: 400, fill: fill, body,
 )
 
-// Mono-Uppercase-Label mit Letterspacing (wie "| WEB & AI ENGINEERING").
-// Tracking bewusst <= 1.2pt: ab ~1.5pt (bei 8pt) zerfallen die Wörter bei
-// Raw-Order-Textextraktion in Einzelbuchstaben ("P R O F I L") — schlecht
-// für ATS-Section-Erkennung. 1.2pt ist der verifizierte sichere Wert.
-#let mono-label(body, size: 8pt, fill: ink, tracking: 1.2pt) = text(
-  font: mono, size: size, weight: 500, tracking: tracking, fill: fill, upper(body),
+// Mono-Versalien-Label (Sektionsüberschriften). Tracking bewusst klein:
+// ab ~0.18em zerfallen Wörter bei der Textextraktion in Einzelbuchstaben
+// ("P R O F I L") — schlecht für die ATS-Sektionserkennung.
+#let mono-label(body, size: size-meta, fill: ink) = text(
+  font: mono, size: size, weight: 500, tracking: track-caps, fill: fill, upper(body),
 )
 
 // Bulletliste im Eintrag — Ton-Marker, ruhige, gleichmäßige Zeilen.
-// Wichtig für die Gruppierung: Der Zeilenabstand INNERHALB eines Bullets
-// (leading ~4.9pt) muss kleiner sein als der Abstand ZWISCHEN zwei Bullets
-// (spacing 6.5pt), sonst kleben umbrechende Bullets optisch am Nachbarn.
+// Wichtig für die Gruppierung: Der Abstand ZWISCHEN zwei Bullets (7pt) muss
+// größer sein als der Zeilenabstand INNERHALB eines Bullets (6pt), sonst
+// kleben umbrechende Bullets optisch am Nachbarn.
 #let entry-list(items) = {
-  set text(size: 9.5pt)
-  set par(leading: 0.52em)
+  set par(leading: lead-body)
   list(
     marker: text(fill: clay, size: 9pt)[•],
-    spacing: 6.5pt,
+    spacing: 7pt,
     body-indent: 7pt,
     ..items.map(it => [#it]),
   )
 }
 
-// Mono-Zeile mit Terrakotta-Label, z. B. "STACK  Next.js · TypeScript · …"
-// Grid mit Label-Spalte -> Folgezeilen hängen sauber unter dem Inhalt.
-#let labeled-meta(label, items) = grid(
-  columns: (auto, 1fr),
-  column-gutter: 7pt,
-  align: (left + top, left + top),
-  // Tracking 1pt: bei 6.8pt Labelgröße der sichere Wert für die Extraktion
-  // (die Schwelle skaliert mit der Schriftgröße).
-  mono-label(label, size: 6.8pt, fill: terra, tracking: 1pt),
-  {
-    set par(leading: 0.7em)
-    meta-text(items.join(" · "), size: 7pt)
-  },
-)
-
-// Keyword-Zeile: stille Mono-Metadaten (Tech-Stack der Einträge und
-// Keywords der Kompetenz-Gruppen teilen sich dieses Styling).
-#let meta-line(items) = {
-  set par(leading: 0.7em)
-  meta-text(items.join(" · "), size: 7pt)
+// Keyword-Folge: jedes Keyword ist unteilbar ("TanStack Query" bricht nie in
+// der Mitte) und hält seinen nachfolgenden Trenner fest, damit keine Zeile
+// mit "·" beginnt — umbrochen wird nur NACH einem Trenner. Schriftneutral;
+// rein inline (kein `set par` hier, das würde einen eigenen Absatz erzwingen).
+#let keyword-list(items, mono: false) = {
+  let head = sep-style(mono: mono)[ ·]
+  let tail = sep-style(mono: mono)[ ]
+  items.enumerate().map(((i, it)) => {
+    if i + 1 < items.len() { box[#it#head] + tail } else { box(it) }
+  }).join()
 }
+#let meta-line(items) = meta-text(keyword-list(items, mono: true))
+
+// Keyword-Zeile mit Label im selben Absatz, z. B.
+// "Fokus: Webentwicklung · Machine Learning". Bewusst ohne Label-Spalte,
+// ohne Versalien-Tracking und ohne Extra-Abstand: Spalten und Lücken deutet
+// pdftotext als Spalten- bzw. Buchstabengrenzen ("F O K U S", Label landet
+// hinter der Sektion).
+#let labeled-keywords(label, items, fill: ink) = text(fill: fill, {
+  set par(leading: lead-body)
+  text(weight: 600, label + ":")
+  [ ]
+  keyword-list(items)
+})
 
 // ---- Ort (Kontaktzeile) ---------------------------------------------------
-// Bewusst kompakt: Stadt + Land. Die volle Anschrift bleibt in den Daten und
-// damit im maschinenlesbaren JSON-Anhang erhalten.
+// Bewusst kompakt: Stadt + Land (keine Straße — weder hier noch im JSON-Anhang).
 #let country-names = ("DE": (de: "Deutschland", en: "Germany"))
 #let location-str = {
   let code = b.location.countryCode
@@ -156,52 +188,59 @@
   b.location.city + ", " + name
 }
 
-// URLs ohne Protokoll/www anzeigen ("nils.fyi") — als Terrakotta-Akzent.
+// URLs ohne Protokoll/www anzeigen ("nilsschlueter.de") — als Terrakotta-Akzent.
 #let display-url(u) = u.replace("https://", "").replace("http://", "").replace("www.", "").trim("/")
 
-// Reihenfolge: Ort · Arbeitsmodus · E-Mail · Telefon · Website · Profile.
-#let contact-items = {
-  let items = (text(location-str),)
-  let avail = b.at("availability", default: none)
-  if avail != none and avail != "" { items.push(text(avail)) }
-  items.push(text(b.email))
+// Feste Zeilen statt freiem Umbruch, damit die Lesereihenfolge stabil bleibt:
+//   1. Ort · E-Mail · Telefon   (Kontaktdaten in EINER Textfolge)
+//   2. Website · Profile        (Links)
+#let contact-lines = {
+  let direct = (location-str, b.email)
   let phone = b.at("phone", default: none)
-  if phone != none and phone != "" { items.push(text(phone)) }
+  if phone != none and phone != "" { direct.push(phone) }
+  let links = ()
   let site = b.at("url", default: none)
   if site != none {
-    items.push(link(site, text(fill: terra, weight: 500, display-url(site))))
+    links.push(link(site, text(fill: terra, display-url(site))))
   }
   for p in b.at("profiles", default: ()) {
-    items.push(link(p.url, text(fill: terra, weight: 500, display-url(p.url))))
+    links.push(link(p.url, text(fill: terra, display-url(p.url))))
   }
-  items
+  (direct.join(sep), links.join(sep))
 }
 
 // ---- Eintrags-Kopf --------------------------------------------------------
-// Typo-Hierarchie: Titel (Space Grotesk) > Firma > Mono-Metadaten (Datum/Ort).
-#let entry-header(title, org, dates, location) = block(below: 0pt, breakable: false, {
-  set par(leading: 0.5em)
+// Typo-Hierarchie über Größe/Gewicht/Farbe derselben Schrift:
+// Titel (11.5pt, 600) > Firma (10pt, 600, Akzent) > Ort/Note (10pt, gedämpft).
+// Zeile 1: Titel | Zeitraum (Mono, eigene Spalte). Zeile 2: Firma · Ort über
+// die volle Breite — so bleibt die Datumsspalte schmal und der Titel einzeilig.
+#let entry-header(title, org, dates, details) = block(below: 0pt, breakable: false, {
+  set par(leading: lead-body)
   grid(
     columns: (1fr, auto),
     column-gutter: 12pt,
-    row-gutter: 5.5pt,
+    row-gutter: 6pt,
     align: (left + horizon, right + horizon),
-    text(font: display, size: 11pt, weight: 600, fill: ink, title),
+    text(size: size-title, weight: 600, title),
     meta-text(dates),
-    text(size: 9pt, weight: 600, fill: terra-deep, org),
-    meta-text(location),
+    grid.cell(colspan: 2, {
+      text(weight: 600, fill: terra, org)
+      for d in details { text(fill: muted, sep + d) }
+    }),
   )
 })
 
 // ---- Timeline-Eintrag -----------------------------------------------------
 // Jeder Eintrag hängt an einer durchgehenden Schiene (linker Hairline-Strich)
 // mit Terrakotta-Knoten auf Titelhöhe — das Prozess-/Timeline-Motiv der
-// Landing Page. breakable: false -> ein Eintrag bricht nie über Seiten.
-#let rail-entry(body) = block(
-  breakable: false,
+// Landing Page. Umbrüche nur geschützt (siehe work-entry): nie ein Kopf allein
+// am Seitenende, nie eine Tech-Zeile allein am Seitenanfang. Ganz unteilbare
+// Einträge hinterließen bis zu 160pt Lücke je Seite (und eine 5. Seite).
+#let rail-entry(body, breakable: false) = block(
+  breakable: breakable,
   above: 0pt,
   below: 0pt,
-  inset: (left: rail-indent, top: 17pt),
+  inset: (left: rail-indent, top: 13pt),
   stroke: (left: 0.8pt + rail),
   {
     place(dx: -rail-indent - 2.8pt, dy: 3pt, circle(
@@ -213,75 +252,142 @@
   },
 )
 
-#let work-entry(w) = rail-entry({
-  entry-header(
-    w.position,
-    w.name,
-    fmt-range(w.startDate, w.at("endDate", default: none)),
-    w.at("location", default: ""),
-  )
-  let bullets = w.at("responsibilities", default: ()) + w.at("achievements", default: ())
+// Bullets + Tech-Zeile — gemeinsam für Einträge und Teilprojekte.
+#let bullets-of(x) = x.at("responsibilities", default: ()) + x.at("achievements", default: ())
+
+// Tech-Stack ohne Label — der Inhalt erklärt sich selbst.
+#let tag-line(keywords) = if keywords.len() > 0 {
+  block(above: 8pt, below: 0pt, { set par(leading: lead-meta); meta-line(keywords) })
+}
+
+#let entry-body(x, keywords) = {
+  let bullets = bullets-of(x)
   if bullets.len() > 0 {
     block(above: 8pt, below: 0pt, entry-list(bullets))
   }
-  if w.at("keywords", default: ()).len() > 0 {
-    // Tech-Stack ohne Label — der Inhalt erklärt sich selbst.
-    block(above: 8pt, below: 0pt, meta-line(w.keywords))
-  }
+  tag-line(keywords)
+}
+
+#let subproject-block(s) = block(above: 12pt, below: 0pt, breakable: false, {
+  text(weight: 600, s.title)
+  entry-body(s, s.keywords)
 })
+
+#let work-entry(w) = {
+  let subprojects = w.at("subprojects", default: ())
+  let header = {
+    entry-header(
+      w.position,
+      w.name,
+      fmt-range(w.startDate, w.at("endDate", default: none)),
+      ("location", "workload").map(k => w.at(k, default: none)).filter(v => v != none),
+    )
+  }
+  let bullets = bullets-of(w)
+  let keywords = w.at("keywords", default: ())
+  if subprojects.len() == 0 and bullets.len() <= 2 {
+    rail-entry({
+      header
+      entry-body(w, keywords)
+    })
+  } else if subprojects.len() == 0 {
+    // Geschützter Umbruch zwischen Bullets: Kopf + erste zwei Bullets und
+    // letzter Bullet + Tech-Zeile sind jeweils unteilbar, Bullets selbst auch.
+    // Abstände = die der ungeteilten Liste (8pt nach Kopf, 7pt zwischen Bullets).
+    let item(b) = block(above: 7pt, below: 0pt, breakable: false, entry-list((b,)))
+    rail-entry(breakable: true, {
+      block(breakable: false, below: 0pt, {
+        header
+        block(above: 8pt, below: 0pt, entry-list(bullets.slice(0, 2)))
+      })
+      for b in bullets.slice(2, -1) { item(b) }
+      block(above: 7pt, below: 0pt, breakable: false, {
+        entry-list((bullets.last(),))
+        tag-line(keywords)
+      })
+    })
+  } else {
+    // Kopf + erstes Teilprojekt unteilbar, damit der Kopf nie allein am
+    // Seitenende steht; danach darf zwischen Teilprojekten umbrochen werden.
+    rail-entry(breakable: true, {
+      block(breakable: false, below: 0pt, {
+        header
+        entry-body(w, ())
+        subproject-block(subprojects.first())
+      })
+      for s in subprojects.slice(1) { subproject-block(s) }
+    })
+  }
+}
 
 #let edu-entry(e) = rail-entry({
   let meta = ()
   if e.at("location", default: none) != none { meta.push(e.location) }
   if e.at("score", default: none) != none { meta.push(t.grade + ": " + e.score) }
   entry-header(
-    e.studyType + " · " + e.area,
+    [#e.studyType#sep#e.area],
     e.institution,
     fmt-range(e.startDate, e.at("endDate", default: none)),
-    meta.join("  ·  "),
+    meta,
   )
   let courses = e.at("courses", default: ())
   if courses.len() > 0 {
-    block(above: 7pt, below: 0pt, labeled-meta(t.focus, courses))
+    block(above: 6pt, below: 0pt, labeled-keywords(t.focus, courses, fill: muted))
   }
 })
 
 // ===========================================================================
 // Dokument-Setup
 // ===========================================================================
+// Rolle = erster Label-Abschnitt ohne Klammerzusatz ("Senior Fullstack-Entwickler").
+#let role = b.label.split("·").at(0).replace(regex("\s*\(.*?\)"), "").trim()
 #set document(
   author: b.name,
-  // Aussagekräftiger Dokumenttitel für ATS-/Mail-/Tab-Anzeige
-  // (statt nur des Jobtitels).
-  title: b.name + " – " + t.doc,
+  // Aussagekräftiger Dokumenttitel für ATS-/Mail-/Tab-Anzeige, mit Stand
+  // (Build-Monat): "Nils Schlüter – Senior Fullstack-Entwickler – Profil 2026-10".
+  title: b.name + " – " + role + " – " + t.doc + " " + datetime.today().display("[year]-[month]"),
   description: b.summary,
   keywords: data.skills.map(s => s.keywords).flatten(),
 )
 // hyphenate: false ist eine Invarianten-Absicherung für die Maschinen-
 // lesbarkeit: Bei justify: false ist automatische Silbentrennung ohnehin aus,
 // aber falls jemand später Blocksatz aktiviert, würde Typst sonst still Soft
-// Hyphens einfügen — das echte ATS-Problem. Zeilenumbrüche an vorhandenen
-// Kompositum-Bindestrichen ("Headless-CMS-System") verhindert das Flag NICHT
-// (dort wird kein Zeichen eingefügt; das ist normales, verlustfreies Umbrechen).
-#set text(font: sans, size: 10pt, lang: lang, ligatures: false, hyphenate: false, fill: ink)
-#set par(justify: false, leading: 0.62em)
+// Hyphens einfügen — das echte ATS-Problem.
+#set text(font: sans, size: size-body, lang: lang, ligatures: false, hyphenate: false, fill: ink)
+#set par(justify: false, leading: lead-body)
+
+// Komposita mit Bindestrich ("Bank-Transaktionsdaten", "UI-Komponenten")
+// nie am Bindestrich umbrechen: Extraktoren (pdftotext, viele ATS-Parser)
+// entfernen einen Bindestrich am Zeilenende und kleben die Teile zusammen
+// ("BankTransaktionsdaten"). Die Box hält das Wort zusammen, der Text bleibt
+// unverändert — anders als U+2011 (geschützter Bindestrich), das die Suche
+// nach "Multi-Sender" bricht und in den eingebetteten Fonts fehlt.
+#show regex("[\p{L}\p{N}]+(?:-[\p{L}\p{N}]+)+"): box
+// Gedankenstrich nie am Zeilenanfang: hängt am vorherigen Wort (normales
+// Leerzeichen bleibt erhalten, anders als ein geschütztes Leerzeichen).
+#show regex("\S+ —"): box
+// Instrument Sans hat kein "₂" (sonst Fallback auf eine Serifen-Schrift).
+// Als Tiefstellung gesetzt landet zudem ein suchbares "CO2" in der Textebene.
+#show "CO₂": [CO#sub[2]]
 #set page(
   paper: "a4",
   fill: paper,
-  margin: (top: 1.2cm, bottom: 1.7cm, left: 1.35cm, right: 1.35cm),
+  // 1.8cm seitlich: begrenzt die Zeilen auf ~90 Zeichen (vorher ~100) und ist
+  // das Maximum, bei dem alle Eintragstitel einzeilig bleiben.
+  margin: (top: 1.6cm, bottom: 1.8cm, left: 1.8cm, right: 1.8cm),
   footer: context {
-    set text(font: mono, size: 6.8pt, fill: muted)
+    set text(font: mono, size: size-fine, fill: muted, tracking: track-caps)
     grid(
       columns: (1fr, auto),
       align: (left, right),
       {
         dot(r: 1.7pt, baseline: -1.2pt)
         h(5pt)
-        text(tracking: 1pt, upper(b.name))
-        text(fill: clay, "  ·  ")
+        upper(b.name)
+        sep-mono
         // Nur der erste Label-Abschnitt — das volle Label (mit Tech-Keywords)
         // wäre für den Footer zu lang.
-        text(tracking: 1pt, upper(b.label.split("·").at(0).trim()))
+        upper(b.label.split("·").at(0).trim())
       },
       counter(page).display("1 / 1", both: true),
     )
@@ -289,7 +395,7 @@
 )
 
 // Section-Überschrift: Punkt + Mono-Uppercase-Label + Hairline nach rechts.
-#show heading.where(level: 2): it => block(above: 26pt, below: 13pt, {
+#show heading.where(level: 2): it => block(above: section-above, below: 12pt, {
   grid(
     columns: (auto, auto, 1fr),
     column-gutter: 9pt,
@@ -301,21 +407,35 @@
 })
 
 // ---- Kopf -----------------------------------------------------------------
-// Kein Banner mehr: Name gross auf Papier, Mono-Label und Mono-Kontaktzeile
-// darunter — die Kopfzeile der Landing Page als Briefkopf.
+// Name in Space Grotesk (einziger Einsatz, Marke der Landing Page), alles
+// darunter in Instrument Sans: Titelzeile (Akzent), Kontakt (gedämpft),
+// Links (Akzent), Eckdaten (Tinte).
 #block(below: 0pt, {
   grid(
     columns: if show-photo { (1fr, auto) } else { (1fr,) },
-    column-gutter: 28pt,
+    column-gutter: 24pt,
     align: horizon,
     {
-      text(font: display, size: 27pt, weight: 700, tracking: -0.3pt, b.name)
-      v(7pt)
-      // 8pt/1pt Tracking: das lange Label (inkl. Tech-Keywords) bleibt auch
-      // neben dem Foto einzeilig; 1pt ist zudem extraktionssicher.
-      mono-label(b.label, size: 8pt, fill: terra, tracking: 1pt)
+      // Absatzabstand aus, damit nur die v()-Werte zählen — sonst addiert
+      // Typst je Absatzgrenze 1.2em und der Untertitel rückt ~30pt vom Namen
+      // ab. Gemessen wird jeweils von Grundlinie zu Versalhöhe.
+      set par(spacing: 0pt)
+      text(font: display, size: size-name, weight: 700, tracking: -0.01em, b.name)
+      // Name + Titelzeile bilden eine Einheit, Kontakt/Eckdaten eine zweite.
       v(9pt)
-      meta-text(contact-items.join(sep + " "))
+      // Gemischte Schreibung statt 80 Zeichen Versalien (lesbarer, und passt
+      // auch neben dem Foto einzeilig).
+      text(fill: terra, with-seps(b.label))
+      v(15pt)
+      // Kontakt, Links und Eckdaten (Verfügbarkeit · Auslastung · Einsatzort)
+      // als ein Block in einem Stil: Eine abgesetzte dritte Zeile in Tinte
+      // wirkte wie ein Fremdkörper zwischen Kopf und Profil.
+      let (direct, links) = contact-lines
+      let avail = b.at("availability", default: none)
+      text(fill: muted, {
+        direct; linebreak(); links
+        if avail != none { linebreak(); with-seps(avail) }
+      })
     },
     ..if show-photo {(
       block(
@@ -334,10 +454,30 @@
 // Profil
 // ===========================================================================
 #heading(level: 2, t.profile)
-#block(above: 0pt, text(size: 9.8pt, b.summary))
+#block(above: 0pt, b.summary)
 
 // ===========================================================================
-// Berufserfahrung
+// Kompetenzen — direkt nach dem Profil: Vermittler lesen zuerst die Top-Skills.
+// ===========================================================================
+// Kompakt mit Kategorien: Gruppenname fett, direkt gefolgt von den Keywords
+// in derselben Textzeile, in der Textschrift — hier liest der Mensch, anders
+// als bei den Tech-Zeilen der Projekte (Extraktions-Hinweise siehe
+// labeled-keywords).
+#if data.at("skills", default: ()).len() > 0 {
+  // Der Wrapper trägt den Sektionsabstand: Am Anfang eines Blocks verfällt
+  // das `above` der Überschrift, die Sektion klebte sonst am Profil.
+  block(breakable: false, above: section-above, {
+    heading(level: 2, t.skills)
+    for (i, s) in data.skills.enumerate() {
+      // 10pt zwischen den Gruppen, deutlich mehr als der Zeilenabstand (6pt)
+      // innerhalb einer Gruppe — sonst verschwimmen mehrzeilige Gruppen.
+      block(above: if i == 0 { 0pt } else { 10pt }, below: 0pt, labeled-keywords(s.name, s.keywords))
+    }
+  })
+}
+
+// ===========================================================================
+// Projekthistorie (JSON Resume: work)
 // ===========================================================================
 #if data.at("work", default: ()).len() > 0 {
   heading(level: 2, t.experience)
@@ -353,36 +493,15 @@
 }
 
 // ===========================================================================
-// Kompetenzen
-// ===========================================================================
-// Kompakt mit Kategorien: Gruppenname als Mono-Uppercase-Label (Terrakotta),
-// darunter die Keywords als stille Mono-Zeile — gleiche Optik wie die
-// Stack-Zeilen der Projekte. Tracking 1pt = sicherer Wert für die Extraktion.
-// Die ganze Sektion bricht geschlossen um: passt sie nicht mehr auf die
-// Seite, wandert sie komplett auf die nächste — so endet keine Seite mitten
-// in den Kompetenz-Gruppen und eine Folgeseite wirkt nicht verwaist.
-#if data.at("skills", default: ()).len() > 0 {
-  block(breakable: false, {
-    heading(level: 2, t.skills)
-    for (i, s) in data.skills.enumerate() {
-      block(above: if i == 0 { 0pt } else { 10pt }, below: 0pt, breakable: false, {
-        mono-label(s.name, size: 6.8pt, fill: terra, tracking: 1pt)
-        block(above: 4.5pt, below: 0pt, meta-line(s.keywords))
-      })
-    }
-  })
-}
-
-// ===========================================================================
 // Sprachen
 // ===========================================================================
 #if data.at("languages", default: ()).len() > 0 {
   heading(level: 2, t.languages)
   block(above: 0pt, {
     for (i, l) in data.languages.enumerate() {
-      if i > 0 { h(9pt); text(fill: clay)[·]; h(9pt) }
+      if i > 0 { sep }
       text(weight: 600, l.language)
-      meta-text(" — " + l.fluency, size: 8pt)
+      text(fill: muted, " — " + l.fluency)
     }
   })
 }

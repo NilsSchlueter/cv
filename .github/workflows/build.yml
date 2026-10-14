@@ -41,17 +41,24 @@ jobs:
       # prebuild (gen:schema -> merge -> validate) läuft automatisch vor build.
       - name: Validieren & PDFs bauen
         run: npm run build
+        env:
+          # Release-Builds brechen ab, solange [[TODO]]-Platzhalter offen sind.
+          CV_STRICT: ${{ startsWith(github.ref, 'refs/tags/v') && '1' || '0' }}
 
       - name: PDFs als Artifact hochladen
         uses: actions/upload-artifact@v4
         with:
           name: cv-pdfs
-          path: dist/*.pdf
+          path: |
+            dist/*.pdf
+            dist/*.md
           if-no-files-found: error
 
       - name: Release erstellen (nur bei Version-Tags)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.pdf
+          files: |
+            dist/*.pdf
+            dist/*.md
           generate_release_notes: true

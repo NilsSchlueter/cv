@@ -1,11 +1,14 @@
 /**
- * Build-Schritt: kompiliert die versandfertigen Distributions-PDFs nach `dist/`.
+ * Build-Schritt: kompiliert die versandfertigen Distributions-PDFs nach `dist/`
+ * und legt daneben je einen Markdown-Export (Basis für DOCX via pandoc) ab.
  * Läuft nach `prebuild` (gen:schema -> merge -> validate).
  *
- *   dist/CV-<Slug>-DE.pdf
- *   dist/CV-<Slug>-EN.pdf
+ *   dist/Schlueter_Nils_Senior-Fullstack_Profil_DE_2026-10.pdf (+ .md)
+ *   dist/Schlueter_Nils_Senior-Fullstack_Profile_EN_2026-10.pdf (+ .md)
  *
- * Der Dateiname-Slug wird aus data/basics.json (`name`) abgeleitet.
+ * Nachname/Vorname stammen aus data/basics.json (`name`), das Datum ist der
+ * Build-Monat — so ist in Vermittler-Ablagen sofort sichtbar, wie aktuell
+ * ein Profil ist.
  *
  * Foto-Steuerung (Standard: DE mit Foto, EN ohne – DACH vs. international):
  *   npm run build                     # Defaults
@@ -14,10 +17,15 @@
  *   CV_PHOTO_DE=false npm run build   # via Umgebungsvariable
  */
 import { execFileSync } from "node:child_process";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { Basics } from "./types";
-import { ROOT, DATA, DIST_DIR, LANGS, type Lang, readJson, slugify } from "./lib";
+import { ROOT, DATA, DIST_DIR, GENERATED_DIR, LANGS, type Lang, readJson, slugify } from "./lib";
+import { toMarkdown, type Resume } from "./markdown";
+
+// Rollen-Teil des Dateinamens und Dokumentbezeichnung je Sprache.
+const ROLE_SLUG = "Senior-Fullstack";
+const DOC_LABEL: Record<Lang, string> = { de: "Profil", en: "Profile" };
 
 // Foto-Default je Sprache.
 const photoDefaults: Record<Lang, boolean> = { de: true, en: false };
@@ -58,13 +66,24 @@ try {
 }
 
 const basics = Basics.parse(readJson(join(DATA, "basics.json")));
-const slug = slugify(basics.name);
+const nameParts = basics.name.split(" ");
+const surname = nameParts.pop() ?? basics.name;
+const namePrefix = `${slugify(surname)}_${slugify(nameParts.join(" "))}_`;
+
+const now = new Date();
+const buildMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
 
 mkdirSync(DIST_DIR, { recursive: true });
 
+// Ältere Builds (z. B. Vormonat) entfernen, damit dist/ nur den aktuellen
+// Stand enthält. Selbst erzeugte .docx-Dateien bleiben unangetastet.
+for (const f of readdirSync(DIST_DIR)) {
+  if (f.startsWith(namePrefix) && /\.(pdf|md)$/.test(f)) rmSync(join(DIST_DIR, f));
+}
+
 for (const lang of LANGS) {
   const photo = photoFor(lang);
-  const fileName = `CV-${slug}-${lang.toUpperCase()}.pdf`;
+  const baseName = `${namePrefix}${ROLE_SLUG}_${DOC_LABEL[lang]}_${lang.toUpperCase()}_${buildMonth}`;
   execFileSync(
     "typst",
     [
@@ -74,11 +93,13 @@ for (const lang of LANGS) {
       "--input", `lang=${lang}`,
       "--input", `photo=${photo}`,
       join(ROOT, "templates", "cv.typ"),
-      join(DIST_DIR, fileName),
+      join(DIST_DIR, `${baseName}.pdf`),
     ],
     { stdio: "inherit" },
   );
-  console.log(`  dist/${fileName}  (Foto: ${photo ? "an" : "aus"})`);
+  const resume = readJson<Resume>(join(GENERATED_DIR, `resume.${lang}.json`));
+  writeFileSync(join(DIST_DIR, `${baseName}.md`), toMarkdown(resume, lang));
+  console.log(`  dist/${baseName}.pdf (+ .md)  (Foto: ${photo ? "an" : "aus"})`);
 }
 
 console.log("Build fertig.");
