@@ -1,8 +1,8 @@
 {
   "$schema": "../../schema/project.schema.json",
-  "client": "continuum.club",
+  "client": { "de": "continuum (heute House 120)", "en": "continuum (now House 120)" },
   "role": {
-    "de": "Fullstack-Entwickler — AI-Trainingsplan-Software (Next.js/Firebase)",
+    "de": "Fullstack-Entwickler – AI-Trainingsplan-Software (Next.js/Firebase)",
     "en": "Fullstack Developer — AI Training Plan Software (Next.js/Firebase)"
   },
   "location": {
@@ -13,21 +13,25 @@
   "endDate": "2025-12",
   "responsibilities": [
     {
-      "de": "Entwicklung einer Software zur personalisierten Trainingsplan-Erstellung für ein exklusives New Yorker Fitnessstudio — bestehenden MVP innerhalb von 3 Monaten produktionsreif gemacht und in den täglichen Einsatz des Trainer-Teams gebracht",
-      "en": "Built software for personalized training plan creation for an exclusive New York fitness studio — took the existing MVP to production readiness within 3 months and into the trainer team's daily use"
+      "de": "Entwicklung einer Software zur personalisierten Trainingsplan-Erstellung für einen New Yorker Wellnessclub – Überführung des bestehenden MVP innerhalb von drei Monaten in den Produktivbetrieb und den täglichen Einsatz des Trainer-Teams",
+      "en": "Built personalized training plan software for a New York wellness club — took the existing MVP into production for the trainer team’s daily use within three months"
     },
     {
-      "de": "Entwicklung der AI-Integration mit Vercel AI SDK und OpenAI API: Chat-Interface und KI-assistierte Erstellung der Trainingspläne",
-      "en": "Developed the AI integration with the Vercel AI SDK and OpenAI API: chat interface and AI-assisted creation of the training plans"
+      "de": "Entwicklung der AI-Integration mit Vercel AI SDK und OpenAI API: zweistufige Trainingsplan-Generierung (Vorschläge in fester Struktur per Structured Outputs, danach automatisches Scoring) und LLM-Vorschläge für Ersatzübungen bei Verletzungen",
+      "en": "Developed the AI integration with the Vercel AI SDK and OpenAI API: two-stage training plan generation (proposals in a fixed structure via Structured Outputs, then automated scoring) and LLM-based suggestions for substitute exercises in case of injury"
+    },
+    {
+      "de": "Umsetzung eines Chat-Interfaces mit einem AI-Agenten, der bestehende Trainingspläne auf Nutzeranweisung per Tool Calling anpasst, sowie automatischer Tageszusammenfassungen aus dem Training des Vortags und Gesundheits-Scores aus mehreren Quellen",
+      "en": "Implemented a chat interface where an AI agent adjusts training plans on request via tool calling, plus daily summaries of the previous day’s training and health scores from multiple sources"
     },
     {
       "de": "Backend-Entwicklung mit Node.js auf Firebase Functions, Firestore als Datenbank und Firebase Auth",
-      "en": "Backend development with Node.js on Firebase Functions, with Firestore as the database and Firebase Auth"
+      "en": "Built the Node.js backend on Firebase Functions, with Firestore as the database and Firebase Auth"
     }
   ],
   "achievements": [
     {
-      "de": "Verbesserung der Ladezeiten um ca. 60 % durch eine Frontend-Caching-Strategie und Optimierung der Algorithmen zur Trainingsplangenerierung",
+      "de": "Verbesserung der Ladezeiten um ca. 60 % durch eine Frontend-Caching-Strategie und Optimierung der Algorithmen zur Trainingsplan-Generierung",
       "en": "Improved load times by around 60% through a frontend caching strategy and optimized training plan generation algorithms"
     },
     {
@@ -35,5 +39,5 @@
       "en": "Introduced unit testing with over 80% coverage on new code"
     }
   ],
-  "stack": ["Generative AI", "LLM-Integration", "AI Agents", "Tool/Function Calling", "Structured Outputs", "Prompt Engineering", "Next.js", "React", "TypeScript", "Firebase", "Node.js", "Tailwind CSS"]
+  "stack": ["LLM Integration", "AI Agents", "OpenAI API", "Vercel AI SDK", "Tool/Function Calling", "Structured Outputs", "Prompt Engineering", "Next.js", "React", "TypeScript", "Firebase", "Node.js"]
 }

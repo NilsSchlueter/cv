@@ -20,7 +20,7 @@
         "Firebase",
         "Tailwind CSS",
         "NgRx",
-        "NgRx Signal Store",
+        "NgRx SignalStore",
         "RxJS",
         "Docker",
         "Kubernetes",
@@ -45,8 +45,6 @@
         "GitHub Actions",
         "GitLab",
         "Jenkins",
-        "Terraform",
-        "Sentry",
         "JavaScript",
         "HTML",
         "CSS",
@@ -60,7 +58,7 @@
       },
       "keywords": [
         "Generative AI",
-        "LLM-Integration",
+        "LLM Integration",
         "AI Agents",
         "Generative UI",
         "Chatbot / Conversational UI",
@@ -69,11 +67,9 @@
         "Tool/Function Calling",
         "Structured Outputs",
         "Prompt Engineering",
-        "Guardrails",
-        "EU AI Act",
-        "Streaming (SSE/WebSocket)",
-        "Voice UI (Web Speech API)",
-        "AI-Assisted Development (Claude Code)"
+        "Streaming (SSE)",
+        "Voice UI",
+        "AI-Assisted Development (Claude Code / GitHub Copilot)"
       ]
     },
     {
@@ -83,7 +79,7 @@
         "Strapi",
         "Payload CMS",
         "SEO",
-        "CMS-Migration",
+        "CMS Migration",
         "Content Modeling",
         "Live Preview",
         "GROQ",

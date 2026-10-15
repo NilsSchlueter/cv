@@ -2,19 +2,19 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Schaeffler AG",
   "role": {
-    "de": "Frontend-Entwickler — Interne Beschaffungsplattform (Angular)",
+    "de": "Frontend-Entwickler – Interne Beschaffungsplattform (Angular)",
     "en": "Frontend Developer — Internal Procurement Platform (Angular)"
   },
-  "location": { "de": "Nürnberg", "en": "Nuremberg" },
+  "location": { "de": "Nürnberg (remote)", "en": "Nuremberg (remote)" },
   "startDate": "2022-03",
   "endDate": "2023-03",
   "responsibilities": [
     {
-      "de": "Entwicklung neuer Features für eine global eingesetzte interne Plattform, über die Einkäufer Bestell- und Angebotsprozesse abwickeln — im großen, verteilten Entwicklungsteam",
+      "de": "Entwicklung neuer Features für eine global eingesetzte interne Plattform, über die Einkäufer Bestell- und Angebotsprozesse abwickeln – im großen, verteilten Entwicklungsteam",
       "en": "Developed new features for a globally used internal platform through which purchasers handle ordering and quotation processes — in a large, distributed development team"
     },
     {
-      "de": "Eigenständige Konzeption und Implementierung des Nutzer-Trackings (Azure Application Insights) als Datengrundlage für Produktentscheidungen — Absprungstellen, Feature-Nutzung, UX-Priorisierung",
+      "de": "Eigenständige Konzeption und Umsetzung des Nutzer-Trackings (Azure Application Insights) als Grundlage für Produktentscheidungen – Absprungstellen, Feature-Nutzung, UX-Priorisierung",
       "en": "Independently designed and implemented user tracking (Azure Application Insights) as the data basis for product decisions — drop-off points, feature usage, UX prioritization"
     },
     {
@@ -23,5 +23,5 @@
     }
   ],
   "achievements": [],
-  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Nx (Monorepo)", "Angular Material", "AG Grid", "Jest", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Azure", "Keycloak"]
+  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Nx (Monorepo)", "Angular Material", "AG Grid", "Jest", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Azure Application Insights", "Keycloak"]
 }

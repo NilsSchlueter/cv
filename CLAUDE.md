@@ -12,12 +12,14 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 ## Prüfen vor jedem Commit
 
 - `CV_STRICT=1 npm run build` muss grün sein (Schema, JSON Resume,
-  Kompetenzen-Belege, keine `[[TODO]]`).
-- Beide PDFs haben **4 Seiten**.
-- `pdftotext` sauber: keine Zeile beginnt mit `·` oder `—`, keine zerrissenen
-  Komposita, keine gesperrten Einzelbuchstaben.
-- Profiltext endet nicht mit einem einzelnen Wort in der letzten Zeile.
-- Tech-Zeilen: höchstens 2 Zeilen je Projekt (BMW: höchstens 3).
+  Kompetenzen-Belege, keine `[[TODO]]`, Technologien aus dem Text in den
+  Tags).
+- `npm run check:pdf` muss grün sein: 4 Seiten, keine Zeile beginnt mit `·`
+  oder `—`, keine zerrissenen Komposita, keine Zeile mit nur einem Wort,
+  Tech-Zeilen höchstens 2 Zeilen (BMW: 3), jeder Tag/Zeitraum kommt bei
+  pdftotext, pypdf und pdfminer unversehrt an. Einmalig `npm run check:setup`.
+- Inhaltliche Prüfung: Skill `/cv-review` (fünf blinde Reviewer-Agents,
+  `.claude/agents/cv-*.md`). Deren Befunde gegen diese Datei filtern.
 
 ## Positionierung & Kopf
 
@@ -36,14 +38,23 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 
 ## Profil
 
-- ~5 Zeilen: Erfahrung + Stack, AI-Schwerpunkt mit BMW/ARD Sounds als Beleg,
-  „alleinverantwortlich wie im großen Team, Startup bis Konzern“.
+- „Bewährt sowohl in eigenverantwortlicher Arbeit als auch in großen,
+  verteilten Teams“ (EN „Equally effective working autonomously and …“).
+- „von der Konzeption bis zum Go-live“ (nicht „Architektur“ — in
+  Kundenprojekten nur als Mitgestaltung belegt); BMW als „SSE-Streaming“, nicht
+  „LLM-Streaming“ (gebaut wurde das Rendering).
+- ~5 Zeilen: Erfahrung + Stack, AI-Schwerpunkt mit BMW und der
+  KI-Trainingsplan-Software (continuum) als Beleg — nicht ARD Sounds (dort nur
+  Frontend, zwei Reviews hielten das für überverkauft). „eigenverantwortlich
+  wie im großen Team, Startup bis Konzern“ — nicht „allein-“ oder
+  „hauptverantwortlich“, das decken die Bullets nicht durchgehend.
 - Keine Kundenaufzählung, keine Kennzahlen ohne Kontext (die stehen im
   Projekt), keine Floskeln („letzte Meile“).
-- „TypeScript/JavaScript“ steht im Profil, weil JavaScript in keiner
-  Tech-Zeile steht (Parser rechnen Erfahrungsjahre aus dem Werdegang).
-- „über 8 Jahre Erfahrung“ zählt die Werkstudentenzeit mit; sie ist bei Opitz
-  offen ausgewiesen.
+- „TypeScript/JavaScript“ steht im Profil und im Opitz-Bullet: Parser rechnen
+  Erfahrungsjahre nur aus den Stationen, das Profil zählt dafür nicht.
+- „seit 2018 professionell mit …“ statt „über 8 Jahre Erfahrung“ — beide
+  Reviews rechneten die Werkstudentenzeit heraus, React/Next.js erst ab 2021;
+  die Jahreszahl ist unangreifbar.
 
 ## Kompetenzen
 
@@ -58,8 +69,17 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 - HTML, CSS, Git bleiben (ATS-Mussbegriffe in Stellenanzeigen), am Ende.
 - AI nur mit Projektbeleg: RAG, pgvector, Anthropic wurden mangels Beleg
   entfernt. ARD Sounds = Frontend für ein AI-Backend → keine AI-Tags.
-- „AI-Assisted Development (Claude Code)“ bleibt, auch für
-  Enterprise-Kunden.
+- „EU AI Act“ steht nur im BMW-Bullet, nicht unter Kompetenzen (ist keine
+  Kompetenz; Parser finden es im Fließtext).
+- Keine Guardrails, weder im BMW-Bullet noch unter Kompetenzen: Das Frontend
+  hat einen Stream gerendert, und Guardrails im Angular-Client hielten zwei
+  Reviews für ein Warnsignal.
+- „AI-Assisted Development (Claude Code / GitHub Copilot)“ bleibt, auch für
+  Enterprise-Kunden (Copilot hat Interhyp bereitgestellt). Schrägstrich statt
+  Komma: Die PDF-Keywords sind kommagetrennt.
+- Produktnamen wie beim Hersteller („NgRx SignalStore“).
+- Englische Fachbegriffe ohne Bindestrich in beiden Sprachen: „LLM
+  Integration“, „CMS Migration“ (Tags sind sprachneutral).
 
 ## Projekte & Tech-Zeilen
 
@@ -67,11 +87,18 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   prägende Technologien zuerst (AI-Tags bei AI-Projekten, CMS bei
   CMS-Projekten, Angular · TypeScript · NgRx · RxJS bei Angular-Projekten),
   danach wie unter Kompetenzen.
-- Nicht in Tech-Zeilen: Grundlagen (JavaScript, REST APIs, HTML, CSS, Git)
-  und Begriffe, die Titel oder Bullets schon nennen — Parser lesen den
-  Fließtext mit. Kern-Tags dürfen doppelt stehen.
-- ISR nur bei Content-Websites, Claude Code nur bei Interhyp, Chatbot nur bei
-  BMW — jeder Tag dort, wo er am meisten aussagt.
+- **Jede Technologie aus Titel oder Bullets steht auch in der Tech-Zeile**
+  desselben Eintrags bzw. Teilprojekts — Leser nehmen die Tech-Zeile als
+  Stack des Projekts, drei Reviews bemängelten die Lücken. `validate.ts` (e)
+  bricht sonst ab. Ausnahme: Grundlagen (JavaScript, REST APIs, HTML, CSS,
+  Git) stehen nur unter Kompetenzen.
+- Wird eine Tech-Zeile dadurch zu lang, fliegen Tags, die der Text nicht
+  nennt und die andere Projekte schon belegen (Interhyp ohne GROQ/Live
+  Preview/ISR, continuum ohne Generative AI/Tailwind/TypeScript).
+- ISR nur bei Content-Websites, Chatbot nur bei BMW — jeder Tag dort, wo er
+  am meisten aussagt. Claude Code steht bei abo-store (eigenes Unternehmen,
+  keine Compliance-Frage); bei Kunden nur, was der Kunde bereitgestellt hat
+  (Interhyp: GitHub Copilot).
 - Kennzahlen nur mit Kontext; keine KI-klingenden Nachsätze
   („— niedrigere Kosten, schnellere Ladezeiten“).
 - „Weiterentwicklung“, wo eine Vorversion existierte (ARD Sounds,
@@ -79,9 +106,82 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 - Keine Zukunft als Fakt: BMW-US-Rollout steht als „Vorbereitung … (geplant
   für Ende Oktober 2026)“. Nach dem Go-live aktualisieren.
 - Fullstack-Projekte nennen je ein konkretes Backend-Detail.
-- pub.tech (ARD) ist **ein** Engagement mit drei Teilprojekten.
+- pub.tech (ARD) ist **ein** Engagement mit drei Teilprojekten — als
+  getrennte Einträge wirkte es wie vier parallele Projekte. Teilprojekte
+  bekommen **kein eigenes Datum**: Parser lesen datierte Zeilen als eigene
+  Station ohne Arbeitgeber, und die Zeiträume machten die Parallelität zu BMW
+  sichtbar. Die Reihenfolge (tagesschau zuerst, ARD Sounds 2026) erklärt das
+  Gespräch.
+- ARD Sounds: Titel „(Frontend für ein AI-Produkt)“ — Nische „Frontend für
+  AI-Produkte“, ehrlich formuliert; „AI-Produkt & Multi-Sender-Rollout“
+  hielten zwei Reviews für AI-Washing (gebaut wurde nur das Frontend). Der
+  Rollout steht im Ergebnis-Bullet.
+- „einziger Entwickler“ nur, wo es keine Referenz widerlegen kann: eco.income
+  (nur fürs Frontend). Bei pub.tech keine Rollen-Claims („haupt-“, „allein-“),
+  nur die Arbeit — andere haben mitcommittet, und zwei „Hauptrollen“ neben
+  BMW wirkten überbucht.
+- Nur mit Beitrag, nicht mit Team-Ergebnis werben: Interhyp „Mitarbeit an der
+  Migration“ (kam während des Projekts dazu; Go-live erst nach dem Ausstieg,
+  daher nicht „termingerecht“), BMW „Entwicklung von Komponenten“ (Team mit
+  rund 20 Entwicklern), eco.income
+  „Mitarbeit an … Node.js-Backend (Koa, TypeORM)“.
+- eco.income: Frontend ist React (CRA), nicht Next.js. Ein TÜV-geprüfter
+  Algorithmus schätzt Scope 1–3 allein aus Bankdaten — das war der USP
+  („ohne Verbrauchsdaten“). Der wiederkehrende Einwand „Scope 1/2 geht nicht
+  aus Bankdaten“ ist damit beantwortet; so stehen lassen.
+- continuum: LLM-Teil konkret benennen (zweistufig: Vorschläge per
+  Structured Outputs, dann Scoring; Ersatzübungen bei Verletzungen). AI
+  Agents/Tool Calling bestätigt der Inhaber.
+- Vidlab7: Titel bleibt „Frontend“ (wie beauftragt), Prisma/PostgreSQL steht
+  als Backend-Detail im Bullet.
+- BMW: Das Frontend rendert die per SSE gestreamten Antworten — kein Tool
+  Calling/Structured Outputs bei BMW (das belegt continuum). Preise und
+  Verbrauchs-/Emissionswerte kommen deterministisch aus Fahrzeugdaten, nicht
+  vom LLM. Payload CMS: eigene Collections, Lokalisierung je Markt. Voice
+  ohne „Web Speech API“ (nicht bestätigt).
+- continuum „agentisch“: Ein Agent passt bestehende Trainingspläne im
+  Chat per Tool Calling an; dazu automatische Tageszusammenfassungen aus
+  Vortagstraining und Gesundheitswerten mehrerer Quellen.
+- Interhyp: Backend-Detail ist die Caching-Strategie (Next.js Data Cache,
+  tag-basierte Revalidierung per Sanity-Webhook).
+- Opitz: Java als Bullet und Tag („Mitarbeit an Java-Backends (Spring Boot,
+  Microservices)“), nicht unter Kompetenzen — Angular + Java ist der
+  klassische Enterprise-Stack und Backend-Beleg im Konzern.
+- Infrastruktur nur, wo genutzt: Kubernetes, Docker, Keycloak, Jenkins hat der
+  Inhaber benutzt (Pods deployen, Skalierung prüfen, Logs in Pods lesen,
+  Login anbinden), nie aufgesetzt — so im Gespräch. Der Kubernetes-Bullet
+  steht bei ista; Micro Frontends dort mit Module Federation. Kein Terraform
+  (IaC nie geschrieben).
+- Schaeffler: Die Code-Standards galten konzernweit (bestätigt).
+- Für die Kennzahlen (ista 80 %, Interhyp 50 %, continuum 60 %) gibt es keine
+  Vorher-/Nachher-Werte — nicht erneut erfragen.
+- Kein Anschein von Weisungsbefugnis über Festangestellte
+  (Scheinselbstständigkeit — Vermittler prüfen das): ista „technischer
+  Ansprechpartner eines der beiden Entwicklungsteams“, Vidlab7
+  „Wissenstransfer an die ersten festen Teammitglieder“.
+- abo-store: Titel ohne „& Mitgründer“ (die einzige laufende Station wird im
+  ATS zur aktuellen Position), „als Mitgründer“ steht im Bullet.
+- Ergebnisse nach dem eigenen Ausstieg nicht als eigenes Ergebnis: Interhyp
+  „mit Fokus auf den Erhalt der SEO-Assets“ statt „ohne Verlust“; BMW EN
+  „Supported the go-live“; ARD Sounds „Umsetzung der Ausweitung“ (die
+  Ausweitung haben die Sender entschieden).
+- Kurzeinsätze ohne Mehrwert dürfen fehlen: Studio Lenzing/Dash0 (04/2024)
+  steht bewusst nicht im CV (Überschneidung mit ista; Sanity/Next.js belegen
+  Interhyp und abo-store).
+- Firmennamen wie vom Unternehmen geschrieben: „ista SE“.
 - BMW: AI-Fokus im Titel („AI Assistant … (Generative UI)“), Angular steht
   im Bullet.
+- Firmenzeile = nur der Vertragspartner mit Rechtsnamen („Interone
+  (Omnicom-Gruppe)“, „Public Value Technologies GmbH (pub.tech)“), nicht die
+  Holding; der Endkunde steht im Titel („AI Assistant für BMW“,
+  „ARD-Digitalangebote“). Parser speichern die Firmenzeile als Arbeitgeber.
+- Umbenannte Firmen: damaliger Name, heutiger in Klammern („continuum (heute
+  House 120)“) — passt zu älteren CV-Versionen und zur Referenzprüfung.
+  Vidlab7 GmbH heißt rechtlich weiter so, nur die Marke heißt heute moonscale:
+  Hinweis im ersten Bullet („(heute moonscale)“), nicht in der Firmenzeile.
+- „(remote)“ an allen Remote-Stationen (BMW, Interhyp, pub.tech, continuum,
+  Vidlab7, eco.income, Schaeffler) — sonst wirken parallele Projekte in
+  verschiedenen Städten unmöglich.
 
 ## Zeiträume & Auslastung
 
@@ -89,25 +189,29 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   glätten. Vermittler speichern alte CV-Versionen, Daten sind über Verträge
   und Referenzen prüfbar.
 - Es lief immer ein Vollzeit- und höchstens ein Teilzeitprojekt.
-  Teilzeitprojekte (ARD, Vidlab7, Dash0, eco.income) tragen `workload`
+  Teilzeitprojekte (ARD, Vidlab7, eco.income) tragen `workload`
   „Teilzeit“ / „part-time“ — bewusst ohne Tage/Woche (mehr Spielraum).
   abo-store: „nebenberuflich“.
-- Opitz: „Werkstudent bis 09/2019, danach Festanstellung“ (überschneidet sich
-  mit dem Master).
+- Opitz: „Werkstudent bis 09/2019 (parallel zum Master), danach
+  Festanstellung“ als erster Bullet, nicht in der Firmenzeile — dort liest
+  pdfminer „09/2019“ vor dem Zeitraum.
 - Laufende Einträge enden mit „heute“ / „present“, nicht mit dem Build-Monat.
+- Maßgeblich sind Vertragsdaten, nicht Commit-Daten: continuum bleibt
+  12/2025, pub.tech beginnt 09/2025 (vom Inhaber bestätigt, trotz früherer
+  bzw. späterer Commits). pub.tech endete 10/2026.
 
 ## Sprache & Ausbildung
 
 - Durchgehend generisches Maskulinum (keine Gender-Doppelpunkte).
 - „AI“ in Titeln und Tags; „KI“ darf im deutschen Fließtext stehen (beides
-  wird gesucht).
+  wird gesucht) — aber nie beides im selben Satz.
 - Bachelor: „Bachelor of Science (Ingenieur)“ — der Titel steht so im
   Zeugnis.
 - Noten genau wie im Zeugnis: Master „sehr gut (1,4)“, Bachelor „sehr gut
   (86 %)“. Die unterschiedlichen Skalen stammen von den Hochschulen und
   werden nicht umgerechnet oder angeglichen.
-- Sektionsname „Projekthistorie“ / „Project Experience“ (ohne „(Auszug)“,
-  alle Projekte sind gelistet).
+- Sektionsname „Projekthistorie“ / „Project Experience“ (ohne „(Auszug)“ —
+  es fehlt nur der Kurzeinsatz Studio Lenzing).
 
 ## Layout & Maschinenlesbarkeit
 
@@ -118,9 +222,30 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   Labels/Footer, Space Grotesk nur für den Namen. Fünf Größen, ein Akzent
   (Terrakotta), weißer Seitenhintergrund.
 - Keine U+2011-Bindestriche (fehlen in den Fonts, brechen die Suche) —
-  Bindestrich-Komposita hält eine Box-Regel im Template zusammen.
-- Versalien-Tracking ≤ 0.08em, genau ein Leerzeichen um Trenner, `CO₂` als
-  CO + Tiefstellung (extrahiert als „CO2“).
+  Bindestrich-Komposita hält eine Box-Regel im Template zusammen, ebenso
+  Ergänzungsstriche („Bestell- und“), die sonst als „Bestellund“ extrahiert
+  werden.
+- Versalien-Tracking ≤ 0.08em, genau ein Leerzeichen um Trenner. In den
+  Daten steht „CO2“; das Template setzt die Tiefstellung (Text und
+  eingebettetes JSON bleiben „CO2“).
+- Deutscher Gedankenstrich ist der Halbgeviertstrich mit Leerzeichen („ – “),
+  im Englischen der Geviertstrich („ — “).
+- **Kerning aus:** Mit Kerning zerlegt pypdf (Basis vieler AI-Screenings)
+  Wörter an Kerning-Paaren („T ailwind“, „T erraform“). Prüfen mit pypdf,
+  pdfminer und pdftotext — Parsing-Behauptungen aus AI-Reviews erst
+  nachstellen, viele waren erfunden („Angular“ im Interhyp-Kopf, verklebte
+  Daten/Tags).
+- Keine einzelnen Wörter in der letzten Zeile eines Bullets (DE und EN).
+- Parser-Struktur (Review-Schleife 10/2026, mit pdfminer nachgestellt):
+  Bullet-Marker als normaler Text mit normalem Wortabstand im selben Absatz
+  (jede breitere Lücke lesen pdftotext/pdfminer als Spaltengrenze); Footer nur
+  mit Seitenzahl (Name oder Berufsbezeichnung mitten in einer Station werden
+  zur Blockgrenze bzw. Phantom-Station); Teilprojekte mit Label
+  „Teilprojekt:“ (sonst eigene datumslose Station); E-Mail/Telefon als
+  mailto:/tel:-Links; Ausbildungs-Zeitraum in
+  der Hochschulzeile (rechts ohne Bullets darunter sortiert pdfminer ihn
+  hinter „Sprachen“); Komposita mit Punkt („Node.js-Backend“) hält die
+  Box-Regel ebenfalls zusammen.
 
 ## Abgelehnt — nicht erneut vorschlagen
 
@@ -129,4 +254,10 @@ Profil · „jeder Tag aus ≥ 2 Projekten muss unter Kompetenzen“ · Ista auf
 Tags kürzen · „Angular 2+“ · HTML/CSS/Git in jeder Tech-Zeile ·
 „AI-Augmented Engineering Workflows“ statt Claude Code · Headline „Frontend
 für AI“ · Daten verschieben · Auslastung als „2–3 Tage/Woche“ ·
-Bachelor-Note in eine Dezimalnote umrechnen.
+Bachelor-Note in eine Dezimalnote umrechnen · „(Ingenieur)“/„(86 %)“
+weglassen · Vidlab7-Onboarding-Bullet streichen ·
+pub.tech zu einem Eintrag ohne Teilprojekte zusammenfassen · BMW-US-Rollout
+streichen · Verfügbarkeit „ab 11/2026“ statt „ab sofort“ · eingebettetes
+JSON aus dem PDF entfernen · Profil entkoppeln („(TypeScript, React,
+Angular), seit 2018 in der Softwareentwicklung“) · „laut Zeugnis“ an die
+Bachelor-Note.

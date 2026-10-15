@@ -1,8 +1,8 @@
 {
   "$schema": "../../schema/project.schema.json",
-  "client": { "de": "Objego GmbH (Ista-Ausgründung)", "en": "Objego GmbH (Ista spin-off)" },
+  "client": { "de": "Objego GmbH (ista-Ausgründung)", "en": "Objego GmbH (ista spin-off)" },
   "role": {
-    "de": "Frontend-Entwickler — Vermieter-Software Objego (Angular)",
+    "de": "Frontend-Entwickler – Vermieter-Software Objego (Angular)",
     "en": "Frontend Developer — Objego Landlord Software (Angular)"
   },
   "location": "Essen",
@@ -11,7 +11,7 @@
   "responsibilities": [
     {
       "de": "Weiterentwicklung des Vermieter-Webportals (Fokus Performance) inkl. Konzeption und Umsetzung des Nutzer-Trackings",
-      "en": "Advanced the landlord web portal (performance focus), incl. design and implementation of user tracking"
+      "en": "Further developed the landlord web portal (performance focus); designed and built user tracking"
     }
   ],
   "achievements": [],

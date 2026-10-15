@@ -10,15 +10,15 @@
   "url": "https://www.nilsschlueter.de",
   "availability": {
     "de": "Verfügbar ab sofort · 100 % · remote, vor Ort in NRW, bundesweit reisebereit",
-    "en": "Available immediately · 100% · remote, on-site in NRW, willing to travel across Germany"
+    "en": "Available immediately · 100% · remote, on-site in North Rhine-Westphalia, willing to travel across Germany"
   },
   "location": {
     "city": "Bochum",
     "countryCode": "DE"
   },
   "summary": {
-    "de": "Senior Fullstack-Entwickler mit über 8 Jahren Erfahrung in TypeScript/JavaScript, React/Next.js und Angular — von der Architektur bis zum Go-live. Schwerpunkt: AI-Funktionen nutzerfreundlich in Webanwendungen integrieren, zuletzt beim AI Assistant von BMW (Generative UI, LLM-Streaming) und der KI-Personalisierung von ARD Sounds. Bewährt als alleinverantwortlicher Entwickler wie in großen, verteilten Teams — vom Early-Stage-Startup bis zum Konzern, u. a. ARD (tagesschau.de), Interhyp und Schaeffler.",
-    "en": "Senior full-stack developer with over 8 years of experience in TypeScript/JavaScript, React/Next.js and Angular — from architecture to go-live. Focus: building user-friendly AI features into web applications, most recently BMW’s AI Assistant (generative UI, LLM streaming) and the AI personalization of ARD Sounds. Proven both as a sole developer and in large, distributed teams — from early-stage startups to large enterprises, including Germany’s public broadcaster ARD (tagesschau.de), Interhyp and Schaeffler."
+    "de": "Senior Fullstack-Entwickler, seit 2018 professionell mit TypeScript/JavaScript, React/Next.js und Angular – von der Konzeption bis zum Go-live. Schwerpunkt: AI-Funktionen nutzerfreundlich in Webanwendungen integrieren, zuletzt beim AI Assistant von BMW (Generative UI, SSE-Streaming) und einer AI-Trainingsplan-Software (OpenAI). Bewährt sowohl in eigenverantwortlicher Arbeit als auch in großen, verteilten Teams – vom Startup bis zum Konzern, u. a. ARD (tagesschau.de), Interhyp und Schaeffler.",
+    "en": "Senior Fullstack Developer, working professionally with TypeScript/JavaScript, React/Next.js and Angular since 2018 — from concept to go-live. Focus: building user-friendly AI features into web applications, most recently for BMW’s AI Assistant (Generative UI, SSE streaming) and AI training plan software (OpenAI). Equally effective working autonomously and in large, distributed teams — from startups to enterprises, including Germany’s public broadcaster ARD (tagesschau.de), Interhyp and Schaeffler."
   },
   "profiles": [
     {
@@ -44,7 +44,7 @@
         "en": "English"
       },
       "fluency": {
-        "de": "Verhandlungssicher (C1)",
+        "de": "verhandlungssicher (C1)",
         "en": "Business fluent (C1)"
       }
     }

@@ -18,6 +18,10 @@
  *   (d) Offene `[[TODO …]]`-Platzhalter in data/ (Datei:Zeile). Warnung im
  *       normalen Build, Abbruch mit CV_STRICT=1 (Release-Builds in der CI).
  *
+ *   (e) Jede Technologie aus Titel und Bullets steht auch in der Tech-Zeile
+ *       desselben Eintrags (bzw. Teilprojekts). Erkannt wird, was als
+ *       Kompetenz oder irgendwo als Tag vorkommt. Bricht ab.
+ *
  * Bricht mit Exit-Code 1 ab, sobald irgendeine Datei fehlschlägt.
  */
 import { readFileSync, readdirSync } from "node:fs";
@@ -110,9 +114,7 @@ const listed = new Set([...skillKeywords, ...groupNames]);
 const IMPLIED = new Set(["JavaScript", "REST APIs", "HTML", "CSS", "Git"]);
 // Detail-Klammer ignorieren: "Accessibility (WCAG)" wird von "accessibility" belegt.
 const base = (tag: string) => tag.replace(/\s*\(.*\)$/, "");
-// Auch der Fließtext belegt: Parser lesen Titel und Bullets mit, daher steht
-// ein dort genannter Begriff (z. B. "Payload CMS" bei BMW) nicht noch einmal
-// in der Tech-Zeile.
+// Auch der Fließtext belegt eine Kompetenz (Parser lesen Titel und Bullets mit).
 const projectText = projects
   .flatMap((p) => [p.role, ...p.responsibilities, ...p.achievements,
     ...p.subprojects.flatMap((s) => [s.title, ...s.responsibilities, ...s.achievements])])
@@ -126,7 +128,7 @@ for (const p of projects) {
   for (const tag of projectTags(p)) tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
 }
 const backed = new Set([...tagCounts.keys()].flatMap((tag) => [tag, base(tag)]));
-const unbacked = skillKeywords.filter((k) => !IMPLIED.has(k) && !backed.has(k) && !inText(k));
+const unbacked = skillKeywords.filter((k) => !IMPLIED.has(k) && !backed.has(k) && !backed.has(base(k)) && !inText(k));
 const unlisted = [...tagCounts]
   .filter(([tag, n]) => n >= 2 && !listed.has(tag) && !listed.has(base(tag)))
   .map(([tag, n]) => `${tag} (${n})`);
@@ -168,8 +170,53 @@ if (todos.length === 0) {
 }
 
 /* -------------------------------------------------------------------------- */
+console.log("\n(e) Technologien aus Titel und Bullets in der Tech-Zeile:");
+
+// Vokabular: alle Kompetenzen und alle irgendwo vergebenen Tags, ohne Grundlagen.
+const vocabulary = [...new Set([...skillKeywords, ...tagCounts.keys()])].filter((t) => !IMPLIED.has(t));
+// Erkannt am vollen Namen oder an der Detail-Klammer ("Accessibility (WCAG)"
+// an "WCAG") — der nackte Basisname ist zu unscharf ("Barrierefreiheit" als
+// Thema einer Hilfeseite ist keine WCAG-Arbeit).
+const aliases = (tag: string) => [tag, ...(tag.match(/\(([^)]+)\)$/)?.slice(1) ?? [])];
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const wordRe = (s: string) => new RegExp(`(?<![\\p{L}\\p{N}])${escapeRe(s)}(?![\\p{L}\\p{N}])`, "giu");
+
+function mentionedTags(text: string): string[] {
+  const hits = vocabulary.flatMap((tag) =>
+    aliases(tag).flatMap((a) =>
+      [...text.matchAll(wordRe(a))].map((m) => ({ tag, start: m.index, end: m.index + m[0].length })),
+    ),
+  );
+  // Längster Treffer gewinnt: "Vercel AI SDK" verlangt nicht zusätzlich "Vercel".
+  const covered = (h: (typeof hits)[number]) =>
+    hits.some((o) => o.tag !== h.tag && o.start <= h.start && o.end >= h.end && o.end - o.start > h.end - h.start);
+  return [...new Set(hits.filter((h) => !covered(h)).map((h) => h.tag))];
+}
+
+const textOf = (values: Parameters<typeof pick>[0][]) => values.flatMap((v) => LANGS.map((l) => pick(v, l))).join("\n");
+const entries = projects.flatMap((p) => [
+  { label: pick(p.client, "de"), text: textOf([p.role, ...p.responsibilities, ...p.achievements]), tags: projectTags(p) },
+  ...p.subprojects.map((s) => ({
+    label: `${pick(p.client, "de")} / ${pick(s.title, "de")}`,
+    text: textOf([s.title, ...s.responsibilities, ...s.achievements]),
+    tags: s.stack,
+  })),
+]);
+const untagged = entries.flatMap((e) => {
+  const missing = mentionedTags(e.text).filter((t) => !e.tags.includes(t));
+  return missing.length > 0 ? [`${e.label}: ${missing.join(", ")}`] : [];
+});
+
+if (untagged.length === 0) {
+  console.log("  ok   alles Genannte steht in den Tags");
+} else {
+  failures++;
+  for (const u of untagged) console.error(`  FAIL ${u}`);
+}
+
+/* -------------------------------------------------------------------------- */
 if (failures > 0) {
-  console.error(`\nValidierung fehlgeschlagen: ${failures} Datei(en) ungültig.`);
+  console.error(`\nValidierung fehlgeschlagen: ${failures} Fehler.`);
   process.exit(1);
 }
 console.log("\nValidierung erfolgreich – alle Dateien sind schema-konform.");
