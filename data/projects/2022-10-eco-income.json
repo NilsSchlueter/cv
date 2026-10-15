@@ -24,5 +24,5 @@
     }
   ],
   "achievements": [],
-  "stack": ["React", "TypeScript", "Node.js", "Koa", "TypeORM", "Firebase", "PostgreSQL", "AG Grid", "Docker", "Google Cloud", "GitLab"]
+  "stack": ["React", "TypeScript", "Node.js", "Koa", "TypeORM", "Firebase Authentication", "PostgreSQL", "AG Grid", "Docker", "Google Cloud", "GitLab"]
 }

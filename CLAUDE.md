@@ -52,9 +52,12 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   Projekt), keine Floskeln („letzte Meile“).
 - „TypeScript/JavaScript“ steht im Profil und im Opitz-Bullet: Parser rechnen
   Erfahrungsjahre nur aus den Stationen, das Profil zählt dafür nicht.
-- „seit 2018 professionell mit …“ statt „über 8 Jahre Erfahrung“ — beide
-  Reviews rechneten die Werkstudentenzeit heraus, React/Next.js erst ab 2021;
-  die Jahreszahl ist unangreifbar.
+- „seit 2018 professionell mit TypeScript/JavaScript, heute vor allem mit
+  React/Next.js und Angular“ — die Jahreszahl hängt nur an
+  TypeScript/JavaScript (Opitz 2018), die Frameworks stehen ohne Jahr: Vier
+  Reviews lasen „seit 2018 … React/Next.js“ als Behauptung (React/Next.js
+  erst ab 2021). Kein „über 8 Jahre Erfahrung“ (Reviews rechnen die
+  Werkstudentenzeit heraus), keine zwei Jahreszahlen im Satz.
 
 ## Kompetenzen
 
@@ -105,6 +108,10 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   hilfe.ard.de) — nicht „Entwicklung“/„Aufbau“.
 - Keine Zukunft als Fakt: BMW-US-Rollout steht als „Vorbereitung … (geplant
   für Ende Oktober 2026)“. Nach dem Go-live aktualisieren.
+- Keine Vertragsdetails in Projektbeschreibungen (Vertragsende, Laufzeit,
+  Konditionen) — auch nicht als Entschärfung („planmäßiges Vertragsende zum
+  Go-live“). Die Frage „warum nicht bis zum US-Rollout?“ wird im Gespräch
+  beantwortet.
 - Fullstack-Projekte nennen je ein konkretes Backend-Detail.
 - pub.tech (ARD) ist **ein** Engagement mit drei Teilprojekten — als
   getrennte Einträge wirkte es wie vier parallele Projekte. Teilprojekte
@@ -116,24 +123,37 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   AI-Produkte“, ehrlich formuliert; „AI-Produkt & Multi-Sender-Rollout“
   hielten zwei Reviews für AI-Washing (gebaut wurde nur das Frontend). Der
   Rollout steht im Ergebnis-Bullet.
+- ARD-CMS-Migration: Das neue CMS heißt Unified Sophora — im Bullet und als
+  Tag „Sophora“ (Tech-Zeilen-Regel). Handlebars erklärt der Komponenten-Bullet
+  („serverseitige Handlebars-Templates, React für interaktive Komponenten“),
+  sonst fragt jeder Tech Lead nach der Rendering-Architektur.
 - „einziger Entwickler“ nur, wo es keine Referenz widerlegen kann: eco.income
   (nur fürs Frontend). Bei pub.tech keine Rollen-Claims („haupt-“, „allein-“),
   nur die Arbeit — andere haben mitcommittet, und zwei „Hauptrollen“ neben
   BMW wirkten überbucht.
 - Nur mit Beitrag, nicht mit Team-Ergebnis werben: Interhyp „Mitarbeit an der
   Migration“ (kam während des Projekts dazu; Go-live erst nach dem Ausstieg,
-  daher nicht „termingerecht“), BMW „Entwicklung von Komponenten“ (Team mit
-  rund 20 Entwicklern), eco.income
+  daher nicht „termingerecht“), BMW „Entwicklung von Komponenten“ und
+  „Mitarbeit am internen CMS“ (Team mit rund 20 Entwicklern; EN Bullet 2
+  nominal „Frontend development of …“, nicht „Developed the frontend of …“ —
+  las sich als Verantwortung fürs ganze Frontend), eco.income
   „Mitarbeit an … Node.js-Backend (Koa, TypeORM)“.
 - eco.income: Frontend ist React (CRA), nicht Next.js. Ein TÜV-geprüfter
   Algorithmus schätzt Scope 1–3 allein aus Bankdaten — das war der USP
   („ohne Verbrauchsdaten“). Der wiederkehrende Einwand „Scope 1/2 geht nicht
-  aus Bankdaten“ ist damit beantwortet; so stehen lassen.
+  aus Bankdaten“ ist damit beantwortet; so stehen lassen. Firebase war dort
+  nur Auth → Tag „Firebase Authentication“ (Produktname; die Kompetenz
+  „Firebase“ belegt continuum). Nicht „Firebase Auth“: Das steht im
+  continuum-Bullet, und `validate.ts` (e) verlangte den Tag dann auch dort.
 - continuum: LLM-Teil konkret benennen (zweistufig: Vorschläge per
   Structured Outputs, dann Scoring; Ersatzübungen bei Verletzungen). AI
-  Agents/Tool Calling bestätigt der Inhaber.
+  Agents/Tool Calling bestätigt der Inhaber. Die 60 % sind die
+  Generierungszeit der Trainingspläne (optimierte Algorithmen); das
+  Frontend-Caching steht als Ergänzung dahinter, nicht als Quelle der Zahl.
+  „Backend-Entwicklung“ bleibt — der MVP hatte so gut wie keins.
 - Vidlab7: Titel bleibt „Frontend“ (wie beauftragt), Prisma/PostgreSQL steht
-  als Backend-Detail im Bullet.
+  als Backend-Detail im Bullet. Tag „MediaStream API“ (MDN-Name), nicht
+  „getUserMedia“ (Methode, keine Technologie) und nicht „WebRTC“ (überzogen).
 - BMW: Das Frontend rendert die per SSE gestreamten Antworten — kein Tool
   Calling/Structured Outputs bei BMW (das belegt continuum). Preise und
   Verbrauchs-/Emissionswerte kommen deterministisch aus Fahrzeugdaten, nicht
@@ -154,20 +174,28 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   (IaC nie geschrieben).
 - Schaeffler: Die Code-Standards galten konzernweit (bestätigt).
 - Für die Kennzahlen (ista 80 %, Interhyp 50 %, continuum 60 %) gibt es keine
-  Vorher-/Nachher-Werte — nicht erneut erfragen.
+  Vorher-/Nachher-Werte — nicht erneut erfragen. Formulierung wie DE („Ergebnis
+  der Migration …: bis zu 80 %“), kein Doppel-Hedge („Helped cut … by up to“).
 - Kein Anschein von Weisungsbefugnis über Festangestellte
   (Scheinselbstständigkeit — Vermittler prüfen das): ista „technischer
   Ansprechpartner eines der beiden Entwicklungsteams“, Vidlab7
   „Wissenstransfer an die ersten festen Teammitglieder“.
 - abo-store: Titel ohne „& Mitgründer“ (die einzige laufende Station wird im
-  ATS zur aktuellen Position), „als Mitgründer“ steht im Bullet.
+  ATS zur aktuellen Position), „als Mitgründer“ steht im Bullet. „06/2021 –
+  heute“ bleibt — die 2025-Versionen bei den Vermittlern zeigen die Station
+  als laufend; der Bullet „Aktive Entwicklung bis 2023, seitdem nur Betrieb“
+  (Jahr im Bullet, nicht in der Firmenzeile — Opitz-Muster) markiert sie als
+  keine parallele Arbeit. Besucherzahl „zeitweise über 10.000“ — heute
+  niedriger, und Sistrix prüft das in 30 Sekunden.
 - Ergebnisse nach dem eigenen Ausstieg nicht als eigenes Ergebnis: Interhyp
   „mit Fokus auf den Erhalt der SEO-Assets“ statt „ohne Verlust“; BMW EN
   „Supported the go-live“; ARD Sounds „Umsetzung der Ausweitung“ (die
   Ausweitung haben die Sender entschieden).
 - Kurzeinsätze ohne Mehrwert dürfen fehlen: Studio Lenzing/Dash0 (04/2024)
   steht bewusst nicht im CV (Überschneidung mit ista; Sanity/Next.js belegen
-  Interhyp und abo-store).
+  Interhyp und abo-store). Die Daten bleiben als Stammdatum erhalten
+  (`data/projects/2024-04-studio-lenzing.json`, `"hidden": true`) – nicht
+  löschen, nicht einblenden.
 - Firmennamen wie vom Unternehmen geschrieben: „ista SE“.
 - BMW: AI-Fokus im Titel („AI Assistant … (Generative UI)“), Angular steht
   im Bullet.
@@ -175,6 +203,9 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   (Omnicom-Gruppe)“, „Public Value Technologies GmbH (pub.tech)“), nicht die
   Holding; der Endkunde steht im Titel („AI Assistant für BMW“,
   „ARD-Digitalangebote“). Parser speichern die Firmenzeile als Arbeitgeber.
+  Vermittler/Recruiter stehen nicht in der Firmenzeile: BMW lief über einen
+  Vermittler, die Firmenzeile bleibt Interone — so wenig, wie man Hays als
+  Arbeitgeber nennt; Referenzen sind die Projektbeteiligten, nicht der Einkauf.
 - Umbenannte Firmen: damaliger Name, heutiger in Klammern („continuum (heute
   House 120)“) — passt zu älteren CV-Versionen und zur Referenzprüfung.
   Vidlab7 GmbH heißt rechtlich weiter so, nur die Marke heißt heute moonscale:
@@ -212,6 +243,13 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   werden nicht umgerechnet oder angeglichen.
 - Sektionsname „Projekthistorie“ / „Project Experience“ (ohne „(Auszug)“ —
   es fehlt nur der Kurzeinsatz Studio Lenzing).
+- Gedankenstrich-Dichte: Doppelpunkt, Komma oder „sowie“/„and“, wo es
+  natürlich liest; Gedankenstriche nur, wo sie Arbeit leisten (Profil, Rolle
+  als Nachsatz). 31 Striche auf vier Seiten lasen zwei Reviews als
+  KI-Schreibstil; Stand 10/2026: 19 je Sprache (10 davon in Titeln, 2 bei
+  Sprachen).
+- EN: „Further developed“ nicht viermal (Germanismus) — Enhanced / Extended /
+  Continued development of; DE „Weiterentwicklung“ bleibt.
 
 ## Layout & Maschinenlesbarkeit
 
@@ -234,7 +272,16 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   Wörter an Kerning-Paaren („T ailwind“, „T erraform“). Prüfen mit pypdf,
   pdfminer und pdftotext — Parsing-Behauptungen aus AI-Reviews erst
   nachstellen, viele waren erfunden („Angular“ im Interhyp-Kopf, verklebte
-  Daten/Tags).
+  Daten/Tags; 10/2026: kyrillisches „№х (Мопотеро)“ für „Nx (Monorepo)“, „Al“
+  statt „AI“, fehlendes „use“ in „use-case-specific“, Tags in fremden
+  Kopfzeilen, fehlende Datums-Striche — alles in allen drei Extraktoren
+  widerlegt).
+- `pdfinfo` meldet „Suspects object is wrong type (boolean)“ — Eigenheit des
+  Tagged PDF aus Typst 0.15, nur poppler, Extraktion unberührt. Kein
+  Handlungsbedarf.
+- Eingebettetes JSON: `image` nur, wenn das Foto im PDF ist (`build.ts` passt
+  die generierte Datei je Sprache an) — die Anlage soll zum sichtbaren
+  Dokument passen.
 - Keine einzelnen Wörter in der letzten Zeile eines Bullets (DE und EN).
 - Parser-Struktur (Review-Schleife 10/2026, mit pdfminer nachgestellt):
   Bullet-Marker als normaler Text mit normalem Wortabstand im selben Absatz
@@ -260,4 +307,10 @@ pub.tech zu einem Eintrag ohne Teilprojekte zusammenfassen · BMW-US-Rollout
 streichen · Verfügbarkeit „ab 11/2026“ statt „ab sofort“ · eingebettetes
 JSON aus dem PDF entfernen · Profil entkoppeln („(TypeScript, React,
 Angular), seit 2018 in der Softwareentwicklung“) · „laut Zeugnis“ an die
-Bachelor-Note.
+Bachelor-Note · Auslastung in Prozent · „Vollzeit“-Label an Hauptprojekten ·
+Headline „Senior Frontend- & Fullstack“ · „(Ingenieur)“ in die Fachrichtung
+verschieben · „Lead“ aus dem ista-Titel · Infra-Tags bei Opitz/Schaeffler
+kürzen · ARD-Bullets kürzen · Kompetenzen auf ~35 · abo-store mit Enddatum
+2023 · Vertragsdetails („planmäßiges Vertragsende“) im BMW-Bullet · zwei
+Jahreszahlen im Profilsatz („Angular seit 2018, React seit 2021“) ·
+Vermittler in der Firmenzeile.

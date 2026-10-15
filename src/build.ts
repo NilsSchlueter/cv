@@ -84,6 +84,13 @@ for (const f of readdirSync(DIST_DIR)) {
 for (const lang of LANGS) {
   const photo = photoFor(lang);
   const baseName = `${namePrefix}${ROLE_SLUG}_${DOC_LABEL[lang]}_${lang.toUpperCase()}_${buildMonth}`;
+  // Das eingebettete JSON soll zum sichtbaren PDF passen: `image` nur, wenn
+  // das Foto tatsächlich gesetzt wird (merge.ts kennt die Foto-Wahl nicht).
+  const resumePath = join(GENERATED_DIR, `resume.${lang}.json`);
+  const resume = readJson<Resume>(resumePath);
+  if (photo) resume.basics.image = "assets/photo.jpg";
+  else delete resume.basics.image;
+  writeFileSync(resumePath, JSON.stringify(resume, null, 2) + "\n");
   execFileSync(
     "typst",
     [
@@ -97,7 +104,6 @@ for (const lang of LANGS) {
     ],
     { stdio: "inherit" },
   );
-  const resume = readJson<Resume>(join(GENERATED_DIR, `resume.${lang}.json`));
   writeFileSync(join(DIST_DIR, `${baseName}.md`), toMarkdown(resume, lang));
   console.log(`  dist/${baseName}.pdf (+ .md)  (Foto: ${photo ? "an" : "aus"})`);
 }

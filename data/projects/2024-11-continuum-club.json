@@ -31,8 +31,8 @@
   ],
   "achievements": [
     {
-      "de": "Verbesserung der Ladezeiten um ca. 60 % durch eine Frontend-Caching-Strategie und Optimierung der Algorithmen zur Trainingsplan-Generierung",
-      "en": "Improved load times by around 60% through a frontend caching strategy and optimized training plan generation algorithms"
+      "de": "Verkürzung der Trainingsplan-Generierung um ca. 60 % durch optimierte Algorithmen, ergänzt um eine Frontend-Caching-Strategie für kürzere Ladezeiten",
+      "en": "Cut training plan generation time by around 60% through optimized algorithms, complemented by a frontend caching strategy for faster load times"
     },
     {
       "de": "Einführung von Unit-Tests mit über 80 % Testabdeckung auf neuem Code",

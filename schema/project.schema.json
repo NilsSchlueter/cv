@@ -109,6 +109,10 @@
         "additionalProperties": false
       },
       "default": []
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [

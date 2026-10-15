@@ -11,21 +11,21 @@
   "responsibilities": [
     {
       "de": "Weiterentwicklung der Webanwendung, mit der private Vermieter ihren Immobilienbestand verwalten und Daten für die Steuererklärung generieren – als technischer Ansprechpartner eines der beiden Entwicklungsteams (zwei weitere Frontend-Entwickler)",
-      "en": "Further developed the web application private landlords use to manage their property portfolio and generate tax return data — as technical point of contact for one of the two development teams (two other frontend developers)"
+      "en": "Continued development of the web application private landlords use to manage their property portfolio and generate tax return data — as technical point of contact for one of the two development teams (two other frontend developers)"
     },
     {
       "de": "Deployment und Monitoring der Frontends auf Kubernetes: Rollouts, Prüfung der Skalierung, Log-Analyse in den Pods",
       "en": "Deployed and monitored the frontends on Kubernetes (rollouts, scaling checks, pod log analysis)"
     },
     {
-      "de": "Mitgestaltung der Anwendungsarchitektur mit den anderen Lead-Entwicklern – Mitarbeit an der Migration der monolithischen Angular-Anwendung zu einem Nx-Monorepo mit Micro Frontends (Module Federation)",
-      "en": "Shaped the application architecture with the other lead developers — contributed to migrating the monolithic Angular app to an Nx monorepo with micro frontends (Module Federation)"
+      "de": "Mitgestaltung der Anwendungsarchitektur mit den anderen Lead-Entwicklern sowie Mitarbeit an der Migration der monolithischen Angular-Anwendung zu einem Nx-Monorepo mit Micro Frontends (Module Federation)",
+      "en": "Shaped the application architecture with the other lead developers and contributed to migrating the monolithic Angular app to an Nx monorepo with micro frontends (Module Federation)"
     }
   ],
   "achievements": [
     {
       "de": "Ergebnis der Migration zum Nx-Monorepo: bis zu 80 % kürzere Build- und Testzeiten",
-      "en": "Helped cut build and test times by up to 80% through the Nx monorepo migration"
+      "en": "Result of the Nx monorepo migration: up to 80% shorter build and test times"
     },
     {
       "de": "Erneute Beauftragung nach früherem Engagement am selben Produkt (Objego, 2021/22)",

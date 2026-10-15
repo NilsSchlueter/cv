@@ -14,8 +14,8 @@
       "en": "Built components the AI agent dynamically controls and populates inside the chat (Generative UI): interactive cards, comparison tables, chat and voice inputs; rendered SSE-streamed responses"
     },
     {
-      "de": "Frontend-Entwicklung des AI Assistant für die BMW-Websites (Angular) – in einem global verteilten Team mit rund 20 Entwicklern",
-      "en": "Developed the frontend of the AI Assistant for the BMW websites (Angular) — in a globally distributed team of around 20 developers"
+      "de": "Frontend-Entwicklung des AI Assistant für die BMW-Websites (Angular) in einem global verteilten Team mit rund 20 Entwicklern",
+      "en": "Frontend development of the AI Assistant for the BMW websites (Angular) in a globally distributed team of around 20 developers"
     },
     {
       "de": "Umsetzung der Compliance-Anforderungen je Markt: AI-Transparenzhinweise und Disclaimer (EU AI Act) sowie länderspezifische Pflichtangaben (Preise, Verbrauchs- und Emissionswerte) als datengebundene Komponenten aus Fahrzeugdaten statt im LLM-Text",
@@ -26,8 +26,8 @@
       "en": "Internationalized the chat components (i18n) and made them accessible (WCAG)"
     },
     {
-      "de": "Aufbau eines internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS – eigene Collections und Lokalisierung je Markt",
-      "en": "Built an internal CMS for managing the chat content, based on Next.js and Payload CMS — custom collections and per-market localization"
+      "de": "Mitarbeit am internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS: eigene Collections und Lokalisierung je Markt",
+      "en": "Co-developed the internal CMS for managing the chat content, based on Next.js and Payload CMS: custom collections and per-market localization"
     }
   ],
   "achievements": [

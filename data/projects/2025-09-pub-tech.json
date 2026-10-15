@@ -18,7 +18,7 @@
       "responsibilities": [
         {
           "de": "Weiterentwicklung des Frontends für das KI-personalisierte „Regional Update“, das Nutzern Radiobeiträge mit Bezug zu ihrem Wunschort ausspielt",
-          "en": "Further developed the frontend for the AI-personalized “Regional Update”, which plays users radio segments related to their chosen location"
+          "en": "Enhanced the frontend for the AI-personalized “Regional Update”, which plays radio segments matching the user’s chosen location"
         },
         {
           "de": "Umsetzung neuer Produkt-Features: Optimierung für mobile Endgeräte, Ausbau der Playlist-Funktionalität, Sharing-Funktion",
@@ -27,8 +27,8 @@
       ],
       "achievements": [
         {
-          "de": "Umsetzung der Ausweitung des zunächst auf den BR beschränkten Angebots auf SWR und MDR (von einem auf sechs Bundesländer) – heute live unter einer eigenen ARD-Sounds-Subdomain",
-          "en": "Implemented the expansion of the offering, initially limited to Bayerischer Rundfunk, to SWR and MDR (from one to six German states) — now live under its own ARD Sounds subdomain"
+          "de": "Umsetzung der Ausweitung des zunächst auf den BR beschränkten Angebots auf SWR und MDR (von einem auf sechs Bundesländer), heute live unter einer eigenen ARD-Sounds-Subdomain",
+          "en": "Implemented the expansion of the offering, initially limited to Bayerischer Rundfunk, to SWR and MDR (from one to six German states), now live under its own ARD Sounds subdomain"
         }
       ],
       "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "ISR / On-Demand Revalidation"]
@@ -40,17 +40,17 @@
       },
       "responsibilities": [
         {
-          "de": "Entwicklung wiederverwendbarer Frontend-Komponenten für reichweitenstarke ARD-Angebote (tagesschau.de, sportschau.de, brisant.de, ard.de) im mehrköpfigen Frontend-Team",
-          "en": "Developed reusable frontend components for high-traffic ARD websites (tagesschau.de, sportschau.de, brisant.de, ard.de) in a multi-developer frontend team"
+          "de": "Entwicklung wiederverwendbarer Frontend-Komponenten für reichweitenstarke ARD-Angebote (tagesschau.de, sportschau.de, brisant.de, ard.de) im mehrköpfigen Frontend-Team: serverseitige Handlebars-Templates, React für interaktive Komponenten",
+          "en": "Developed reusable frontend components for high-traffic ARD websites (tagesschau.de, sportschau.de, brisant.de, ard.de) in a multi-developer frontend team: server-rendered Handlebars templates, React for interactive components"
         }
       ],
       "achievements": [
         {
-          "de": "Migration von ard.de und brisant.de auf ein neues CMS – ohne Beeinträchtigung des Live-Betriebs",
-          "en": "Migrated ard.de and brisant.de to a new CMS — with zero disruption to live operation"
+          "de": "Migration von ard.de und brisant.de auf ein neues CMS (Unified Sophora) ohne Beeinträchtigung des laufenden Betriebs",
+          "en": "Migrated ard.de and brisant.de to a new CMS (Unified Sophora) with zero disruption to live operation"
         }
       ],
-      "stack": ["React", "Handlebars.js", "TypeScript", "Node.js", "CMS Migration", "Tailwind CSS", "Docker"]
+      "stack": ["React", "Handlebars.js", "TypeScript", "Node.js", "CMS Migration", "Sophora", "Tailwind CSS"]
     },
     {
       "title": {
@@ -59,8 +59,8 @@
       },
       "responsibilities": [
         {
-          "de": "Weiterentwicklung von hilfe.ard.de, dem zentralen Hilfeportal der ARD mit über 250 Hilfeseiten zu TV, Mediathek, ARD Sounds, Radio und Barrierefreiheit – CMS (Strapi) und Next.js-Frontend",
-          "en": "Further developed hilfe.ard.de, ARD’s central help portal with over 250 help pages on TV, ARD Mediathek, ARD Sounds, radio and accessibility — CMS (Strapi) and Next.js frontend"
+          "de": "Weiterentwicklung von hilfe.ard.de, dem zentralen Hilfeportal der ARD mit über 250 Hilfeseiten zu TV, Mediathek, ARD Sounds, Radio und Barrierefreiheit: CMS (Strapi) und Next.js-Frontend",
+          "en": "Extended hilfe.ard.de, ARD’s central help portal with over 250 help pages on TV, ARD Mediathek, ARD Sounds, radio and accessibility: CMS (Strapi) and Next.js frontend"
         },
         {
           "de": "Verantwortung für das Helpdesk-Formular inkl. E-Mail-Routing: Alle Nutzeranfragen zu den Angeboten der ARD (TV, Radio, Apps) werden an die zuständigen Stellen weitergeleitet",

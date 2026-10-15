@@ -38,6 +38,7 @@ export interface Resume {
   basics: {
     name: string;
     label: string;
+    image?: string;
     email: string;
     phone?: string;
     url?: string;

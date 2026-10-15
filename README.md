@@ -133,6 +133,10 @@ und Inline-Validierung.
    - `endDate` **weglassen** = laufendes Projekt, angezeigt als
      „06/2021 – heute" bzw. „Jun 2021 – present".
    - `client` darf auch ein einfacher String sein, wenn sprachneutral (`"LogTech GmbH"`).
+   - `hidden` (optional, `true`): Projekt als Stammdatum behalten, aber nicht in
+     den Lebenslauf aufnehmen – erscheint weder im PDF noch im eingebetteten
+     JSON und belegt keine Kompetenz (z. B. `2024-04-studio-lenzing.json`).
+     Die Datei wird weiterhin gegen das Schema geprüft.
    - `workload` (optional): Auslastung, z. B. `"60 %"` oder `{ "de": "nebenberuflich", … }` —
      wichtig bei parallel laufenden Projekten, sonst wirkt der Zeitstrahl überbucht.
    - `subprojects` (optional): mehrere parallele Projekte beim selben Kunden als
