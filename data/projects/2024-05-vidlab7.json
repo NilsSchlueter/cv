@@ -2,31 +2,31 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Vidlab7 GmbH",
   "role": {
-    "de": "Frontend-Entwickler — AI-Sales-Avatar-Plattform (Next.js)",
+    "de": "Frontend-Entwickler – AI-Sales-Avatar-Plattform (Next.js)",
     "en": "Frontend Developer — AI Sales Avatar Platform (Next.js)"
   },
-  "location": { "de": "München", "en": "Munich" },
+  "location": { "de": "München (remote)", "en": "Munich (remote)" },
   "workload": { "de": "Teilzeit", "en": "part-time" },
   "startDate": "2024-05",
   "endDate": "2024-10",
   "responsibilities": [
     {
-      "de": "Aufbau der Webplattform für AI-Sales-Avatare — animierte Avatare, die Website-Besuchern in Live-Gesprächen Fragen beantworten — als einer von drei Entwicklern direkt nach der ersten Finanzierungsrunde (ca. 3 Mio. €)",
-      "en": "Built the web platform for AI sales avatars — animated avatars that answer website visitors' questions in live conversations — as one of three developers, joining right after the first funding round (approx. EUR 3M)"
+      "de": "Aufbau der Webplattform für AI-Sales-Avatare (heute moonscale) – animierte Avatare, die Website-Besuchern in Live-Gesprächen Fragen beantworten – als einer von drei Entwicklern direkt nach der ersten Finanzierungsrunde (ca. 3 Mio. €)",
+      "en": "Built the web platform for AI sales avatars (now moonscale) — animated avatars that answer website visitors’ questions in live conversations — as one of three developers, right after the first funding round (approx. €3M)"
     },
     {
-      "de": "Entwicklung der zentralen Produkt-Workflows, mit denen Endkunden eigene Avatare trainieren und veröffentlichen — inklusive Video- und Tonaufnahme direkt im Browser",
-      "en": "Developed the core product workflows enabling customers to train and publish their own avatars — including video and audio recording directly in the browser"
+      "de": "Entwicklung der zentralen Produkt-Workflows, mit denen Endkunden eigene Avatare trainieren und veröffentlichen – inkl. Video- und Tonaufnahme direkt im Browser und der zugehörigen Datenschicht mit Prisma und PostgreSQL",
+      "en": "Developed the core product workflows enabling customers to train and publish their own avatars — including video and audio recording directly in the browser and the underlying data layer with Prisma and PostgreSQL"
     },
     {
-      "de": "Einarbeitung der ersten festen Teammitglieder sowie Etablierung von Code-Standards und technischen Prozessen für schnelle Feature-Iteration — mitten in der Team-Skalierung nach dem Funding",
-      "en": "Onboarded the first permanent team members and established code standards and technical processes for fast feature iteration — during the post-funding team scale-up"
+      "de": "Wissenstransfer an die ersten festen Teammitglieder sowie Etablierung von Code-Standards und technischen Prozessen für schnelle Feature-Iteration",
+      "en": "Transferred knowledge to the first permanent team members and established code standards and technical processes for fast feature iteration"
     }
   ],
   "achievements": [
     {
-      "de": "Termingerechter Launch der Plattform und Begleitung der kritischen Onboarding-Phase der ersten B2B-Kunden",
-      "en": "On-schedule platform launch and support through the critical onboarding phase of the first B2B customers"
+      "de": "Launch der Plattform im geplanten Zeitrahmen und Begleitung der kritischen Onboarding-Phase der ersten B2B-Kunden",
+      "en": "Launched the platform within the planned timeframe and supported the first B2B customers through the critical onboarding phase"
     }
   ],
   "stack": ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "TanStack Query", "Tailwind CSS", "shadcn/ui", "getUserMedia", "Web Audio API", "Vercel"]

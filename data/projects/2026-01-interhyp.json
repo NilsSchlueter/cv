@@ -2,16 +2,16 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Interhyp AG",
   "role": {
-    "de": "Fullstack-Entwickler — Headless-CMS-Migration (Next.js/Sanity)",
+    "de": "Fullstack-Entwickler – Headless-CMS-Migration (Next.js/Sanity)",
     "en": "Fullstack Developer — Headless CMS Migration (Next.js/Sanity)"
   },
-  "location": { "de": "München", "en": "Munich" },
+  "location": { "de": "München (remote)", "en": "Munich (remote)" },
   "startDate": "2026-01",
   "endDate": "2026-03",
   "responsibilities": [
     {
-      "de": "Termingerechte Migration von drei Unternehmens-Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf Sanity mit neuem Next.js-Frontend — im vierköpfigen Entwicklungsteam, ohne Verlust von SEO-Assets",
-      "en": "On-schedule migration of three corporate websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to Sanity with a new Next.js frontend — in a four-person team, with no loss of SEO assets"
+      "de": "Mitarbeit an der Migration von drei Unternehmens-Websites (interhyp.de, prohyp.de, interhyp-gruppe.de) auf Sanity mit neuem Next.js-Frontend – im vierköpfigen Entwicklungsteam, mit Fokus auf den Erhalt der SEO-Assets",
+      "en": "Contributed to the migration of three corporate websites (interhyp.de, prohyp.de, interhyp-gruppe.de) to Sanity and a new Next.js frontend — in a team of four, focused on preserving SEO assets"
     },
     {
       "de": "Aufbau eines wiederverwendbaren React-Komponentensystems und Use-Case-spezifischer Content-Schemata als gemeinsame Basis aller drei Markenauftritte",
@@ -20,9 +20,9 @@
   ],
   "achievements": [
     {
-      "de": "Caching-Strategie, die die Aufrufe ans Headless CMS um über 50 % reduziert",
-      "en": "Caching strategy that cut headless CMS requests by more than 50%"
+      "de": "Konzeption einer Caching-Strategie mit dem Next.js Data Cache und Revalidierung über Cache-Tags per Sanity-Webhooks: über 50 % weniger Aufrufe ans Headless CMS",
+      "en": "Designed a caching strategy using the Next.js Data Cache and tag-based revalidation via Sanity webhooks, cutting headless CMS requests by more than 50%"
     }
   ],
-  "stack": ["Next.js", "React", "Sanity", "TypeScript", "Content Modeling", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "Storybook", "AI-Assisted Development (Claude Code)"]
+  "stack": ["Next.js", "React", "Sanity", "Headless CMS", "CMS Migration", "TypeScript", "Content Modeling", "ISR / On-Demand Revalidation", "SEO", "Storybook", "GitHub Copilot"]
 }

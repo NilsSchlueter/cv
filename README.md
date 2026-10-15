@@ -137,7 +137,9 @@ und Inline-Validierung.
      wichtig bei parallel laufenden Projekten, sonst wirkt der Zeitstrahl überbucht.
    - `subprojects` (optional): mehrere parallele Projekte beim selben Kunden als
      **ein** Engagement mit Unterblöcken (`title`, `responsibilities`,
-     `achievements`, `stack`) — siehe `2025-09-pub-tech.json`.
+     `achievements`, `stack`) — siehe `2025-09-pub-tech.json`. Teilprojekte
+     bekommen bewusst kein eigenes Datum: Parser lesen datierte Zeilen als
+     eigene Station ohne Arbeitgeber.
    - Tech-Begriffe in `stack` exakt so schreiben wie in `data/skills.json`
      (z. B. `Tailwind CSS`, `NgRx`): Die Validierung prüft, dass jede Kompetenz
      in mindestens einem Projekt belegt ist.
@@ -146,10 +148,10 @@ und Inline-Validierung.
      Wichtigkeit: zuerst die prägenden Technologien (AI-Tags bei AI-Projekten,
      das CMS bei CMS-Projekten, Angular · TypeScript · NgRx · RxJS bei
      Angular-Projekten), danach wie unter Kompetenzen.
-   - Nicht in `stack`: Grundlagen (JavaScript, REST APIs, HTML, CSS, Git — nur
-     unter Kompetenzen) und Begriffe, die Titel oder Bullets des Projekts schon
-     nennen — ATS-Parser lesen den Fließtext mit. Die Validierung zählt Tags
-     und Fließtext als Beleg einer Kompetenz.
+   - Jede Technologie, die Titel oder Bullets nennen, steht auch in `stack`
+     (bzw. im `stack` des Teilprojekts) — die Validierung bricht sonst ab.
+     Ausnahme: Grundlagen (JavaScript, REST APIs, HTML, CSS, Git) stehen nur
+     unter Kompetenzen.
 3. `npm run build`.
 
 ### Profilbild tauschen
@@ -183,8 +185,10 @@ CV_PHOTO_DE=false npm run build    # alternativ via Umgebungsvariable
 | ----------------- | ----------------------------------------------------------------------------- |
 | `gen:schema`      | JSON-Schemata (`schema/`) aus den TypeScript-Typen (`src/types.ts`) generieren |
 | `merge`           | `data/` → `generated/resume.de.json` + `resume.en.json` (JSON Resume)          |
-| `validate`        | (a) Quelldaten gegen eigenes Schema, (b) generierte Dateien gegen offizielles JSON-Resume-Schema, (c) Kompetenzen gegen Projekt-Tags, (d) offene `[[TODO]]`-Platzhalter |
+| `validate`        | (a) Quelldaten gegen eigenes Schema, (b) generierte Dateien gegen offizielles JSON-Resume-Schema, (c) Kompetenzen gegen Projekt-Tags, (d) offene `[[TODO]]`-Platzhalter, (e) Technologien aus Titel/Bullets in den Tags |
 | `build`           | `templates/cv.typ` → beide PDFs nach `dist/`, plus Markdown-Export              |
+| `check:setup`     | einmalig: `.venv/` mit pypdf + pdfminer.six für `check:pdf`                     |
+| `check:pdf`       | beide PDFs extrahieren (`dist/text/`) und Layout-Regeln prüfen                  |
 | `docx`            | `dist/*.md` → `dist/*.docx` via pandoc                                          |
 | `watch`           | baut bei jeder Änderung automatisch neu                                         |
 | `typecheck`       | `tsc --noEmit` über die Scripts                                                 |
@@ -232,6 +236,24 @@ templates/cv.typ    eigenständiges Typst-Template (nils.fyi-Design-Sprache, Tim
 generated/          (git-ignored) schema-konforme JSON-Resume-Dateien
 dist/               (git-ignored) fertige PDFs – Distribution via lokalen Build / Releases
 ```
+
+## Prüfen: deterministisch und per Review-Schleife
+
+```bash
+npm run check:setup   # einmalig: .venv/ mit pypdf + pdfminer.six
+npm run check:pdf     # nach jedem Build
+```
+
+`check:pdf` extrahiert beide PDFs mit pdftotext, pypdf und pdfminer nach
+`dist/text/` und prüft die Layout-Regeln (Seitenzahl, Trenner am
+Zeilenanfang, zerrissene Komposita, einzelne Wörter, Länge der Tech-Zeilen,
+jeder Tag und Zeitraum unversehrt in jeder Extraktion).
+
+Inhaltlich prüft der Claude-Code-Skill **`/cv-review`**: fünf blinde
+Reviewer-Agents (`.claude/agents/cv-*.md` — Hiring Manager, Zeitstrahl, Tech
+Lead, ATS-Parser, Lektorat) bewerten die PDFs parallel; der Skill
+konsolidiert ihre Befunde gegen `CLAUDE.md`, behebt Eindeutiges und fragt nur
+bei echten Entscheidungen nach.
 
 ## Verifikation der Maschinenlesbarkeit
 

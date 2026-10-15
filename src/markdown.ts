@@ -57,12 +57,12 @@ const LABELS = {
   de: {
     profile: "Profil", skills: "Kompetenzen", experience: "Projekthistorie",
     education: "Ausbildung", languages: "Sprachen", grade: "Note",
-    focus: "Fokus", tech: "Technologien", countries: { DE: "Deutschland" },
+    focus: "Fokus", tech: "Technologien", subproject: "Teilprojekt", dash: "–", countries: { DE: "Deutschland" },
   },
   en: {
     profile: "Profile", skills: "Skills", experience: "Project Experience",
     education: "Education", languages: "Languages", grade: "Grade",
-    focus: "Focus", tech: "Technologies", countries: { DE: "Germany" },
+    focus: "Focus", tech: "Technologies", subproject: "Sub-project", dash: "—", countries: { DE: "Germany" },
   },
 } as const;
 const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -113,7 +113,7 @@ function workEntry(w: Work, lang: Lang): string[] {
   return [
     ...head,
     ...entryBody({ ...w, keywords: [] }, lang),
-    ...subprojects.flatMap((s) => [`#### ${esc(s.title)}`, ...entryBody(s, lang)]),
+    ...subprojects.flatMap((s) => [`#### ${LABELS[lang].subproject}: ${esc(s.title)}`, ...entryBody(s, lang)]),
   ];
 }
 
@@ -137,7 +137,7 @@ export function toMarkdown(r: Resume, lang: Lang): string {
     `## ${t.skills}`, r.skills.map((s) => `- **${esc(s.name)}:** ${esc(s.keywords.join(" · "))}`).join("\n"),
     `## ${t.experience}`, ...r.work.flatMap((w) => workEntry(w, lang)),
     `## ${t.education}`, ...r.education.flatMap((e) => educationEntry(e, lang)),
-    `## ${t.languages}`, r.languages.map((l) => `- **${esc(l.language)}** — ${esc(l.fluency)}`).join("\n"),
+    `## ${t.languages}`, r.languages.map((l) => `- **${esc(l.language)}** ${t.dash} ${esc(l.fluency)}`).join("\n"),
   ];
   return parts.join("\n\n") + "\n";
 }

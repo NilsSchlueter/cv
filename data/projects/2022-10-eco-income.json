@@ -2,23 +2,27 @@
   "$schema": "../../schema/project.schema.json",
   "client": "eco.income engineering GmbH",
   "role": {
-    "de": "Fullstack-Entwickler — CO₂-Bilanzierungs-Software (Next.js)",
-    "en": "Fullstack Developer — Carbon Accounting Software (Next.js)"
+    "de": "Fullstack-Entwickler – CO2-Bilanzierungs-Software (React)",
+    "en": "Fullstack Developer — Carbon Accounting Software (React)"
   },
-  "location": "Hamburg",
+  "location": "Hamburg (remote)",
   "workload": { "de": "Teilzeit", "en": "part-time" },
   "startDate": "2022-10",
   "endDate": "2023-03",
   "responsibilities": [
     {
-      "de": "Entwicklung einer SaaS-Lösung zur CO₂-Bilanzierung als einziger Entwickler: Unternehmen laden Bank-Transaktionsdaten hoch und erhalten daraus berechnete Scope-1-, Scope-2- und Scope-3-Emissionen",
-      "en": "Sole developer of a SaaS solution for corporate carbon accounting: companies upload bank transaction data and receive calculated Scope 1, Scope 2 and Scope 3 emissions"
+      "de": "Entwicklung einer SaaS-Lösung zur CO2-Bilanzierung: Unternehmen laden nur Bank-Transaktionsdaten hoch und erhalten per TÜV-geprüftem Algorithmus eine ausgabenbasierte Schätzung ihrer Scope-1- bis Scope-3-Emissionen, ohne Verbrauchsdaten erfassen zu müssen",
+      "en": "Developed a SaaS solution for corporate carbon accounting: companies upload only their bank transaction data and receive a spend-based estimate of their Scope 1 to 3 emissions from a TÜV-certified algorithm, without having to collect consumption data"
     },
     {
-      "de": "Aufbau von Grund auf in direkter Zusammenarbeit mit dem Gründer (Early-Stage-Startup) — Softwarearchitektur, Datenmodell, eigenes Node.js-Backend (Express, TypeORM) und Frontend bis zum Launch und Onboarding der ersten zahlenden B2B-Kunden",
-      "en": "Built from the ground up in direct collaboration with the founder (early-stage startup) — software architecture, data model, custom Node.js backend (Express, TypeORM) and frontend through launch and onboarding of the first paying B2B customers"
+      "de": "Aufbau der Lösung von Grund auf in direkter Zusammenarbeit mit dem Gründer (Early-Stage-Startup) bis zum Launch und Onboarding der ersten zahlenden B2B-Kunden",
+      "en": "Built the product from the ground up in direct collaboration with the founder (early-stage startup) through launch and onboarding of the first paying B2B customers"
+    },
+    {
+      "de": "Alleinverantwortung für das Frontend sowie Mitarbeit an Softwarearchitektur, Datenmodell und Node.js-Backend (Koa, TypeORM)",
+      "en": "Owned the frontend single-handedly and contributed to the software architecture, data model and Node.js backend (Koa, TypeORM)"
     }
   ],
   "achievements": [],
-  "stack": ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "AG Grid", "Docker", "Google Cloud", "Terraform", "GitLab"]
+  "stack": ["React", "TypeScript", "Node.js", "Koa", "TypeORM", "Firebase", "PostgreSQL", "AG Grid", "Docker", "Google Cloud", "GitLab"]
 }

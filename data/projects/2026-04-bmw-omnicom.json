@@ -1,8 +1,8 @@
 {
   "$schema": "../../schema/project.schema.json",
-  "client": { "de": "Omnicom (für BMW)", "en": "Omnicom (for BMW)" },
+  "client": { "de": "Interone (Omnicom-Gruppe)", "en": "Interone (Omnicom Group)" },
   "role": {
-    "de": "Frontend-Entwickler — AI Assistant für BMW (Generative UI)",
+    "de": "Frontend-Entwickler – AI Assistant für BMW (Generative UI)",
     "en": "Frontend Developer — AI Assistant for BMW (Generative UI)"
   },
   "location": { "de": "München (remote)", "en": "Munich (remote)" },
@@ -10,31 +10,31 @@
   "endDate": "2026-09",
   "responsibilities": [
     {
-      "de": "Entwicklung der Komponenten, die der AI-Agent im Chat dynamisch steuert und mit Inhalten befüllt (Generative UI) — interaktive Karten, Vergleichstabellen, Chat- und Voice-Inputs",
-      "en": "Building the components the AI agent dynamically controls and populates inside the chat (generative UI) — interactive cards, comparison tables, chat and voice inputs"
+      "de": "Entwicklung von Komponenten, die der AI-Agent im Chat dynamisch steuert und mit Inhalten befüllt (Generative UI): interaktive Karten, Vergleichstabellen, Chat- und Voice-Inputs, inkl. Rendering der per SSE gestreamten Antworten",
+      "en": "Built components the AI agent dynamically controls and populates inside the chat (Generative UI): interactive cards, comparison tables, chat and voice inputs; rendered SSE-streamed responses"
     },
     {
-      "de": "Frontend-Entwicklung des AI Assistant für die BMW-Websites (Angular) — in einem global verteilten Entwicklungsteam mit rund 20 Entwicklern",
-      "en": "Frontend development of the AI Assistant for the BMW websites (Angular) — in a globally distributed team of around 20 developers"
+      "de": "Frontend-Entwicklung des AI Assistant für die BMW-Websites (Angular) – in einem global verteilten Team mit rund 20 Entwicklern",
+      "en": "Developed the frontend of the AI Assistant for the BMW websites (Angular) — in a globally distributed team of around 20 developers"
     },
     {
-      "de": "Umsetzung der Compliance-Anforderungen je Markt: AI-Transparenzhinweise und Disclaimer (EU AI Act), Guardrails für angezeigte Inhalte sowie länderspezifische Pflichtangaben wie Preise, Verbrauchs- und Emissionswerte",
-      "en": "Implemented compliance requirements per market: AI transparency notices and disclaimers (EU AI Act), guardrails for displayed content and country-specific mandatory information such as prices, fuel consumption and emission figures"
+      "de": "Umsetzung der Compliance-Anforderungen je Markt: AI-Transparenzhinweise und Disclaimer (EU AI Act) sowie länderspezifische Pflichtangaben (Preise, Verbrauchs- und Emissionswerte) als datengebundene Komponenten aus Fahrzeugdaten statt im LLM-Text",
+      "en": "Implemented compliance requirements per market: AI transparency notices and disclaimers (EU AI Act) and country-specific mandatory information (prices, consumption and emission figures) as data-bound components from vehicle data rather than in the LLM text"
     },
     {
       "de": "Internationalisierung (i18n) und Barrierefreiheit (WCAG) der Chat-Komponenten",
-      "en": "Internationalization (i18n) and accessibility (WCAG) of the chat components"
+      "en": "Internationalized the chat components (i18n) and made them accessible (WCAG)"
     },
     {
-      "de": "Entwicklung eines internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS",
-      "en": "Development of an internal CMS for managing the chat content, based on Next.js and Payload CMS"
+      "de": "Aufbau eines internen CMS zur Pflege der Chat-Inhalte auf Basis von Next.js und Payload CMS – eigene Collections und Lokalisierung je Markt",
+      "en": "Built an internal CMS for managing the chat content, based on Next.js and Payload CMS — custom collections and per-market localization"
     }
   ],
   "achievements": [
     {
-      "de": "Erfolgreicher Go-live Ende September 2026 in 5 Märkten (Deutschland, Großbritannien, Frankreich, Spanien, Niederlande) sowie Vorbereitung des US-Rollouts (geplant für Ende Oktober 2026)",
-      "en": "Successful go-live at the end of September 2026 in 5 markets (Germany, UK, France, Spain, Netherlands), plus preparation of the US rollout (planned for the end of October 2026)"
+      "de": "Go-live Ende September 2026 in fünf Märkten (Deutschland, Großbritannien, Frankreich, Spanien, Niederlande) sowie Vorbereitung des US-Rollouts (geplant für Ende Oktober 2026)",
+      "en": "Supported the go-live in five markets at the end of September 2026 (Germany, the UK, France, Spain, the Netherlands) and prepared the US rollout (planned for the end of October 2026)"
     }
   ],
-  "stack": ["Generative AI", "Generative UI", "Chatbot / Conversational UI", "Tool/Function Calling", "Structured Outputs", "Streaming (SSE/WebSocket)", "Voice UI (Web Speech API)", "Angular", "TypeScript", "NgRx Signal Store", "Vitest", "Next.js", "Payload CMS"]
+  "stack": ["Generative AI", "Generative UI", "Chatbot / Conversational UI", "Streaming (SSE)", "Voice UI", "Angular", "TypeScript", "NgRx SignalStore", "Vitest", "Accessibility (WCAG)", "Internationalization (i18n)", "Next.js", "Payload CMS"]
 }

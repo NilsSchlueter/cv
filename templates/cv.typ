@@ -39,12 +39,12 @@
   de: (
     profile: "Profil", experience: "Projekthistorie", skills: "Kompetenzen",
     education: "Ausbildung", languages: "Sprachen",
-    grade: "Note", focus: "Fokus", doc: "Profil",
+    grade: "Note", focus: "Fokus", doc: "Profil", subproject: "Teilprojekt",
   ),
   en: (
     profile: "Profile", experience: "Project Experience", skills: "Skills",
     education: "Education", languages: "Languages",
-    grade: "Grade", focus: "Focus", doc: "Profile",
+    grade: "Grade", focus: "Focus", doc: "Profile", subproject: "Sub-project",
   ),
 )
 #let t = i18n.at(lang, default: i18n.de)
@@ -144,14 +144,18 @@
 // Wichtig für die Gruppierung: Der Abstand ZWISCHEN zwei Bullets (7pt) muss
 // größer sein als der Zeilenabstand INNERHALB eines Bullets (6pt), sonst
 // kleben umbrechende Bullets optisch am Nachbarn.
-#let entry-list(items) = {
+// Der Marker ist normaler Text mit normalem Wortabstand im selben Absatz
+// (hängender Einzug statt `list`): Typst setzt Listen-Marker als eigene
+// Elemente, und schon eine breitere Lücke lesen pdftotext bzw. pdfminer als
+// Spaltengrenze — die Marker landen untereinander, die Bullets verschmelzen.
+#let entry-list(items) = context {
   set par(leading: lead-body)
-  list(
-    marker: text(fill: clay, size: 9pt)[•],
-    spacing: 7pt,
-    body-indent: 7pt,
-    ..items.map(it => [#it]),
-  )
+  let marker = text(fill: clay)[•]
+  let indent = measure(marker).width + measure[a b].width - measure[ab].width
+  for (i, it) in items.enumerate() {
+    block(above: if i == 0 { 0pt } else { 7pt }, below: 0pt,
+      par(hanging-indent: indent)[#marker #it])
+  }
 }
 
 // Keyword-Folge: jedes Keyword ist unteilbar ("TanStack Query" bricht nie in
@@ -195,9 +199,9 @@
 //   1. Ort · E-Mail · Telefon   (Kontaktdaten in EINER Textfolge)
 //   2. Website · Profile        (Links)
 #let contact-lines = {
-  let direct = (location-str, b.email)
+  let direct = (location-str, link("mailto:" + b.email, b.email))
   let phone = b.at("phone", default: none)
-  if phone != none and phone != "" { direct.push(phone) }
+  if phone != none and phone != "" { direct.push(link("tel:" + phone.replace(" ", ""), phone)) }
   let links = ()
   let site = b.at("url", default: none)
   if site != none {
@@ -268,7 +272,10 @@
   tag-line(keywords)
 }
 
+// "Teilprojekt:" vor dem Titel: Ohne Label liest ein Parser eine fette Zeile
+// mit Bullets darunter als eigene (datumslose) Station.
 #let subproject-block(s) = block(above: 12pt, below: 0pt, breakable: false, {
+  text(fill: muted, t.subproject + ": ")
   text(weight: 600, s.title)
   entry-body(s, s.keywords)
 })
@@ -320,14 +327,18 @@
   }
 }
 
+// Zeitraum in der Hochschulzeile statt in der rechten Spalte: Ohne breite
+// Bullets darunter sortiert pdfminer die Datumsspalte sonst hinter die
+// Sprachen-Sektion.
 #let edu-entry(e) = rail-entry({
   let meta = ()
   if e.at("location", default: none) != none { meta.push(e.location) }
+  meta.push(fmt-range(e.startDate, e.at("endDate", default: none)))
   if e.at("score", default: none) != none { meta.push(t.grade + ": " + e.score) }
   entry-header(
     [#e.studyType#sep#e.area],
     e.institution,
-    fmt-range(e.startDate, e.at("endDate", default: none)),
+    [],
     meta,
   )
   let courses = e.at("courses", default: ())
@@ -353,22 +364,25 @@
 // lesbarkeit: Bei justify: false ist automatische Silbentrennung ohnehin aus,
 // aber falls jemand später Blocksatz aktiviert, würde Typst sonst still Soft
 // Hyphens einfügen — das echte ATS-Problem.
-#set text(font: sans, size: size-body, lang: lang, ligatures: false, hyphenate: false, fill: ink)
+#set text(font: sans, size: size-body, lang: lang, ligatures: false, kerning: false, hyphenate: false, fill: ink)
 #set par(justify: false, leading: lead-body)
 
-// Komposita mit Bindestrich ("Bank-Transaktionsdaten", "UI-Komponenten")
-// nie am Bindestrich umbrechen: Extraktoren (pdftotext, viele ATS-Parser)
+// Komposita mit Bindestrich oder Punkt ("Bank-Transaktionsdaten",
+// "Node.js-Backend") nie am Bindestrich oder Punkt umbrechen: Extraktoren (pdftotext, viele ATS-Parser)
 // entfernen einen Bindestrich am Zeilenende und kleben die Teile zusammen
 // ("BankTransaktionsdaten"). Die Box hält das Wort zusammen, der Text bleibt
 // unverändert — anders als U+2011 (geschützter Bindestrich), das die Suche
 // nach "Multi-Sender" bricht und in den eingebetteten Fonts fehlt.
-#show regex("[\p{L}\p{N}]+(?:-[\p{L}\p{N}]+)+"): box
+#show regex("[\p{L}\p{N}]+(?:[-.][\p{L}\p{N}]+)+"): box
+// Ergänzungsstrich ("Bestell- und Angebotsprozesse") nie am Zeilenende:
+// sonst liefern dieselben Extraktoren "Bestellund".
+#show regex("[\p{L}\p{N}]+(?:-[\p{L}\p{N}]+)*- (?:und|oder|bis|sowie|bzw\.)"): box
 // Gedankenstrich nie am Zeilenanfang: hängt am vorherigen Wort (normales
 // Leerzeichen bleibt erhalten, anders als ein geschütztes Leerzeichen).
-#show regex("\S+ —"): box
+#show regex("\S+ [—–]"): box
 // Instrument Sans hat kein "₂" (sonst Fallback auf eine Serifen-Schrift).
 // Als Tiefstellung gesetzt landet zudem ein suchbares "CO2" in der Textebene.
-#show "CO₂": [CO#sub[2]]
+#show "CO2": [CO#sub[2]]
 #set page(
   paper: "a4",
   fill: paper,
@@ -380,15 +394,9 @@
     grid(
       columns: (1fr, auto),
       align: (left, right),
-      {
-        dot(r: 1.7pt, baseline: -1.2pt)
-        h(5pt)
-        upper(b.name)
-        sep-mono
-        // Nur der erste Label-Abschnitt — das volle Label (mit Tech-Keywords)
-        // wäre für den Footer zu lang.
-        upper(b.label.split("·").at(0).trim())
-      },
+      // Kein Text außer der Seitenzahl: Name oder Berufsbezeichnung lesen
+      // Parser mitten in einer Station als Blockgrenze bzw. Phantom-Station.
+      dot(r: 1.7pt, baseline: -1.2pt),
       counter(page).display("1 / 1", both: true),
     )
   },
@@ -501,7 +509,7 @@
     for (i, l) in data.languages.enumerate() {
       if i > 0 { sep }
       text(weight: 600, l.language)
-      text(fill: muted, " — " + l.fluency)
+      text(fill: muted, (if lang == "de" { " – " } else { " — " }) + l.fluency)
     }
   })
 }

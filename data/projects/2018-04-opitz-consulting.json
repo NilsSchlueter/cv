@@ -6,19 +6,23 @@
     "en": "Frontend Developer"
   },
   "location": "Essen",
-  "workload": {
-    "de": "Werkstudent bis 09/2019, danach Festanstellung",
-    "en": "working student until Sep 2019, then permanent position"
-  },
   "startDate": "2018-04",
   "endDate": "2021-08",
   "responsibilities": [
     {
-      "de": "Entwicklung in Kundenprojekten der Industrie- und Mobilitätsbranche in Scrum-Teams — u. a. erfolgreicher Relaunch einer Webanwendung mit über 100.000 monatlichen Besuchern",
-      "en": "Development in client projects across the industrial and mobility sectors in Scrum teams — including a successful relaunch of a web application with over 100,000 monthly visitors"
+      "de": "Werkstudent bis 09/2019 (parallel zum Master), danach Festanstellung",
+      "en": "Working student until Sep 2019 (alongside the Master’s), then permanent role"
     },
     {
-      "de": "Leitung einer internen Schulungsreihe zu Angular & TypeScript mit über 20 Teilnehmenden",
+      "de": "Entwicklung für Kunden aus Industrie und Mobilität (Angular, TypeScript/JavaScript) in Scrum-Teams – u. a. Relaunch einer Webanwendung mit über 100.000 monatlichen Besuchern",
+      "en": "Worked on client projects in the industrial and mobility sectors (Angular, TypeScript/JavaScript) in Scrum teams — including the relaunch of a web application with over 100,000 monthly visitors"
+    },
+    {
+      "de": "Mitarbeit an Java-Backends (Spring Boot, Microservices) neben der Frontend-Entwicklung",
+      "en": "Contributed to Java backends (Spring Boot, microservices) alongside frontend development"
+    },
+    {
+      "de": "Leitung einer internen Schulungsreihe zu Angular & TypeScript mit über 20 Teilnehmern",
       "en": "Led an internal training series on Angular & TypeScript with over 20 participants"
     }
   ],

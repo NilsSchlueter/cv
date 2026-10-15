@@ -2,27 +2,27 @@
   "$schema": "../../schema/project.schema.json",
   "client": "Jabboury & Schlüter GbR",
   "role": {
-    "de": "Fullstack-Entwickler & Mitgründer — abo-store.de (Next.js)",
-    "en": "Fullstack Developer & Co-Founder — abo-store.de (Next.js)"
+    "de": "Fullstack-Entwickler – abo-store.de (Next.js)",
+    "en": "Fullstack Developer — abo-store.de (Next.js)"
   },
   "location": "Bochum",
   "workload": { "de": "nebenberuflich", "en": "side business" },
   "startDate": "2021-06",
   "responsibilities": [
     {
-      "de": "Aufbau und Betrieb von abo-store.de, einer Affiliate-Plattform für Abo-Boxen — von der Geschäftsidee über die komplette technische Umsetzung (Frontend und Node.js-Backend inkl. Affiliate-Tracking) bis zum laufenden Betrieb",
-      "en": "Built and operate abo-store.de, an affiliate platform for subscription boxes — from the business idea through the complete technical implementation (frontend and Node.js backend including affiliate tracking) to ongoing operation"
+      "de": "Aufbau und Betrieb von abo-store.de als Mitgründer, einer Affiliate-Plattform für Abo-Boxen – von der Idee bis zur technischen Umsetzung (Frontend und Node.js-Backend inkl. Affiliate-Tracking)",
+      "en": "Co-founded, built and operate abo-store.de, an affiliate platform for subscription boxes — from the business idea to the complete technical implementation (frontend and Node.js backend including affiliate tracking)"
     }
   ],
   "achievements": [
     {
-      "de": "Skalierung auf über 10.000 monatliche Besucher rein organisch — Top-3-Google-Rankings für über 100 relevante Keywords durch gezielte SEO-Optimierung",
+      "de": "Skalierung auf über 10.000 monatliche Besucher rein organisch – Top-3-Google-Rankings für über 100 relevante Keywords durch gezielte Suchmaschinenoptimierung (SEO)",
       "en": "Scaled to over 10,000 monthly visitors purely organically — top 3 Google rankings for more than 100 relevant keywords through targeted SEO"
     },
     {
       "de": "1. Platz beim Startup-Wettbewerb „Leitidee“ in Bochum (2022)",
-      "en": "1st place in the \"Leitidee\" startup competition in Bochum (2022)"
+      "en": "1st place in the “Leitidee” startup competition in Bochum (2022)"
     }
   ],
-  "stack": ["Next.js", "React", "TypeScript", "Node.js", "Express", "Sanity", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "TanStack Query", "Tailwind CSS", "Docker", "Vercel"]
+  "stack": ["Next.js", "React", "TypeScript", "Node.js", "Express", "Sanity", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "SEO", "Vercel", "AI-Assisted Development (Claude Code)"]
 }

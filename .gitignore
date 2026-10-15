@@ -13,3 +13,7 @@ generated/
 
 # Original-CVs (Quelle fuer den Import - nicht committen)
 /*.pdf
+
+# Python-Umgebung für npm run check:pdf
+.venv/
+__pycache__/
