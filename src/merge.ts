@@ -20,6 +20,7 @@ import {
   LANGS,
   type Lang,
   listProjectFiles,
+  loadProjects,
   pick,
   projectTags,
   readJson,
@@ -32,7 +33,10 @@ const JSON_RESUME_SCHEMA =
 const basics = Basics.parse(readJson(join(DATA, "basics.json")));
 const skillsFile = SkillsFile.parse(readJson(join(DATA, "skills.json")));
 const educationFile = EducationFile.parse(readJson(join(DATA, "education.json")));
-const projects = listProjectFiles().map((f) => Project.parse(readJson(f)));
+// Jede Datei muss parsen (klare Fehlermeldung); in den Lebenslauf kommen nur
+// die sichtbaren (`hidden: true` bleibt Stammdatum, siehe lib.ts).
+for (const f of listProjectFiles()) Project.parse(readJson(f));
+const projects = loadProjects();
 
 // Chronologisch absteigend (neuestes Projekt zuerst). "YYYY-MM" sortiert
 // lexikografisch korrekt. Bei gleichem Startmonat entscheidet das Enddatum

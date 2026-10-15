@@ -163,6 +163,13 @@ export const Project = z
     achievements: z.array(L).default([]), // Erfolge
     stack: z.array(z.string().min(1)).default([]), // eingesetzte Technologien
     subprojects: z.array(Subproject).default([]),
+    /**
+     * Stammdaten behalten, aber nicht in den Lebenslauf aufnehmen (Kurzeinsätze
+     * ohne Mehrwert). Versteckte Projekte werden weiterhin gegen das Schema
+     * geprüft, zählen aber nicht als Beleg für Kompetenzen und landen weder im
+     * PDF noch im eingebetteten JSON.
+     */
+    hidden: z.boolean().default(false),
   })
   .strict();
 export type Project = z.infer<typeof Project>;

@@ -2,7 +2,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
-import type { L, Project } from "./types";
+import { type L, Project } from "./types";
 
 /** Projekt-Wurzelverzeichnis (ein Level über src/). */
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -27,6 +27,17 @@ export function listProjectFiles(): string[] {
     .filter((f) => f.endsWith(".json"))
     .sort()
     .map((f) => join(PROJECTS_DIR, f));
+}
+
+/**
+ * Alle Projekte, die im Lebenslauf erscheinen: geparst, ohne `hidden: true`.
+ * Ungültige Dateien werden übersprungen (meldet die Validierung, Stufe a).
+ */
+export function loadProjects(): Project[] {
+  return listProjectFiles().flatMap((f) => {
+    const r = Project.safeParse(readJson(f));
+    return r.success && !r.data.hidden ? [r.data] : [];
+  });
 }
 
 /** Alle Tech-Tags eines Projekts inkl. Teilprojekte, ohne Duplikate (Reihenfolge bleibt). */

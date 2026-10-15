@@ -8,6 +8,8 @@
  *   (b) Die generierten Dateien (generated/resume.*.json) gegen das offizielle
  *       JSON-Resume-Schema (@jsonresume/schema).
  *
+ *   Stufen (c) und (e) betrachten nur sichtbare Projekte (ohne `hidden: true`).
+ *
  *   (c) Kompetenzen gegen Projekte: Vermittler-Datenbanken werten einen
  *       Skill erst als belegt, wenn er in einem Projekt steht (Tag oder
  *       Fließtext). Warnt bei Kompetenzen ohne Projekt (Ausnahme: Grundlagen
@@ -37,11 +39,12 @@ import {
   ROOT,
   SCHEMA_DIR,
   listProjectFiles,
+  loadProjects,
   pick,
   projectTags,
   readJson,
 } from "./lib";
-import { Project, SkillsFile } from "./types";
+import { SkillsFile } from "./types";
 
 const require = createRequire(import.meta.url);
 const officialResumeSchema = require("@jsonresume/schema/schema.json");
@@ -98,11 +101,9 @@ for (const lang of LANGS) {
 /* -------------------------------------------------------------------------- */
 console.log("\n(c) Kompetenzen gegen Projekte (Tags + Text):");
 
-// safeParse: ungültige Dateien hat (a) bereits gemeldet.
-const projects = listProjectFiles().flatMap((f) => {
-  const r = Project.safeParse(readJson(f));
-  return r.success ? [r.data] : [];
-});
+// Nur sichtbare Projekte: Was nicht im Lebenslauf steht, belegt auch nichts
+// (ungültige Dateien hat (a) bereits gemeldet).
+const projects = loadProjects();
 const skillsFile = SkillsFile.safeParse(readJson(join(DATA, "skills.json")));
 const skillGroups = skillsFile.success ? skillsFile.data.skills : [];
 const skillKeywords = skillGroups.flatMap((s) => s.keywords);
