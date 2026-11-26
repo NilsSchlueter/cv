@@ -34,7 +34,8 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   **kein GitHub-Link** (kaum eigene Repos).
 - Verfügbarkeit („ab sofort · 100 % · remote, vor Ort in NRW, bundesweit
   reisebereit“) als dritte Zeile im grauen Kontaktblock, nicht abgesetzt.
-- DE mit Foto, EN ohne.
+- DE und EN mit Foto (Standard seit 10/2026); EN ohne Foto bei Bedarf per
+  `--photo-en=false`.
 
 ## Profil
 

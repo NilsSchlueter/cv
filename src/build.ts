@@ -10,10 +10,10 @@
  * Build-Monat — so ist in Vermittler-Ablagen sofort sichtbar, wie aktuell
  * ein Profil ist.
  *
- * Foto-Steuerung (Standard: DE mit Foto, EN ohne – DACH vs. international):
+ * Foto-Steuerung (Standard: beide Sprachen mit Foto):
  *   npm run build                     # Defaults
  *   npm run build -- --photo=false    # beide ohne Foto
- *   npm run build -- --photo-en=true  # EN ausnahmsweise mit Foto
+ *   npm run build -- --photo-en=false # EN ausnahmsweise ohne Foto
  *   CV_PHOTO_DE=false npm run build   # via Umgebungsvariable
  */
 import { execFileSync } from "node:child_process";
@@ -28,7 +28,7 @@ const ROLE_SLUG = "Senior-Fullstack";
 const DOC_LABEL: Record<Lang, string> = { de: "Profil", en: "Profile" };
 
 // Foto-Default je Sprache.
-const photoDefaults: Record<Lang, boolean> = { de: true, en: false };
+const photoDefaults: Record<Lang, boolean> = { de: true, en: true };
 
 const args = process.argv.slice(2);
 

@@ -71,7 +71,7 @@ npm run build      # baut beide PDFs (+ Markdown) nach dist/
 Ergebnis (Datum = Build-Monat):
 
 - `dist/Schlueter_Nils_Senior-Fullstack_Profil_DE_2026-10.pdf` — Deutsch, **mit** Foto
-- `dist/Schlueter_Nils_Senior-Fullstack_Profile_EN_2026-10.pdf` — Englisch, **ohne** Foto
+- `dist/Schlueter_Nils_Senior-Fullstack_Profile_EN_2026-10.pdf` — Englisch, **mit** Foto
 - daneben je eine `.md` mit demselben Inhalt ohne Layout (Basis für Word, s. u.)
 
 Nachname/Vorname kommen aus `data/basics.json` (`name`, Umlaute ausgeschrieben:
@@ -170,14 +170,14 @@ Aktuell liegt dort ein grauer Platzhalter.
 
 ### Foto pro Build an-/abschalten
 
-Standard: DE **mit**, EN **ohne** Foto (außerhalb des DACH-Raums, v. a. US/UK, sind
-Fotos im Lebenslauf unüblich bis nachteilig).
+Standard: beide Sprachen **mit** Foto. Für Bewerbungen außerhalb des DACH-Raums
+(v. a. US/UK, wo Fotos im Lebenslauf unüblich sind) lässt sich das Foto in der
+EN-Fassung per `--photo-en=false` abschalten.
 
 ```bash
-npm run build                     # Defaults (DE an, EN aus)
+npm run build                     # Defaults (beide mit Foto)
 npm run build -- --photo=false    # beide ohne Foto
-npm run build -- --photo=true     # beide mit Foto
-npm run build -- --photo-en=true  # nur EN ausnahmsweise mit Foto
+npm run build -- --photo-en=false # nur EN ohne Foto
 CV_PHOTO_DE=false npm run build    # alternativ via Umgebungsvariable
 ```
 

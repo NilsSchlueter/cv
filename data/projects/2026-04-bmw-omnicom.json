@@ -7,7 +7,7 @@
   },
   "location": { "de": "München (remote)", "en": "Munich (remote)" },
   "startDate": "2026-04",
-  "endDate": "2026-09",
+  "endDate": "2026-10",
   "responsibilities": [
     {
       "de": "Entwicklung von Komponenten, die der AI-Agent im Chat dynamisch steuert und mit Inhalten befüllt (Generative UI): interaktive Karten, Vergleichstabellen, Chat- und Voice-Inputs, inkl. Rendering der per SSE gestreamten Antworten",
