@@ -1,5 +1,4 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "Opitz Consulting Deutschland GmbH",
   "role": {
     "de": "Frontend-Entwickler",
@@ -27,5 +26,20 @@
     }
   ],
   "achievements": [],
-  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Angular Material", "Java", "Spring Boot", "Microservices", "Docker", "Kubernetes", "Jenkins", "Azure", "AWS", "Keycloak"]
+  "stack": [
+    "Angular",
+    "TypeScript",
+    "NgRx",
+    "RxJS",
+    "Angular Material",
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "Docker",
+    "Kubernetes",
+    "Jenkins",
+    "Azure",
+    "AWS",
+    "Keycloak"
+  ]
 }

@@ -1,12 +1,13 @@
 # Lebenslauf (CV)
 
-Zweisprachiger (DE/EN), **ATS-optimierter** Lebenslauf. Strukturierte Quelldaten
-werden zu schema-konformen [JSON-Resume](https://jsonresume.org)-Dateien gemerged
-und mit [Typst](https://typst.app) zu versandfertigen PDFs gerendert.
+Zweisprachiger (DE/EN), **ATS-optimierter** Lebenslauf. Die Quelldaten, die
+Prüfungen und der PDF-Build liegen im **Freelancing Hub** (privates Repo
+`freelance-hub`, Bereich `cv`). Dieses Repo enthält die Wissensbasis
+([`CLAUDE.md`](CLAUDE.md)), die Review-Schleife und die deterministische
+PDF-Prüfung, dazu einen Lesespiegel der Quelldaten unter `data/`.
 
 ```
-data/*.json  ──merge──▶  generated/resume.<de|en>.json  ──typst──▶  dist/Schlueter_Nils_…_<DE|EN>_<YYYY-MM>.pdf
- (zweisprachig)            (JSON Resume, je Sprache)                  (+ .md, eingebettete resume.json)
+Hub (Postgres)  ──build_cv──▶  PDF + Markdown + JSON Resume je Sprache  ──npm run pull──▶  dist/  +  data/ (Spiegel)
 ```
 
 Inhaltliche Grundsatzentscheidungen (Positionierung, Kompetenzen, Tech-Zeilen,
@@ -17,24 +18,144 @@ Kernmerkmale:
 - **Maschinenlesbar:** einspaltiger, linearer Fließtext (der Briefkopf trägt
   Name/Kontakt neben einem optionalen Foto), echte Textebene, keine Tabellen für
   Struktur, Standard-Überschriften. Zusätzlich ist die passende `resume.<lang>.json`
-  als **Attachment im PDF eingebettet** (`pdf.attach`), sodass ATS-Systeme und
-  KI-Tools die strukturierten Rohdaten direkt auslesen können.
+  ([JSON Resume](https://jsonresume.org)) als **Attachment im PDF eingebettet**,
+  sodass ATS-Systeme und KI-Tools die strukturierten Rohdaten direkt auslesen können.
 - **Mehrsprachig ohne Duplikate:** Gemeinsame Daten werden einmal gepflegt;
-  sprachspezifische Texte liegen als `{ "de": "…", "en": "…" }` in derselben Datei.
-- **Einfach pflegbar:** Neues Projekt = eine neue JSON-Datei, dann `npm run build`.
-  Autocomplete & Validierung im Editor via JSON Schema + TypeScript.
+  sprachspezifische Texte liegen als `{ "de": "…", "en": "…" }` im selben Feld.
 
-## Voraussetzungen
+## Ablauf
 
-| Tool  | Version   | Installation                                  |
-| ----- | --------- | --------------------------------------------- |
-| Node  | ≥ 20      | <https://nodejs.org>                          |
-| Typst | ≥ 0.14 \* | `brew install typst` (macOS) · [Releases][tr] |
+Inhalte ändern sich nur über die MCP-Tools des Hubs (z. B. aus Claude Code mit
+verbundenem Hub):
 
-\* `pdf.attach` (das PDF-Attachment) gibt es ab Typst 0.14. In Typst 0.13 hieß die
-Funktion noch `pdf.embed`; sie wurde in 0.14 in `pdf.attach` umbenannt. Getestet mit 0.15.
+1. **Lesen:** `get_cv` (ohne Argumente: Übersicht; mit `slug` oder `section`:
+   vollständiges JSON).
+2. **Ändern:** `save_cv_entry` (eine Station, vollständig) bzw.
+   `update_cv_section` (`basics`, `skills`, `education`, vollständig). DE und EN
+   immer gemeinsam.
+3. **Bauen:** `build_cv` (`strict: true` vor dem Versand). Fehler blockieren den
+   Build, Warnungen (z. B. Seitenzahl ≠ 4) werden genannt. Das Tool liefert eine
+   signierte Pull-URL, 15 Minuten gültig; `list_cv_builds` liefert frische URLs.
+4. **Holen:** `npm run pull -- '<pull_url>'` lädt PDFs, Markdown und JSON Resume
+   nach `dist/` und schreibt die Quelldaten des Builds nach `data/`.
+5. **Prüfen:** `npm run check:pdf` (einmalig vorher `npm run check:setup`).
+6. `data/` committen, wenn sich etwas geändert hat.
 
-[tr]: https://github.com/typst/typst/releases
+Ergebnis in `dist/` (Datum = Build-Monat):
+
+- `Schlueter_Nils_Senior-Fullstack_Profil_DE_<YYYY-MM>.pdf` und `.md`
+- `Schlueter_Nils_Senior-Fullstack_Profile_EN_<YYYY-MM>.pdf` und `.md`
+- `resume.de.json`, `resume.en.json` (dieselben Daten, die im PDF eingebettet sind)
+
+Die Web-Oberfläche des Hubs (`/cv`) zeigt dieselben Daten mit Prüfhinweisen und
+baut ebenfalls; Downloads dort brauchen keinen Pull.
+
+### Word-Version für Vermittler
+
+Manche Agenturen wollen DOCX. Aus dem Markdown-Export (benötigt
+[pandoc](https://pandoc.org), macOS: `brew install pandoc`):
+
+```bash
+npm run docx       # dist/*.md -> dist/*.docx
+```
+
+### Foto
+
+Das Foto liegt im Hub. Tauschen: MCP-Tool `cv_photo_upload_url` liefert einen
+fertigen `curl`-Befehl, der `assets/photo.jpg` hochlädt (JPEG, max. 5 MB), oder
+in der Web-Oberfläche unter „Foto“. Standard: beide Sprachen **mit** Foto; für
+Bewerbungen außerhalb des DACH-Raums `build_cv` mit `photo_en: false`.
+
+> Wichtig: Das Foto ist ein reines Bild-Element. Es darf **keine** Informationen
+> (Name, Kontakt) enthalten, die nicht auch als echter Text im PDF stehen.
+
+### Offene Platzhalter `[[TODO: …]]`
+
+Fehlende Fakten stehen als `[[TODO: Frage]]` direkt in den Quelldaten und sind
+im PDF sichtbar. Der Build nennt sie als Warnung; mit `strict: true` blockieren
+sie ihn.
+
+## Datenformat
+
+`data/` spiegelt die Quelldaten des letzten Builds. **Nicht von Hand
+bearbeiten** — der nächste Pull überschreibt es.
+
+| Datei                  | Inhalt im Hub                                  |
+| ---------------------- | ---------------------------------------------- |
+| `data/basics.json`     | Abschnitt `basics`: Name, Kontakt, Verfügbarkeit, Kurzprofil, Profile, Sprachen |
+| `data/skills.json`     | Abschnitt `skills`: Kompetenz-Gruppen mit Keywords |
+| `data/education.json`  | Abschnitt `education`: Ausbildung              |
+| `data/projects/<slug>.json` | eine Station je `slug` (Konvention `YYYY-MM-name`) |
+
+Sprachspezifische Felder sind `{ de, en }`-Objekte, sprachneutrale Werte (z. B.
+Firmennamen, Technologien) einfache Strings. Eine Station:
+
+```json
+{
+  "client": { "de": "Kunde GmbH", "en": "Client Ltd." },
+  "role": { "de": "Fullstack-Entwickler", "en": "Full-Stack Developer" },
+  "location": "Remote",
+  "workload": { "de": "Teilzeit", "en": "part-time" },
+  "startDate": "2026-01",
+  "endDate": "2026-06",
+  "responsibilities": [{ "de": "Aufgabe.", "en": "Responsibility." }],
+  "achievements": [{ "de": "Ergebnis.", "en": "Achievement." }],
+  "stack": ["Next.js", "TypeScript"]
+}
+```
+
+- `endDate` **weglassen** = laufende Station, angezeigt als „06/2021 – heute“
+  bzw. „Jun 2021 – present“.
+- `hidden: true`: Station als Stammdatum behalten, aber nicht in den Lebenslauf
+  aufnehmen – erscheint weder im PDF noch im eingebetteten JSON und belegt keine
+  Kompetenz (z. B. `2024-04-studio-lenzing`).
+- `workload`: Auslastung — wichtig bei parallel laufenden Stationen, sonst wirkt
+  der Zeitstrahl überbucht.
+- `subprojects`: mehrere parallele Projekte beim selben Kunden als **eine**
+  Station mit Unterblöcken (`title`, `responsibilities`, `achievements`,
+  `stack`) — siehe `2025-09-pub-tech`. Teilprojekte bekommen bewusst kein
+  eigenes Datum.
+- `stack` = die wichtigsten Technologien, **höchstens 2 Zeilen** im PDF
+  (Aushängeschild-Projekt: 3), Begriffe exakt wie unter Kompetenzen. Jede
+  Technologie, die Titel oder Bullets nennen, steht auch in `stack` — sonst
+  blockiert der Build. Ausnahme: Grundlagen (JavaScript, REST APIs, HTML, CSS,
+  Git) stehen nur unter Kompetenzen.
+
+Zeiträume und Firmenzeile sind Vertragsdaten (Vertragspartner, nicht
+Vermittler); sie werden nie aus den Projekten des Hubs übernommen. Im Hub lassen
+sich Stationen zusätzlich mit Hub-Projekten verknüpfen.
+
+## Prüfungen
+
+Im Hub (`freelance-hub/src/areas/cv/domain/validate.ts`), bei jedem Build:
+(a) Quelldaten gegen das Schema, (b) JSON Resume gegen das offizielle Schema,
+(c) Kompetenzen gegen Stationen (Tags und Text), (d) offene `[[TODO]]`, (e)
+Technologien aus Titel und Bullets in der Tech-Zeile. Dazu die Seitenzahl.
+
+Hier im Repo:
+
+```bash
+npm run check:setup   # einmalig: .venv/ mit pypdf + pdfminer.six
+npm run check:pdf     # nach jedem Pull
+```
+
+`check:pdf` extrahiert beide PDFs mit pdftotext, pypdf und pdfminer nach
+`dist/text/` und prüft die Layout-Regeln (Seitenzahl, Trenner am
+Zeilenanfang, zerrissene Komposita, einzelne Wörter, Länge der Tech-Zeilen,
+jeder Tag und Zeitraum unversehrt in jeder Extraktion) gegen
+`dist/resume.<lang>.json`.
+
+Inhaltlich prüft der Claude-Code-Skill **`/cv-review`**: fünf blinde
+Reviewer-Agents (`.claude/agents/cv-*.md` — Hiring Manager, Zeitstrahl, Tech
+Lead, ATS-Parser, Lektorat) bewerten die PDFs parallel; der Skill
+konsolidiert ihre Befunde gegen `CLAUDE.md`, behebt Eindeutiges per MCP und
+fragt nur bei echten Entscheidungen nach.
+
+## Layout
+
+Template und Schriften liegen im Hub unter
+`freelance-hub/src/areas/cv/typst/` (`cv.typ`, Typst 0.15.1). Layout-Änderungen
+dort committen; wirksam werden sie nach dem Deploy des Hubs.
 
 Die Design-Sprache ist von der eigenen Landing Page ([nils.fyi](https://www.nils.fyi))
 übernommen – "warm editorial" statt Corporate-Look:
@@ -46,218 +167,14 @@ Die Design-Sprache ist von der eigenen Landing Page ([nils.fyi](https://www.nils
 - **Schriften:** Instrument Sans für allen Text (400/600); Geist Mono nur für
   Daten in festen Positionen – Zeitraum, Tech-Zeilen, Sektionslabels, Footer –
   und nie mitten in einer Textzeile; Space Grotesk nur für den Namen. Alle SIL
-  OFL, gebündelt unter `fonts/`.
+  OFL.
 - **Typo-Skala:** 26 / 11.5 / 10 / 8.5 / 7.5pt, ein Zeilenabstand für
-  Fließtext, Versalien nur für kurze Labels, Seitenrand 1.8cm (Zeilen ~95
-  statt ~100 Zeichen; breiter geht nicht, ohne dass Titel umbrechen).
+  Fließtext, Versalien nur für kurze Labels, Seitenrand 1.8cm.
 - **Elemente:** Mono-Versalien-Sektionslabels mit Punkt-Mark und Hairline,
   eine Timeline-Schiene mit Terrakotta-Knoten für Projekthistorie und
-  Ausbildung; Tech-Keywords als stille Mono-Zeilen, Kompetenz-Gruppen als
-  „**Gruppe:** Keywords“ in der Textschrift.
+  Ausbildung; Tech-Keywords als stille Mono-Zeilen.
 - **Reihenfolge:** Profil → Kompetenzen → Projekthistorie → Ausbildung → Sprachen
   (Vermittler lesen zuerst die Top-Skills).
-
-Es wird **kein externes Typst-Paket** geladen, Builds laufen also ohne
-Netzzugang. Schiene und Punkte sind reine Dekoration ohne Textinhalt –
-die ATS-Prinzipien oben bleiben unberührt.
-
-## Schnellstart
-
-```bash
-npm install        # einmalig
-npm run build      # baut beide PDFs (+ Markdown) nach dist/
-```
-
-Ergebnis (Datum = Build-Monat):
-
-- `dist/Schlueter_Nils_Senior-Fullstack_Profil_DE_2026-10.pdf` — Deutsch, **mit** Foto
-- `dist/Schlueter_Nils_Senior-Fullstack_Profile_EN_2026-10.pdf` — Englisch, **mit** Foto
-- daneben je eine `.md` mit demselben Inhalt ohne Layout (Basis für Word, s. u.)
-
-Nachname/Vorname kommen aus `data/basics.json` (`name`, Umlaute ausgeschrieben:
-„Schlüter" → `Schlueter`). Ältere Builds in `dist/` werden dabei entfernt.
-
-### Word-Version für Vermittler
-
-Manche Agenturen wollen DOCX. Aus dem Markdown-Export (benötigt
-[pandoc](https://pandoc.org), macOS: `brew install pandoc`):
-
-```bash
-npm run docx       # dist/*.md -> dist/*.docx
-```
-
-### Offene Platzhalter `[[TODO: …]]`
-
-Fehlende Fakten stehen als `[[TODO: Frage]]` direkt in den Quelldaten und sind
-im PDF sichtbar. `npm run build` listet alle mit Datei:Zeile auf (Validierung,
-Schritt d). Release-Builds (Version-Tags) brechen ab, solange welche offen sind
-(`CV_STRICT=1`).
-
-## Daten pflegen
-
-Alle Inhalte liegen unter `data/`. Sprachspezifische Felder sind `{ de, en }`-Objekte;
-sprachneutrale Werte (z. B. Firmennamen, Technologien) sind einfache Strings.
-
-| Datei                | Inhalt                                        |
-| -------------------- | --------------------------------------------- |
-| `data/basics.json`   | Name, Kontakt, Eckdaten (Verfügbarkeit), Kurzprofil, Profile, Sprachen |
-| `data/skills.json`   | Skill-Gruppen mit Keywords                    |
-| `data/education.json`| Ausbildung                                    |
-| `data/projects/*.json` | **eine Datei pro Projekt/Engagement**       |
-
-Beim Editieren in VS Code liefert die `$schema`-Zeile am Dateianfang Autocomplete
-und Inline-Validierung.
-
-### Neues Projekt hinzufügen
-
-1. Neue Datei in `data/projects/` anlegen, z. B. `2026-neues-projekt.json`
-   (Dateiname egal – Sortierung erfolgt automatisch chronologisch absteigend).
-2. Als Vorlage eine bestehende Datei kopieren. Minimalstruktur:
-
-   ```json
-   {
-     "$schema": "../../schema/project.schema.json",
-     "client": { "de": "Kunde GmbH", "en": "Client Ltd." },
-     "role": { "de": "Fullstack-Entwickler", "en": "Full-Stack Developer" },
-     "location": "Remote",
-     "startDate": "2026-01",
-     "endDate": "2026-06",
-     "summary": { "de": "Kurzbeschreibung.", "en": "Short description." },
-     "highlights": [
-       { "de": "Ergebnis 1.", "en": "Achievement 1." }
-     ],
-     "stack": ["Next.js", "TypeScript"]
-   }
-   ```
-
-   - `endDate` **weglassen** = laufendes Projekt, angezeigt als
-     „06/2021 – heute" bzw. „Jun 2021 – present".
-   - `client` darf auch ein einfacher String sein, wenn sprachneutral (`"LogTech GmbH"`).
-   - `hidden` (optional, `true`): Projekt als Stammdatum behalten, aber nicht in
-     den Lebenslauf aufnehmen – erscheint weder im PDF noch im eingebetteten
-     JSON und belegt keine Kompetenz (z. B. `2024-04-studio-lenzing.json`).
-     Die Datei wird weiterhin gegen das Schema geprüft.
-   - `workload` (optional): Auslastung, z. B. `"60 %"` oder `{ "de": "nebenberuflich", … }` —
-     wichtig bei parallel laufenden Projekten, sonst wirkt der Zeitstrahl überbucht.
-   - `subprojects` (optional): mehrere parallele Projekte beim selben Kunden als
-     **ein** Engagement mit Unterblöcken (`title`, `responsibilities`,
-     `achievements`, `stack`) — siehe `2025-09-pub-tech.json`. Teilprojekte
-     bekommen bewusst kein eigenes Datum: Parser lesen datierte Zeilen als
-     eigene Station ohne Arbeitgeber.
-   - Tech-Begriffe in `stack` exakt so schreiben wie in `data/skills.json`
-     (z. B. `Tailwind CSS`, `NgRx`): Die Validierung prüft, dass jede Kompetenz
-     in mindestens einem Projekt belegt ist.
-   - `stack` = die wichtigsten Technologien des Projekts, **höchstens 2 Zeilen**
-     im PDF (Ausnahme: max. 3 beim Aushängeschild-Projekt). Reihenfolge nach
-     Wichtigkeit: zuerst die prägenden Technologien (AI-Tags bei AI-Projekten,
-     das CMS bei CMS-Projekten, Angular · TypeScript · NgRx · RxJS bei
-     Angular-Projekten), danach wie unter Kompetenzen.
-   - Jede Technologie, die Titel oder Bullets nennen, steht auch in `stack`
-     (bzw. im `stack` des Teilprojekts) — die Validierung bricht sonst ab.
-     Ausnahme: Grundlagen (JavaScript, REST APIs, HTML, CSS, Git) stehen nur
-     unter Kompetenzen.
-3. `npm run build`.
-
-### Profilbild tauschen
-
-Das echte Foto einfach unter **gleichem Namen** `assets/photo.jpg` ablegen – sonst
-muss nichts angepasst werden. Empfohlen: Hochformat, ca. 3:4, mind. ~600 px hoch.
-Aktuell liegt dort ein grauer Platzhalter.
-
-> Wichtig: Das Foto ist ein reines Bild-Element. Es darf **keine** Informationen
-> (Name, Kontakt) enthalten, die nicht auch als echter Text im PDF stehen – sonst
-> leidet die Maschinenlesbarkeit.
-
-### Foto pro Build an-/abschalten
-
-Standard: beide Sprachen **mit** Foto. Für Bewerbungen außerhalb des DACH-Raums
-(v. a. US/UK, wo Fotos im Lebenslauf unüblich sind) lässt sich das Foto in der
-EN-Fassung per `--photo-en=false` abschalten.
-
-```bash
-npm run build                     # Defaults (beide mit Foto)
-npm run build -- --photo=false    # beide ohne Foto
-npm run build -- --photo-en=false # nur EN ohne Foto
-CV_PHOTO_DE=false npm run build    # alternativ via Umgebungsvariable
-```
-
-## Pipeline & Scripts
-
-`npm run build` führt automatisch zuerst `prebuild` aus:
-
-| Script            | Aufgabe                                                                        |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `gen:schema`      | JSON-Schemata (`schema/`) aus den TypeScript-Typen (`src/types.ts`) generieren |
-| `merge`           | `data/` → `generated/resume.de.json` + `resume.en.json` (JSON Resume)          |
-| `validate`        | (a) Quelldaten gegen eigenes Schema, (b) generierte Dateien gegen offizielles JSON-Resume-Schema, (c) Kompetenzen gegen Projekt-Tags, (d) offene `[[TODO]]`-Platzhalter, (e) Technologien aus Titel/Bullets in den Tags |
-| `build`           | `templates/cv.typ` → beide PDFs nach `dist/`, plus Markdown-Export              |
-| `check:setup`     | einmalig: `.venv/` mit pypdf + pdfminer.six für `check:pdf`                     |
-| `check:pdf`       | beide PDFs extrahieren (`dist/text/`) und Layout-Regeln prüfen                  |
-| `docx`            | `dist/*.md` → `dist/*.docx` via pandoc                                          |
-| `watch`           | baut bei jeder Änderung automatisch neu                                         |
-| `typecheck`       | `tsc --noEmit` über die Scripts                                                 |
-| `clean`           | löscht `dist/` und `generated/`                                                 |
-
-Die TypeScript-Typen in `src/types.ts` (mit [zod](https://zod.dev)) sind die
-**einzige Wahrheitsquelle**: Daraus werden sowohl die Editor-Schemata als auch die
-Laufzeit-Validierung abgeleitet. Die Schriften (Instrument Sans, Space Grotesk,
-Geist Mono – alle SIL OFL, Lizenztexte unter `fonts/`) sind im Repo gebündelt,
-damit lokale und CI-Builds identisch aussehen.
-
-## Continuous Integration & Releases
-
-`.github/workflows/build.yml`:
-
-- **Push / Pull Request:** validieren, beide PDFs (+ Markdown) bauen, als **Artifacts** anhängen.
-- **Version-Tag** (`v*`, z. B. `v2026-07`): zusätzlich ein **GitHub Release** mit den
-  Dateien – für versionierte, teilbare Stände. Bricht ab, solange `[[TODO]]`-Platzhalter
-  offen sind.
-
-```bash
-git tag v2026-07
-git push origin v2026-07   # löst Release-Build aus
-```
-
-## Projektstruktur
-
-```
-data/               Quelldaten (zweisprachig, DRY)
-  basics.json, skills.json, education.json
-  projects/*.json   eine Datei pro Projekt
-assets/photo.jpg    Profilbild (Platzhalter – austauschen)
-fonts/              gebündelte Schriften (Instrument Sans, Space Grotesk, Geist Mono; OFL)
-schema/             generierte JSON-Schemata (Editor-Vertrag)
-src/
-  types.ts          zod-Typen = Wahrheitsquelle (LocalizedString etc.)
-  gen-schema.ts     Typen  -> schema/
-  merge.ts          data/  -> generated/resume.*.json
-  validate.ts       zweistufige Validierung
-  build.ts          Typst-Compile beider Sprachen -> dist/ (+ Markdown-Export)
-  markdown.ts       resume.<lang>.json -> Markdown (Basis für DOCX)
-  watch.ts          optionaler Watch-Modus
-  lib.ts            gemeinsame Helfer
-templates/cv.typ    eigenständiges Typst-Template (nils.fyi-Design-Sprache, Timeline-Einträge, i18n, Foto-Flag, Metadaten, Attachment)
-generated/          (git-ignored) schema-konforme JSON-Resume-Dateien
-dist/               (git-ignored) fertige PDFs – Distribution via lokalen Build / Releases
-```
-
-## Prüfen: deterministisch und per Review-Schleife
-
-```bash
-npm run check:setup   # einmalig: .venv/ mit pypdf + pdfminer.six
-npm run check:pdf     # nach jedem Build
-```
-
-`check:pdf` extrahiert beide PDFs mit pdftotext, pypdf und pdfminer nach
-`dist/text/` und prüft die Layout-Regeln (Seitenzahl, Trenner am
-Zeilenanfang, zerrissene Komposita, einzelne Wörter, Länge der Tech-Zeilen,
-jeder Tag und Zeitraum unversehrt in jeder Extraktion).
-
-Inhaltlich prüft der Claude-Code-Skill **`/cv-review`**: fünf blinde
-Reviewer-Agents (`.claude/agents/cv-*.md` — Hiring Manager, Zeitstrahl, Tech
-Lead, ATS-Parser, Lektorat) bewerten die PDFs parallel; der Skill
-konsolidiert ihre Befunde gegen `CLAUDE.md`, behebt Eindeutiges und fragt nur
-bei echten Entscheidungen nach.
 
 ## Verifikation der Maschinenlesbarkeit
 
@@ -274,3 +191,18 @@ Kompositum-Bindestrichen (Extraktoren machen aus „Bank-|Transaktionsdaten"
 „BankTransaktionsdaten"), Letterspacing und große Lücken in einer Textzeile
 (werden als Einzelbuchstaben bzw. Spaltengrenzen gelesen) sowie Zeichen, die
 in den gebündelten Fonts fehlen (z. B. „₂" → Fallback-Schrift).
+
+## Projektstruktur
+
+```
+data/               Lesespiegel der Quelldaten (npm run pull, nicht bearbeiten)
+  basics.json, skills.json, education.json
+  projects/<slug>.json
+assets/photo.jpg    Profilbild (Vorlage für cv_photo_upload_url)
+scripts/
+  pull.mjs          Build aus dem Hub holen (dist/ + data/)
+  check_pdf.py      deterministische PDF-Prüfung
+  setup-check.sh    .venv/ für check_pdf.py
+.claude/            Review-Skill /cv-review und Reviewer-Agents
+dist/               (git-ignored) PDFs, Markdown, JSON Resume des letzten Pulls
+```

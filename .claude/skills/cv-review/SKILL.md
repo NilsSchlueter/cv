@@ -12,10 +12,14 @@ getroffene Entscheidungen bringst **du** beim Konsolidieren ein — aus
 
 ## 1. Bauen und deterministisch prüfen
 
+Der Lebenslauf wird im Freelancing Hub gebaut: MCP-Tool `build_cv` mit
+`strict: true` aufrufen, dann die gelieferte Pull-URL holen und prüfen:
+
 ```bash
-CV_STRICT=1 npm run build && npm run check:pdf
+npm run pull -- '<pull_url>' && npm run check:pdf
 ```
 
+Blockiert `build_cv` mit Fehlern, sind das Regelverstöße in den Quelldaten.
 `check:pdf` extrahiert beide PDFs nach `dist/text/` (pdftotext, pypdf,
 pdfminer) und prüft die Layout-Regeln. Fehlt `.venv/`, zuerst
 `npm run check:setup`. Rote Prüfungen sind Regelverstöße: erst beheben, dann
@@ -64,8 +68,12 @@ Wissensbasis in Berichten ignorieren, Befunde trotzdem filtern.
 
 ## 4. Beheben
 
-Änderungen in `data/` (Layout in `templates/cv.typ`), immer DE und EN
-gemeinsam. Danach Schritt 1 erneut — beides muss grün sein.
+Inhalte per MCP ändern: erst `get_cv` (mit `slug` bzw. `section`), dann
+`save_cv_entry` bzw. `update_cv_section` mit dem vollständigen geänderten
+Inhalt, immer DE und EN gemeinsam. `data/` ist nur ein Spiegel und wird nicht
+von Hand bearbeitet. Layout-Änderungen gehören ins Hub-Repo
+(`freelance-hub/src/areas/cv/typst/cv.typ`): dort eigener Commit, Deploy
+abwarten. Danach Schritt 1 erneut — beides muss grün sein.
 
 ## 5. Schleife
 

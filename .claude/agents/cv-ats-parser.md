@@ -18,7 +18,7 @@ dabei schief?
 - Du darfst selbst messen: `pdfinfo`, `pdffonts`, `pdfdetach -list`,
   `pdftotext` mit anderen Optionen. Anhänge nur in ein Verzeichnis aus
   `mktemp -d` extrahieren, nie ins Repo.
-- **Nicht** lesen: CLAUDE.md, README.md, data/, src/, templates/,
+- **Nicht** lesen: CLAUDE.md, README.md, data/,
   generated/, Git-Historie. Stehen Projektentscheidungen trotzdem in deinem
   Kontext, unterdrücke deswegen keinen Befund.
 - Keine Dateien im Repo ändern.

@@ -1,6 +1,8 @@
 {
-  "$schema": "../../schema/project.schema.json",
-  "client": { "de": "Objego GmbH (ista-Ausgründung)", "en": "Objego GmbH (ista spin-off)" },
+  "client": {
+    "de": "Objego GmbH (ista-Ausgründung)",
+    "en": "Objego GmbH (ista spin-off)"
+  },
   "role": {
     "de": "Frontend-Entwickler – Vermieter-Software Objego (Angular)",
     "en": "Frontend Developer — Objego Landlord Software (Angular)"
@@ -15,5 +17,15 @@
     }
   ],
   "achievements": [],
-  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Tailwind CSS", "Jest", "Cypress", "Azure", "Sentry"]
+  "stack": [
+    "Angular",
+    "TypeScript",
+    "NgRx",
+    "RxJS",
+    "Tailwind CSS",
+    "Jest",
+    "Cypress",
+    "Azure",
+    "Sentry"
+  ]
 }

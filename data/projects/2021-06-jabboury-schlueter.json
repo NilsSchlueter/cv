@@ -1,12 +1,14 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "Jabboury & Schlüter GbR",
   "role": {
     "de": "Fullstack-Entwickler – abo-store.de (Next.js)",
     "en": "Fullstack Developer — abo-store.de (Next.js)"
   },
   "location": "Bochum",
-  "workload": { "de": "nebenberuflich", "en": "side business" },
+  "workload": {
+    "de": "nebenberuflich",
+    "en": "side business"
+  },
   "startDate": "2021-06",
   "responsibilities": [
     {
@@ -28,5 +30,18 @@
       "en": "1st place in the “Leitidee” startup competition in Bochum (2022)"
     }
   ],
-  "stack": ["Next.js", "React", "TypeScript", "Node.js", "Express", "Sanity", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "SEO", "Vercel", "AI-Assisted Development (Claude Code)"]
+  "stack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Express",
+    "Sanity",
+    "GROQ",
+    "Live Preview",
+    "ISR / On-Demand Revalidation",
+    "SEO",
+    "Vercel",
+    "AI-Assisted Development (Claude Code)"
+  ]
 }

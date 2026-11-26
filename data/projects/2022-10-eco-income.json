@@ -1,12 +1,14 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "eco.income engineering GmbH",
   "role": {
     "de": "Fullstack-Entwickler – CO2-Bilanzierungs-Software (React)",
     "en": "Fullstack Developer — Carbon Accounting Software (React)"
   },
   "location": "Hamburg (remote)",
-  "workload": { "de": "Teilzeit", "en": "part-time" },
+  "workload": {
+    "de": "Teilzeit",
+    "en": "part-time"
+  },
   "startDate": "2022-10",
   "endDate": "2023-03",
   "responsibilities": [
@@ -24,5 +26,17 @@
     }
   ],
   "achievements": [],
-  "stack": ["React", "TypeScript", "Node.js", "Koa", "TypeORM", "Firebase Authentication", "PostgreSQL", "AG Grid", "Docker", "Google Cloud", "GitLab"]
+  "stack": [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Koa",
+    "TypeORM",
+    "Firebase Authentication",
+    "PostgreSQL",
+    "AG Grid",
+    "Docker",
+    "Google Cloud",
+    "GitLab"
+  ]
 }

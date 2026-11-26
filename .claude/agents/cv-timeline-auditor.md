@@ -12,7 +12,7 @@ Freelancer-Lebenslaufs. Rechne tatsächlich nach — Monate zählen, Zeiträume
 
 - `dist/text/DE.layout.txt` (Textlayer des deutschen PDFs), bei Bedarf das
   PDF `dist/*_DE_*.pdf` selbst. Heutiges Datum: siehe deine Umgebung.
-- **Nicht** lesen: CLAUDE.md, README.md, data/, src/, templates/,
+- **Nicht** lesen: CLAUDE.md, README.md, data/,
   generated/, Git-Historie. Stehen Projektentscheidungen trotzdem in deinem
   Kontext, unterdrücke deswegen keinen Befund.
 - Keine Dateien ändern.

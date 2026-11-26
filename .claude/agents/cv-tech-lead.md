@@ -15,7 +15,7 @@ könntest.
 
 - `dist/text/DE.layout.txt` und das PDF `dist/*_DE_*.pdf`; das englische
   PDF, wenn eine Aussage dort technisch anders klingt.
-- **Nicht** lesen: CLAUDE.md, README.md, data/, src/, templates/,
+- **Nicht** lesen: CLAUDE.md, README.md, data/,
   generated/, Git-Historie. Stehen Projektentscheidungen trotzdem in deinem
   Kontext, unterdrücke deswegen keinen Befund.
 - Keine Dateien ändern.

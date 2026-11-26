@@ -1,13 +1,20 @@
 {
-  "$schema": "../../schema/project.schema.json",
-  "hidden": true,
-  "client": { "de": "Studio Lenzing (Designagentur)", "en": "Studio Lenzing (design agency)" },
+  "client": {
+    "de": "Studio Lenzing (Designagentur)",
+    "en": "Studio Lenzing (design agency)"
+  },
   "role": {
     "de": "Frontend-Entwickler – Website-Redesign für Dash0 (Next.js/Sanity)",
     "en": "Frontend Developer — Website Redesign for Dash0 (Next.js/Sanity)"
   },
-  "location": { "de": "Hamburg (remote)", "en": "Hamburg (remote)" },
-  "workload": { "de": "Teilzeit", "en": "part-time" },
+  "location": {
+    "de": "Hamburg (remote)",
+    "en": "Hamburg (remote)"
+  },
+  "workload": {
+    "de": "Teilzeit",
+    "en": "part-time"
+  },
   "startDate": "2024-04",
   "endDate": "2024-06",
   "responsibilities": [
@@ -17,5 +24,17 @@
     }
   ],
   "achievements": [],
-  "stack": ["Next.js", "React", "Sanity", "TypeScript", "GROQ", "Live Preview", "ISR / On-Demand Revalidation", "SEO", "Tailwind CSS", "Vercel"]
+  "stack": [
+    "Next.js",
+    "React",
+    "Sanity",
+    "TypeScript",
+    "GROQ",
+    "Live Preview",
+    "ISR / On-Demand Revalidation",
+    "SEO",
+    "Tailwind CSS",
+    "Vercel"
+  ],
+  "hidden": true
 }

@@ -1,12 +1,17 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "Public Value Technologies GmbH (pub.tech)",
   "role": {
     "de": "Fullstack-Entwickler – ARD-Digitalangebote",
     "en": "Fullstack Developer — ARD Digital Products"
   },
-  "location": { "de": "München (remote)", "en": "Munich (remote)" },
-  "workload": { "de": "Teilzeit", "en": "part-time" },
+  "location": {
+    "de": "München (remote)",
+    "en": "Munich (remote)"
+  },
+  "workload": {
+    "de": "Teilzeit",
+    "en": "part-time"
+  },
   "startDate": "2025-09",
   "endDate": "2026-10",
   "subprojects": [
@@ -31,7 +36,13 @@
           "en": "Implemented the expansion of the offering, initially limited to Bayerischer Rundfunk, to SWR and MDR (from one to six German states), now live under its own ARD Sounds subdomain"
         }
       ],
-      "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "ISR / On-Demand Revalidation"]
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "ISR / On-Demand Revalidation"
+      ]
     },
     {
       "title": {
@@ -50,7 +61,15 @@
           "en": "Migrated ard.de and brisant.de to a new CMS (Unified Sophora) with zero disruption to live operation"
         }
       ],
-      "stack": ["React", "Handlebars.js", "TypeScript", "Node.js", "CMS Migration", "Sophora", "Tailwind CSS"]
+      "stack": [
+        "React",
+        "Handlebars.js",
+        "TypeScript",
+        "Node.js",
+        "CMS Migration",
+        "Sophora",
+        "Tailwind CSS"
+      ]
     },
     {
       "title": {
@@ -72,7 +91,18 @@
         }
       ],
       "achievements": [],
-      "stack": ["Next.js", "React", "Strapi", "Headless CMS", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "ISR / On-Demand Revalidation", "Docker"]
+      "stack": [
+        "Next.js",
+        "React",
+        "Strapi",
+        "Headless CMS",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "ISR / On-Demand Revalidation",
+        "Docker"
+      ]
     }
   ]
 }

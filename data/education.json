@@ -1,5 +1,4 @@
 {
-  "$schema": "../schema/education.schema.json",
   "education": [
     {
       "institution": {
@@ -10,13 +9,25 @@
         "de": "Software & Network Engineering",
         "en": "Software & Network Engineering"
       },
-      "studyType": { "de": "Master of Science", "en": "Master of Science" },
+      "studyType": {
+        "de": "Master of Science",
+        "en": "Master of Science"
+      },
       "startDate": "2017-10",
       "endDate": "2019-09",
-      "score": { "de": "sehr gut (1,4)", "en": "very good (1.4)" },
+      "score": {
+        "de": "sehr gut (1,4)",
+        "en": "very good (1.4)"
+      },
       "courses": [
-        { "de": "Requirements Engineering", "en": "Requirements Engineering" },
-        { "de": "Softwarearchitektur", "en": "Software Architecture" }
+        {
+          "de": "Requirements Engineering",
+          "en": "Requirements Engineering"
+        },
+        {
+          "de": "Softwarearchitektur",
+          "en": "Software Architecture"
+        }
       ]
     },
     {
@@ -34,10 +45,19 @@
       },
       "startDate": "2014-10",
       "endDate": "2017-09",
-      "score": { "de": "sehr gut (86 %)", "en": "very good (86%)" },
+      "score": {
+        "de": "sehr gut (86 %)",
+        "en": "very good (86%)"
+      },
       "courses": [
-        { "de": "Webentwicklung", "en": "Web Development" },
-        { "de": "Machine Learning", "en": "Machine Learning" }
+        {
+          "de": "Webentwicklung",
+          "en": "Web Development"
+        },
+        {
+          "de": "Machine Learning",
+          "en": "Machine Learning"
+        }
       ]
     }
   ]

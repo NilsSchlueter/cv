@@ -3,17 +3,25 @@
 Zweisprachiger Lebenslauf (DE/EN) für die Bewerbung über IT-Vermittler
 (Hays, GULP, freelancermap, Solcom). Deren Parser (Textkernel/Bullhorn) lesen
 das PDF — **ATS-Tauglichkeit hat Vorrang**, danach Lesbarkeit für Menschen.
-Pipeline und Datenformat: siehe `README.md`.
+Datenfluss und Befehle: siehe `README.md`.
 
 Die folgenden Entscheidungen wurden mit dem Inhaber getroffen (Stand 10/2026).
 **Nicht ohne Rückfrage ändern und abgelehnte Vorschläge nicht erneut
 vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 
+## Datenfluss
+
+- Der Freelancing Hub ist die Quelle: Quelldaten, Prüfungen, PDF-Build,
+  Foto. Inhalte ändern sich nur per MCP (`get_cv` lesen, dann
+  `save_cv_entry` bzw. `update_cv_section` mit dem vollständigen Inhalt).
+- `data/` ist ein Lesespiegel des letzten Builds (`npm run pull`), nie von
+  Hand bearbeiten.
+
 ## Prüfen vor jedem Commit
 
-- `CV_STRICT=1 npm run build` muss grün sein (Schema, JSON Resume,
-  Kompetenzen-Belege, keine `[[TODO]]`, Technologien aus dem Text in den
-  Tags).
+- `build_cv` mit `strict: true` muss ohne Fehler durchlaufen (Schema, JSON
+  Resume, Kompetenzen-Belege, keine `[[TODO]]`, Technologien aus dem Text in
+  den Tags); danach `npm run pull -- '<pull_url>'`.
 - `npm run check:pdf` muss grün sein: 4 Seiten, keine Zeile beginnt mit `·`
   oder `—`, keine zerrissenen Komposita, keine Zeile mit nur einem Wort,
   Tech-Zeilen höchstens 2 Zeilen (BMW: 3), jeder Tag/Zeitraum kommt bei
@@ -35,7 +43,7 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 - Verfügbarkeit („ab sofort · 100 % · remote, vor Ort in NRW, bundesweit
   reisebereit“) als dritte Zeile im grauen Kontaktblock, nicht abgesetzt.
 - DE und EN mit Foto (Standard seit 10/2026); EN ohne Foto bei Bedarf per
-  `--photo-en=false`.
+  `build_cv` mit `photo_en: false`.
 
 ## Profil
 
@@ -68,8 +76,8 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   jeweils nach Wichtigkeit sortiert (Frameworks vor Sprachen, Grundlagen
   JavaScript/HTML/CSS/Git am Ende). Keine Aufteilung nach Schichten.
 - Jede Kompetenz ist in mindestens einem Projekt belegt — als Tag oder im
-  Fließtext (`src/validate.ts`, Prüfung c). Ausnahme: JavaScript, REST APIs,
-  HTML, CSS, Git.
+  Fließtext (Hub-Prüfung c in `freelance-hub/src/areas/cv/domain/validate.ts`).
+  Ausnahme: JavaScript, REST APIs, HTML, CSS, Git.
 - HTML, CSS, Git bleiben (ATS-Mussbegriffe in Stellenanzeigen), am Ende.
 - AI nur mit Projektbeleg: RAG, pgvector, Anthropic wurden mangels Beleg
   entfernt. ARD Sounds = Frontend für ein AI-Backend → keine AI-Tags.
@@ -93,7 +101,7 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   danach wie unter Kompetenzen.
 - **Jede Technologie aus Titel oder Bullets steht auch in der Tech-Zeile**
   desselben Eintrags bzw. Teilprojekts — Leser nehmen die Tech-Zeile als
-  Stack des Projekts, drei Reviews bemängelten die Lücken. `validate.ts` (e)
+  Stack des Projekts, drei Reviews bemängelten die Lücken. Die Hub-Prüfung (e)
   bricht sonst ab. Ausnahme: Grundlagen (JavaScript, REST APIs, HTML, CSS,
   Git) stehen nur unter Kompetenzen.
 - Wird eine Tech-Zeile dadurch zu lang, fliegen Tags, die der Text nicht
@@ -145,7 +153,7 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
   aus Bankdaten“ ist damit beantwortet; so stehen lassen. Firebase war dort
   nur Auth → Tag „Firebase Authentication“ (Produktname; die Kompetenz
   „Firebase“ belegt continuum). Nicht „Firebase Auth“: Das steht im
-  continuum-Bullet, und `validate.ts` (e) verlangte den Tag dann auch dort.
+  continuum-Bullet, und die Hub-Prüfung (e) verlangte den Tag dann auch dort.
 - continuum: LLM-Teil konkret benennen (zweistufig: Vorschläge per
   Structured Outputs, dann Scoring; Ersatzübungen bei Verletzungen). AI
   Agents/Tool Calling bestätigt der Inhaber. Die 60 % sind die
@@ -195,7 +203,7 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 - Kurzeinsätze ohne Mehrwert dürfen fehlen: Studio Lenzing/Dash0 (04/2024)
   steht bewusst nicht im CV (Überschneidung mit ista; Sanity/Next.js belegen
   Interhyp und abo-store). Die Daten bleiben als Stammdatum erhalten
-  (`data/projects/2024-04-studio-lenzing.json`, `"hidden": true`) – nicht
+  (Station `2024-04-studio-lenzing`, `"hidden": true`) – nicht
   löschen, nicht einblenden.
 - Firmennamen wie vom Unternehmen geschrieben: „ista SE“.
 - BMW: AI-Fokus im Titel („AI Assistant … (Generative UI)“), Angular steht
@@ -280,9 +288,8 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 - `pdfinfo` meldet „Suspects object is wrong type (boolean)“ — Eigenheit des
   Tagged PDF aus Typst 0.15, nur poppler, Extraktion unberührt. Kein
   Handlungsbedarf.
-- Eingebettetes JSON: `image` nur, wenn das Foto im PDF ist (`build.ts` passt
-  die generierte Datei je Sprache an) — die Anlage soll zum sichtbaren
-  Dokument passen.
+- Eingebettetes JSON: `image` nur, wenn das Foto im PDF ist (der Hub-Build
+  setzt es je Sprache) — die Anlage soll zum sichtbaren Dokument passen.
 - Keine einzelnen Wörter in der letzten Zeile eines Bullets (DE und EN).
 - Parser-Struktur (Review-Schleife 10/2026, mit pdfminer nachgestellt):
   Bullet-Marker als normaler Text mit normalem Wortabstand im selben Absatz

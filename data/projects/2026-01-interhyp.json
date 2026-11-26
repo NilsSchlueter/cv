@@ -1,11 +1,13 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "Interhyp AG",
   "role": {
     "de": "Fullstack-Entwickler – Headless-CMS-Migration (Next.js/Sanity)",
     "en": "Fullstack Developer — Headless CMS Migration (Next.js/Sanity)"
   },
-  "location": { "de": "München (remote)", "en": "Munich (remote)" },
+  "location": {
+    "de": "München (remote)",
+    "en": "Munich (remote)"
+  },
   "startDate": "2026-01",
   "endDate": "2026-03",
   "responsibilities": [
@@ -24,5 +26,17 @@
       "en": "Designed a caching strategy using the Next.js Data Cache and tag-based revalidation via Sanity webhooks, cutting headless CMS requests by more than 50%"
     }
   ],
-  "stack": ["Next.js", "React", "Sanity", "Headless CMS", "CMS Migration", "TypeScript", "Content Modeling", "ISR / On-Demand Revalidation", "SEO", "Storybook", "GitHub Copilot"]
+  "stack": [
+    "Next.js",
+    "React",
+    "Sanity",
+    "Headless CMS",
+    "CMS Migration",
+    "TypeScript",
+    "Content Modeling",
+    "ISR / On-Demand Revalidation",
+    "SEO",
+    "Storybook",
+    "GitHub Copilot"
+  ]
 }

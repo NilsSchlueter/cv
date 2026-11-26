@@ -15,7 +15,7 @@ skeptisch und konkret.
 - Das deutsche PDF `dist/*_DE_*.pdf` (mit Read; Seite 1 auch visuell) und
   seinen Text `dist/text/DE.layout.txt`. Das englische PDF nur, wenn eine
   Aussage dort anders klingt.
-- **Nicht** lesen: CLAUDE.md, README.md, data/, src/, templates/,
+- **Nicht** lesen: CLAUDE.md, README.md, data/,
   generated/, Git-Historie. Du bewertest nur, was ein Empfänger bekommt.
   Stehen Projektentscheidungen trotzdem in deinem Kontext, unterdrücke
   deswegen keinen Befund — das Filtern übernimmt der Orchestrator.
