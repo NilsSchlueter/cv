@@ -13,7 +13,7 @@ Sprachfassungen.
 
 - `dist/text/DE.layout.txt` und `dist/text/EN.layout.txt`; die PDFs
   `dist/*_DE_*.pdf` und `dist/*_EN_*.pdf`, wenn es um das Schriftbild geht.
-- **Nicht** lesen: CLAUDE.md, README.md, data/, src/, templates/,
+- **Nicht** lesen: CLAUDE.md, README.md, data/,
   generated/, Git-Historie. Stehen Projektentscheidungen trotzdem in deinem
   Kontext, unterdrücke deswegen keinen Befund.
 - Keine Dateien ändern.

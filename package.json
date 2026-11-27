@@ -3,30 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Zweisprachiger, ATS-optimierter Lebenslauf – strukturierte Quelldaten -> JSON Resume -> Typst-PDF",
+  "description": "Zweisprachiger, ATS-optimierter Lebenslauf – Quelle und PDF-Build im Freelancing Hub, hier Review und Lesespiegel",
   "scripts": {
-    "gen:schema": "tsx src/gen-schema.ts",
-    "merge": "tsx src/merge.ts",
-    "validate": "tsx src/validate.ts",
-    "typecheck": "tsc --noEmit",
-    "prebuild": "npm run gen:schema && npm run merge && npm run validate",
-    "build": "tsx src/build.ts",
+    "pull": "node scripts/pull.mjs",
     "check:setup": "sh scripts/setup-check.sh",
     "check:pdf": "if [ -x .venv/bin/python ]; then .venv/bin/python scripts/check_pdf.py; else python3 scripts/check_pdf.py; fi",
-    "watch": "tsx src/watch.ts",
-    "docx": "for f in dist/*.md; do pandoc \"$f\" -o \"${f%.md}.docx\"; done",
-    "clean": "rm -rf dist generated"
-  },
-  "dependencies": {
-    "@jsonresume/schema": "^1.2.1",
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
-    "zod": "^3.24.1",
-    "zod-to-json-schema": "^3.24.1"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.5",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "docx": "for f in dist/*.md; do pandoc \"$f\" -o \"${f%.md}.docx\"; done"
   }
 }

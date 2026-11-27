@@ -1,11 +1,13 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "Schaeffler AG",
   "role": {
     "de": "Frontend-Entwickler – Interne Beschaffungsplattform (Angular)",
     "en": "Frontend Developer — Internal Procurement Platform (Angular)"
   },
-  "location": { "de": "Nürnberg (remote)", "en": "Nuremberg (remote)" },
+  "location": {
+    "de": "Nürnberg (remote)",
+    "en": "Nuremberg (remote)"
+  },
   "startDate": "2022-03",
   "endDate": "2023-03",
   "responsibilities": [
@@ -22,6 +24,20 @@
       "en": "Contributed to defining group-wide code standards and best practices for web applications"
     }
   ],
-  "achievements": [],
-  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Nx (Monorepo)", "Angular Material", "AG Grid", "Jest", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Azure Application Insights", "Keycloak"]
+  "stack": [
+    "Angular",
+    "TypeScript",
+    "NgRx",
+    "RxJS",
+    "Nx (Monorepo)",
+    "Angular Material",
+    "AG Grid",
+    "Jest",
+    "Docker",
+    "Kubernetes",
+    "Jenkins",
+    "CI/CD",
+    "Azure Application Insights",
+    "Keycloak"
+  ]
 }

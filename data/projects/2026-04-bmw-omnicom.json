@@ -1,13 +1,18 @@
 {
-  "$schema": "../../schema/project.schema.json",
-  "client": { "de": "Interone (Omnicom-Gruppe)", "en": "Interone (Omnicom Group)" },
+  "client": {
+    "de": "Interone (Omnicom-Gruppe)",
+    "en": "Interone (Omnicom Group)"
+  },
   "role": {
     "de": "Frontend-Entwickler – AI Assistant für BMW (Generative UI)",
     "en": "Frontend Developer — AI Assistant for BMW (Generative UI)"
   },
-  "location": { "de": "München (remote)", "en": "Munich (remote)" },
+  "location": {
+    "de": "München (remote)",
+    "en": "Munich (remote)"
+  },
   "startDate": "2026-04",
-  "endDate": "2026-09",
+  "endDate": "2026-10",
   "responsibilities": [
     {
       "de": "Entwicklung von Komponenten, die der AI-Agent im Chat dynamisch steuert und mit Inhalten befüllt (Generative UI): interaktive Karten, Vergleichstabellen, Chat- und Voice-Inputs, inkl. Rendering der per SSE gestreamten Antworten",
@@ -36,5 +41,19 @@
       "en": "Supported the go-live in five markets at the end of September 2026 (Germany, the UK, France, Spain, the Netherlands) and prepared the US rollout (planned for the end of October 2026)"
     }
   ],
-  "stack": ["Generative AI", "Generative UI", "Chatbot / Conversational UI", "Streaming (SSE)", "Voice UI", "Angular", "TypeScript", "NgRx SignalStore", "Vitest", "Accessibility (WCAG)", "Internationalization (i18n)", "Next.js", "Payload CMS"]
+  "stack": [
+    "Generative AI",
+    "Generative UI",
+    "Chatbot / Conversational UI",
+    "Streaming (SSE)",
+    "Voice UI",
+    "Angular",
+    "TypeScript",
+    "NgRx SignalStore",
+    "Vitest",
+    "Accessibility (WCAG)",
+    "Internationalization (i18n)",
+    "Next.js",
+    "Payload CMS"
+  ]
 }

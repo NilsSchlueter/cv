@@ -1,12 +1,17 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "Vidlab7 GmbH",
   "role": {
     "de": "Frontend-Entwickler – AI-Sales-Avatar-Plattform (Next.js)",
     "en": "Frontend Developer — AI Sales Avatar Platform (Next.js)"
   },
-  "location": { "de": "München (remote)", "en": "Munich (remote)" },
-  "workload": { "de": "Teilzeit", "en": "part-time" },
+  "location": {
+    "de": "München (remote)",
+    "en": "Munich (remote)"
+  },
+  "workload": {
+    "de": "Teilzeit",
+    "en": "part-time"
+  },
   "startDate": "2024-05",
   "endDate": "2024-10",
   "responsibilities": [
@@ -29,5 +34,17 @@
       "en": "Launched the platform within the planned timeframe and supported the first B2B customers through the critical onboarding phase"
     }
   ],
-  "stack": ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "TanStack Query", "Tailwind CSS", "shadcn/ui", "MediaStream API", "Web Audio API", "Vercel"]
+  "stack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "PostgreSQL",
+    "Prisma",
+    "TanStack Query",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "MediaStream API",
+    "Web Audio API",
+    "Vercel"
+  ]
 }

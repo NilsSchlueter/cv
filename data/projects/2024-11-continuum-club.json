@@ -1,6 +1,8 @@
 {
-  "$schema": "../../schema/project.schema.json",
-  "client": { "de": "continuum (heute House 120)", "en": "continuum (now House 120)" },
+  "client": {
+    "de": "continuum (heute House 120)",
+    "en": "continuum (now House 120)"
+  },
   "role": {
     "de": "Fullstack-Entwickler – AI-Trainingsplan-Software (Next.js/Firebase)",
     "en": "Fullstack Developer — AI Training Plan Software (Next.js/Firebase)"
@@ -39,5 +41,18 @@
       "en": "Introduced unit testing with over 80% coverage on new code"
     }
   ],
-  "stack": ["LLM Integration", "AI Agents", "OpenAI API", "Vercel AI SDK", "Tool/Function Calling", "Structured Outputs", "Prompt Engineering", "Next.js", "React", "TypeScript", "Firebase", "Node.js"]
+  "stack": [
+    "LLM Integration",
+    "AI Agents",
+    "OpenAI API",
+    "Vercel AI SDK",
+    "Tool/Function Calling",
+    "Structured Outputs",
+    "Prompt Engineering",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Firebase",
+    "Node.js"
+  ]
 }

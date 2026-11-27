@@ -1,11 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build artifacts (Distribution läuft über lokalen Build oder GitHub Releases)
+# Builds aus dem Hub (npm run pull)
 dist/
-
-# Generierte, schema-konforme JSON-Resume-Dateien (aus data/ abgeleitet)
-generated/
 
 # Sonstiges
 *.log

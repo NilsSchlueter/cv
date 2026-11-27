@@ -1,5 +1,4 @@
 {
-  "$schema": "../../schema/project.schema.json",
   "client": "ista SE",
   "role": {
     "de": "Lead Frontend-Entwickler – Vermieter-Software Objego (Angular)",
@@ -32,5 +31,21 @@
       "en": "Re-engaged after a previous assignment on the same product (Objego, 2021/22)"
     }
   ],
-  "stack": ["Angular", "TypeScript", "NgRx", "RxJS", "Micro Frontends", "Module Federation", "Nx (Monorepo)", "Playwright", "Jest", "Storybook", "Docker", "Kubernetes", "Azure", "GitHub Actions", "Keycloak"]
+  "stack": [
+    "Angular",
+    "TypeScript",
+    "NgRx",
+    "RxJS",
+    "Micro Frontends",
+    "Module Federation",
+    "Nx (Monorepo)",
+    "Playwright",
+    "Jest",
+    "Storybook",
+    "Docker",
+    "Kubernetes",
+    "Azure",
+    "GitHub Actions",
+    "Keycloak"
+  ]
 }

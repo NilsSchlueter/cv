@@ -26,7 +26,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 TEXT_DIR = DIST / "text"
-GENERATED = ROOT / "generated"
 
 PAGES = 4
 MAX_TECH_LINES = 2
@@ -122,12 +121,12 @@ def compounds(resume: dict) -> set[str]:
 def check(lang: str) -> None:
     pdfs = sorted(DIST.glob(f"*_{lang.upper()}_*.pdf"))
     if not pdfs:
-        fail(f"kein PDF für {lang.upper()} in dist/ — erst npm run build")
+        fail(f"kein PDF für {lang.upper()} in dist/ — erst npm run pull")
         return
     pdf = pdfs[-1]
     print(f"\n{pdf.name}")
     texts = extract(pdf, lang)
-    resume = json.loads((GENERATED / f"resume.{lang}.json").read_text())
+    resume = json.loads((DIST / f"resume.{lang}.json").read_text())
     layout = [re.sub(r"\s+", " ", l).strip() for l in texts["layout"].split("\n")]
 
     pages = int(re.search(r"Pages:\s+(\d+)", run("pdfinfo", str(pdf))).group(1))
