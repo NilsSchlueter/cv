@@ -17,6 +17,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(ROOT, "dist");
 const DATA = join(ROOT, "data");
 const PROJECTS = join(DATA, "projects");
+const ORDER = join(DATA, "order.json");
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 const url = process.argv[2];
@@ -42,6 +43,11 @@ try {
   if (!source.basics || !source.skills || !source.education) throw new Error("Build ohne vollständige Quelldaten.");
   for (const f of manifest.files) if (basename(f.name) !== f.name) throw new Error(`Ungültiger Dateiname: ${f.name}`);
   for (const e of source.entries) if (!SLUG.test(e.slug)) throw new Error(`Ungültiger slug: ${e.slug}`);
+  // Reihenfolge der Stationen im Lebenslauf; fehlt bei Builds, die älter sind als die Sortierung im Hub.
+  const order = Array.isArray(source.order) ? source.order : null;
+  if (order && (order.length !== source.entries.length || new Set(order).size !== order.length || !source.entries.every((e) => order.includes(e.slug)))) {
+    throw new Error("Reihenfolge passt nicht zu den Stationen des Builds.");
+  }
 
   // Alles erst laden, dann schreiben: Ein abgebrochener Pull lässt dist/ unverändert.
   const files = await Promise.all(manifest.files.map(async (f) => ({ name: f.name, data: Buffer.from(await (await get(f.url)).arrayBuffer()) })));
@@ -59,6 +65,8 @@ try {
   const keep = new Set(source.entries.map((e) => `${e.slug}.json`));
   for (const e of source.entries) await writeFile(join(PROJECTS, `${e.slug}.json`), json(e.data));
   for (const f of await readdir(PROJECTS)) if (f.endsWith(".json") && !keep.has(f)) await rm(join(PROJECTS, f));
+  if (order) await writeFile(ORDER, json(order));
+  else await rm(ORDER, { force: true });
 
   console.log(`Build ${manifest.id} (${manifest.month}): DE ${manifest.pages.de} Seiten, EN ${manifest.pages.en} Seiten`);
   for (const f of files) console.log(`  dist/${f.name}`);

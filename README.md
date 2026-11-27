@@ -32,7 +32,9 @@ verbundenem Hub):
    vollständiges JSON).
 2. **Ändern:** `save_cv_entry` (eine Station, vollständig) bzw.
    `update_cv_section` (`basics`, `skills`, `education`, vollständig). DE und EN
-   immer gemeinsam.
+   immer gemeinsam. Die Reihenfolge der Stationen im Lebenslauf ist gespeichert:
+   `reorder_cv_entries` (oder `/cv` → „Reihenfolge“ im Hub); neue Stationen
+   ordnet der Hub chronologisch ein.
 3. **Bauen:** `build_cv` (`strict: true` vor dem Versand). Fehler blockieren den
    Build, Warnungen (z. B. Seitenzahl ≠ 4) werden genannt. Das Tool liefert eine
    signierte Pull-URL, 15 Minuten gültig; `list_cv_builds` liefert frische URLs.
@@ -86,6 +88,7 @@ bearbeiten** — der nächste Pull überschreibt es.
 | `data/skills.json`     | Abschnitt `skills`: Kompetenz-Gruppen mit Keywords |
 | `data/education.json`  | Abschnitt `education`: Ausbildung              |
 | `data/projects/<slug>.json` | eine Station je `slug` (Konvention `YYYY-MM-name`) |
+| `data/order.json`      | Reihenfolge der Stationen im Lebenslauf (oben zuerst), versteckte eingeschlossen |
 
 Sprachspezifische Felder sind `{ de, en }`-Objekte, sprachneutrale Werte (z. B.
 Firmennamen, Technologien) einfache Strings. Eine Station:
