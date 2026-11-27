@@ -11,9 +11,11 @@ vorschlagen.** Neue Grundsatzentscheidungen hier ergänzen.
 
 ## Datenfluss
 
-- Der Freelancing Hub ist die Quelle: Quelldaten, Prüfungen, PDF-Build,
-  Foto. Inhalte ändern sich nur per MCP (`get_cv` lesen, dann
-  `save_cv_entry` bzw. `update_cv_section` mit dem vollständigen Inhalt).
+- Der Freelancing Hub ist die Quelle: Quelldaten, Reihenfolge der
+  Stationen, Prüfungen, PDF-Build, Foto. Inhalte ändern sich nur im Hub: in
+  der Web-Oberfläche (`/cv`) oder per MCP (`get_cv` lesen, dann
+  `save_cv_entry` bzw. `update_cv_section` mit dem vollständigen Inhalt,
+  `reorder_cv_entries` für die Reihenfolge).
 - `data/` ist ein Lesespiegel des letzten Builds (`npm run pull`), nie von
   Hand bearbeiten.
 

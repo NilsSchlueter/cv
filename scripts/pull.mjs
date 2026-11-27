@@ -6,7 +6,8 @@
  * Die pull_url liefern die MCP-Tools build_cv und list_cv_builds (15 Minuten
  * gültig). Das Skript lädt PDFs, Markdown und JSON Resume nach dist/ und
  * schreibt die Quelldaten des Builds als Lesespiegel nach data/. data/ wird
- * nicht von Hand bearbeitet; Inhalte ändern sich nur per MCP im Hub.
+ * nicht von Hand bearbeitet; Inhalte ändern sich nur im Hub (Web-Oberfläche
+ * oder MCP).
  */
 import { execFileSync } from "node:child_process";
 import { mkdir, readdir, rm, writeFile } from "node:fs/promises";

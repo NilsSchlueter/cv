@@ -25,8 +25,9 @@ Kernmerkmale:
 
 ## Ablauf
 
-Inhalte ändern sich nur über die MCP-Tools des Hubs (z. B. aus Claude Code mit
-verbundenem Hub):
+Inhalte ändern sich nur im Hub: in der Web-Oberfläche (`/cv`, jeder Abschnitt und
+jede Station wird direkt auf der Seite bearbeitet) oder über die MCP-Tools (z. B.
+aus Claude Code mit verbundenem Hub):
 
 1. **Lesen:** `get_cv` (ohne Argumente: Übersicht; mit `slug` oder `section`:
    vollständiges JSON).
@@ -50,7 +51,9 @@ Ergebnis in `dist/` (Datum = Build-Monat):
 - `resume.de.json`, `resume.en.json` (dieselben Daten, die im PDF eingebettet sind)
 
 Die Web-Oberfläche des Hubs (`/cv`) zeigt dieselben Daten mit Prüfhinweisen und
-baut ebenfalls; Downloads dort brauchen keinen Pull.
+einer Zeitleiste der Stationen, bearbeitet und baut; Downloads dort brauchen
+keinen Pull. Änderungen in der Web-Oberfläche landen wie alle anderen erst mit
+dem nächsten Pull in `data/`.
 
 ### Word-Version für Vermittler
 
